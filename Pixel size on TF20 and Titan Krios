@@ -1,0 +1,17 @@
+Hi all,
+ 
+Jiansen calibrated the pixel size of the K2 cameras on Krios and F20 at the most frequently used magnifications. Here are the numbers:
+ 
+Titan Krios:
+165 kx: 0.83 A/pixel (calibrated using gold single crystals)
+130 kx: 1.06 A/pixel (calibrated using gold single crystals)
+ 
+TF20:
+50 kx: 0.74 A/pixel (fitted using single particle reconstruction)
+29 kx: 1.26 A/pixel (fitted using single particle reconstruction)
+ 
+Please let me know if you have any questions.
+ 
+ 
+Best,
+Huaibin
