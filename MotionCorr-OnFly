@@ -1,6 +1,11 @@
-#mkdir a new file you want to put mcr file in
+#Login to Titan computer:
+#Just ssh and use your Biowulf password.
 
-mkdir tmp
+ssh -X dout2@micefdata1.niddk.nih.gov
+
+#Go to your data folder (the folder you want to put the image data to)
+
+#if there is an existing "config.txt" file, backup it and then delete it (do it on micefdata1 on K2 computer)
 
 #run Screen command in this folder
 
@@ -10,9 +15,26 @@ screen
 
 /home/jianglab/local/align_frames/run_on_micefdata1.sh
 
+#do following to exit screen (detach from screen)
+
+ctrl+a+d
+
+#If you want to attach the screen (get back to the screen), type
+
+screen -r
+
+#If you have multiple screen and want to switch, try
+
+ctr+a+n or ctr+a+p
 
 
-###Email from Jiansen
+##Rerence 1 : How to use screen on linux
+
+https://hostpresto.com/community/tutorials/how-to-use-screen-on-linux/
+
+##Reference 2
+
+#Email from Jiansen
 
 Hi Bertram,
  
