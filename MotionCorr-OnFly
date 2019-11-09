@@ -1,0 +1,12 @@
+#mkdir a new file you want to put mcr file in
+
+mkdir tmp
+
+#run Screen command in this folder
+
+screen
+
+# In the screen window, run following shell script:
+
+/home/jianglab/local/align_frames/run_on_micefdata1.sh
+
