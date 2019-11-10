@@ -4,8 +4,11 @@
 
 #Import mrc files after motioncorr (the *sum_DW.mrc file)
 
-
-Node type: 2D micrograph/tomograph
+Input file: *_sum_DW.mrc
+Node type: 2D micrographs/tomograms
 
 #Import particles picked by GAutomatch
+
+Input file: *_automatch.star
+Node type: 2D/3D particle coordinates
 
