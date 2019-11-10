@@ -1,1 +1,11 @@
-Relion
+# Start Relion on Biowulf
+
+
+
+#Import mrc files after motioncorr (the *sum_DW.mrc file)
+
+
+Node type: 2D micrograph/tomograph
+
+#Import particles picked by GAutomatch
+
