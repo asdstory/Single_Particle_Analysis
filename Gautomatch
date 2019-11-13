@@ -12,6 +12,10 @@ module load gautomatch
 
 gautomatch --apixM 1.27 --diameter 80 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2  --cc_cutoff 0.25 *_sum_DW.mrc
 
+#Or, for simple use, just
+
+gautomatch --apixM 1.27 --diameter 150 *_sum_DW.mrc
+
 # Allocate an interactive session and run the program. Sample session:
 
 [user@biowulf]$ sinteractive --gres=gpu:k80:1 --mem=20g -c14
