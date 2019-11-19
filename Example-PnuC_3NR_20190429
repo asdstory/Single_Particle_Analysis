@@ -55,6 +55,9 @@ Mask diameter (A): 180
 
 # 2D classification results showed good alignment, but still, the class distribution of each 2D projection was very low, ~5%. However, by combining all the good particles, there were still ~50% among all the particles picked.
 
-# Further optimization
+# Further optimization - 1 Optimize the box size and Mask diameter
 # I changed the box size to 180, Mask diameter to 160, redo the Particle extraction and 2D classification, see if this will make 2D alignment results much better.
+
+# Further optimization - 2 Select some templates from last 2D classification, and do template-based particle picking again, using RELION-Autopick.
+
 
