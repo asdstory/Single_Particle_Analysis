@@ -52,3 +52,5 @@ Ignore CTFs until first peak? Yes
 
 Number of classes: 100
 Mask diameter (A): 180
+
+# 2D classification results showed good alignment, but still, the class distribution of each 2D projection was very low, ~5%. However, by combining all the good particles, there were still ~50% among all the particles picked.
