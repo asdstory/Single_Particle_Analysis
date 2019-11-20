@@ -3,6 +3,7 @@
 # Step01 - Import images (motion corrected by MotionCorr2)
 
 Input files: *_sum_DW.mrc
+
 Node type: 2D micrographs/tomograms(*.mrc)
 
 # Step02 - CTF estimation
