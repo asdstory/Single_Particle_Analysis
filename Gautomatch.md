@@ -1,6 +1,6 @@
 # Automatic Particle picking
-# Reference: 
-# https://hpc.nih.gov/apps/gautomatch.html
+#Reference: 
+#https://hpc.nih.gov/apps/gautomatch.html
 
 # For TF20 data, at 29kx:
 
