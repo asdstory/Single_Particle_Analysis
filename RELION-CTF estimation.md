@@ -1,5 +1,5 @@
 ## Function and Application:
-# This step is to estimate the CTF parameters for each corrected micrograph.
+#This step is to estimate the CTF parameters for each corrected micrograph.
 
 ## Algorithm and Principle:
 # 
