@@ -10,9 +10,12 @@ Node type: 2D micrographs/tomograms(*.mrc)
 
 #I/O
 
-Spherical aberration (mm): 1.2 #this dataset was collected on Titan Krios, Building 13, under low mag (13kx)
+Spherical aberration (mm): 1.2 #this dataset was collected on TF20, Building 8, under low mag (29kx)
+
 Amplitude contrast: 0.1
+
 Magnified pixel size (Angstrom): 1.27
+
 Amount of astigmastism (A): 100
 
 #Searches
