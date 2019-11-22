@@ -84,7 +84,7 @@ conda activate
 # /home/jianglab/local/align_frames/unattended_frame_align.py
 
 #!/usr/bin/env python
-# Jiansen Jiang, 10/2016.
+
 from ConfigParser import SafeConfigParser
 from optparse import OptionParser
 import re
@@ -136,14 +136,3 @@ else:
                 [ 'localhost', 2], \
                 [ 'localhost', 3], \
                 ]
-
-prog_dir = dirname(realpath(__file__))
-align_config_file = 'config.txt'
-align_config_file_default = join(prog_dir, 'config_default.txt')
-if options.config_template != '': align_config_file_default = join(prog_dir, options.config_template)
-finished_folder_suffix = '-finished-frames'
-failed_folder_suffix = '-failed-frames'
-average_output_folder_suffix = '-corrected-averages'
-#program_align = join(prog_dir, 'align_frame_and_move.py')
-program_align = join(prog_dir, 'align_frames.py')
-program_pbzip2 = join(prog_dir, 'pbzip2-static')
