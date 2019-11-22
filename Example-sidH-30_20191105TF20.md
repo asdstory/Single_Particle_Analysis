@@ -14,7 +14,7 @@ Spherical aberration (mm): 1.2 #this dataset was collected on TF20, Building 8, 
 
 Amplitude contrast: 0.1
 
-Magnified pixel size (Angstrom): 1.27
+Magnified pixel size (Angstrom): 1.26
 
 Amount of astigmastism (A): 100
 
@@ -26,7 +26,7 @@ Use as default
 
 Use CTFFIND-4.1? Yes
 
-#Step03 - Particle Picking using GAutomatch
+# Step03 - Particle Picking using GAutomatch
 
 [user@biowulf]$ sinteractive --gres=gpu:k80:1 --mem=20g -c14
 [user@biowulf]$ module load gautomatch
