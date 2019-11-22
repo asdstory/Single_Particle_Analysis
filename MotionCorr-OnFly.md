@@ -57,3 +57,93 @@ This is new and simplified protocol:
 
 Best regards,
 Jiansen
+
+# run_on_micefdata1.sh
+
+#!/bin/bash
+umask 022
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/jianglab/local/anaconda2/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/jianglab/local/anaconda2/etc/profile.d/conda.sh" ]; then
+        . "/home/jianglab/local/anaconda2/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/jianglab/local/anaconda2/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+conda activate
+
+/home/jianglab/local/align_frames/unattended_frame_align.py --gpu_nodes localhost:0,localhost:1 --config_template config_default_micef_krios.txt ./
+
+# /home/jianglab/local/align_frames/unattended_frame_align.py
+
+#!/usr/bin/env python
+# Jiansen Jiang, 10/2016.
+from ConfigParser import SafeConfigParser
+from optparse import OptionParser
+import re
+import time
+import threading
+import random
+import signal
+import os
+#from sys import argv
+from os.path import isfile, isdir, join, getctime, exists, basename, dirname, abspath, realpath, getsize
+from subprocess import call
+from shlex import split
+import json
+from string import Template
+
+DEBUG=False
+
+parser = OptionParser()
+parser.add_option("--incoming_folder", dest="incoming_folder", type="string", default="", help="Additional incoming folder for new frames [default: %default]")
+parser.add_option("--scan_subfolder", dest="scan_subfolder", action="store_true", help="Process the subfolders where there is a config file [default: %default]")
+parser.add_option("--gpu_nodes", dest="gpu_nodes", type="string", default="", help="Available GPUs. Format host1:gpu-id1,host1:gpu-id2,... e.g. localhost:0,localhost:1,... [default: %default]")
+parser.add_option("--config_template", dest="config_template", type="string", default="", help="Template of config file [default: %default]")
+
+(options, args) = parser.parse_args()
+
+# Settings for this program. Change them accordingly if the computational enviroment is changed.
+#frame_folder = '/datadisk/frames1/unattended_frame_alignment'
+frame_folder = '.'
+
+if len(args) > 0: frame_folder = args[0]
+
+# specify graphics cards in the second input parameter:
+# localhost:0,localhost:1,...
+gpu_nodes = []
+if len(args) > 1:
+    for node in args[1].split(','):
+        h = node.split(':')
+        gpu_nodes.append([str(h[0]), int(h[1])])
+elif options.gpu_nodes != '':
+    for node in options.gpu_nodes.split(','):
+        h = node.split(':')
+        gpu_nodes.append([str(h[0]), int(h[1])])
+else:
+    # Each graphics card is defined.
+    # [[ "server_name", gpu_id], ... ]
+    gpu_nodes = [ \
+                [ 'localhost', 0], \
+                [ 'localhost', 1], \
+                [ 'localhost', 2], \
+                [ 'localhost', 3], \
+                ]
+
+prog_dir = dirname(realpath(__file__))
+align_config_file = 'config.txt'
+align_config_file_default = join(prog_dir, 'config_default.txt')
+if options.config_template != '': align_config_file_default = join(prog_dir, options.config_template)
+finished_folder_suffix = '-finished-frames'
+failed_folder_suffix = '-failed-frames'
+average_output_folder_suffix = '-corrected-averages'
+#program_align = join(prog_dir, 'align_frame_and_move.py')
+program_align = join(prog_dir, 'align_frames.py')
+program_pbzip2 = join(prog_dir, 'pbzip2-static')
