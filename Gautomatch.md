@@ -41,3 +41,9 @@ gautomatch --apixM 1.34 --diameter 400 --T templates_lp40_3.2A.mrcs --apixT 3.2 
 #Submit this job using the Slurm sbatch command.
 
 sbatch --partition=gpu --gres=gpu:k20x:1 --cpus-per-task=14 --mem=20g gautomatch.sh --time=06:00:00
+
+# How to use Gautomatch in our Linux computer, JiangLab
+
+module load Gautomatch/0.56
+
+Gautomatch --apixM 1.26 --diameter 100 *_sum_DW.mrc
