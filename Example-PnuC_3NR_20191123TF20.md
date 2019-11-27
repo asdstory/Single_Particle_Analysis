@@ -68,16 +68,17 @@ Ignore CTFs until first peak? Yes
 # Optimization
 
 Number of classes: 100
+
 Mask diameter (A): 160
 
-#2D classification results showed good alignment, but still, the class distribution of each 2D projection was very low, ~5%. However, by combining all the good particles, there were still ~50% among all the particles picked.
+#2D classification results showed good alignment.
 
 # Further optimization - 1 Optimize the box size and Mask diameter
-#I changed the box size to 180, Mask diameter to 160, redo the Particle extraction and 2D classification, see if this will make 2D alignment results much better.
+#I changed the Mask diameter to 170, redo the Particle extraction and 2D classification, see if this will make 2D alignment results much better.
 
 #Try 1: 
-Particle box size (pix): 180
-Mask diameter (A): 160
+Particle box size (pix): 1200
+Mask diameter (A): 170
 
 #Results: 
 1. Particles aligned much better than before, best class has 6% distribution.
@@ -87,8 +88,8 @@ Particle box size (pix): 170
 Mask diameter (A): 150
 
 
-# Further optimization - 2 Select some templates from last 2D classification, and do template-based particle picking again, using RELION-Autopick.
+# Further optimization - 2 Select good particles/classes from last 2D classification, and redo 2D classification.
 
 
-
+# Further optimization - 3 Select some templates from last 2D classification, and do template-based particle picking again, using RELION-Autopick.
 
