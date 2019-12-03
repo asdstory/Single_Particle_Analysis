@@ -34,61 +34,63 @@ Use CTFFIND-4.1? Yes
 
 Pick star-end coordinates helices? Yes
 
-# Step04 - ?
-
-Input files: 2019-11-23-TYD-PnuC_3NR-corrected-averages/*_automatch.star
-
-Node type: 2D/3D particle coordinates (*.box, *_pick.star)
-
-#You can view the auto-picking results directly after import particles, by display "coords_suffix_automatch.star".
-#However, to view the particles, you have to set Manual picking parameters first:
-
-
-#Optimization
-
-Change diameters for GAutomach autopicking, and check on raw images if particles we want are picked.
-For this case, try 70, 80, 90, 100. 
-
-# Step05 - Extract Particles
+# Step04 - Extract Particles
 
 #Extract
 
-Particle box size (pix): 200
+Particle box size (pix): 600
 
+Rescale particles? Yes
 
-# Step06 - 2D classificaiton
+Re-scaled size (pixels): 150
 
-# CTF
+#Helix
+
+Extract helical segments? Yes
+
+Tube diameter (A): 400
+
+Use bimodal angular priors? Yes
+
+Coordinates are start-end only? Yes
+
+Cut helical tubes into segments? Yes
+
+Number of asymmetrical units: 1
+
+Helical rise (A): 100
+
+# Step05 - 2D classificaiton
+
+#CTF
 
 Do CTF-correction? Yes
+
 Ignore CTFs until first peak? Yes
 
-# Optimization
+#Optimization
 
-Number of classes: 100
+Number of classes: 500
 
-Mask diameter (A): 160
+Mask diameter (A): 400
+
+#Helix
+
+Classify 2D helical segments? Yes
+
+Tube diameter (A): 400
+
+Do bimodal angular searches? Yes
+
+Angular search range - psi (deg): 6
+
+#Compute
+
+Use GPU acceleration? Yes
+
 
 #2D classification results showed good alignment.
 
-# Further optimization - 1 Optimize the box size and Mask diameter
-#I changed the Mask diameter to 170, redo the Particle extraction and 2D classification, see if this will make 2D alignment results much better.
-
-#Try 1: 
-Particle box size (pix): 1200
-Mask diameter (A): 170
-
-#Results: 
-1. Particles aligned much better than before, best class has 6% distribution.
-
-#Try 2: 
-Particle box size (pix): 170
-Mask diameter (A): 150
-
-
-# Further optimization - 2 Select good particles/classes from last 2D classification, and redo 2D classification.
-
-
-# Further optimization - 3 Select some templates from last 2D classification, and do template-based particle picking again, using RELION-Autopick.
+# Further optimization - 1 Optimize ...
 
 
