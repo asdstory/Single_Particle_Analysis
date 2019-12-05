@@ -30,9 +30,12 @@ Use CTFFIND-4.1? Yes
 
 # Step03 - Particle Picking Manually
 
-#In RELION Manual picking, Display
+#In RELION Manual picking, Display Tab
+
+particle diameter (A): 400
 
 Pick star-end coordinates helices? Yes
+
 
 # Step04 - Extract Particles
 
