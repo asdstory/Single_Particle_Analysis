@@ -1,4 +1,4 @@
-# Example - Processing PnuC_0NR_20191206TF20.md, totally 124 images
+# Example - Processing PnuC_0NR_20191206TF20.md, totally 278 images
 
 # Step01 - Import images (motion corrected by MotionCorr2)
 
