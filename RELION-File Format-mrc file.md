@@ -4,6 +4,7 @@ From Wikipedia, the free encyclopedia https://en.wikipedia.org/wiki/MRC_(file_fo
 Filename extension	.mrc
 Type of format	3D electron density file or 2D image file
 Website	http://www.ccpem.ac.uk/mrc_format/mrc2014.php
+
 MRC is a file format that has become industry standard in cryo-electron microscopy (cryoEM) and electron tomography (ET), where the result of the technique is a three-dimensional grid of voxels each with a value corresponding to electron density or electric potential. It was developed by the MRC (Medical Research Council, UK) Laboratory of Molecular Biology.[1] In 2014, the format was standardised.[2] The format specification is available on the CCP-EM website.
 
 The MRC format is supported by many of the software packages listed in b:Software Tools For Molecular Microscopy.
