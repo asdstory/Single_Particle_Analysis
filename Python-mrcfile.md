@@ -26,7 +26,7 @@ Asynchronous opening option for background loading of multiple files
 
 Runs in Python 2 & 3, on Linux, Mac OS X and Windows
 
-Installation
+# Installation
 
 The mrcfile library is available from the Python package index:
 
@@ -40,7 +40,7 @@ It is also included in the ccpem-python environment in the CCP-EM software suite
 
 The source code (including the full test suite) can be found on GitHub.
 
-Basic usage
+# Basic usage
 
 The easiest way to open a file is with the mrcfile.open and mrcfile.new functions. These return an MrcFile object which represents an MRC file on disk.
 
@@ -68,7 +68,7 @@ array([[ 0,  0,  0,  0,  0],
        [ 0,  0,  0,  0,  0]], dtype=int8)
 The data will be saved to disk when the file is closed, either automatically at the end of the with block (like a normal Python file object) or manually by calling close(). You can also call flush() to write any changes to disk and keep the file open.
 
-To validate an MRC file:
+# To validate an MRC file:
 
 >>> mrcfile.validate('tests/test_data/EMD-3197.map')
 
@@ -84,13 +84,13 @@ Documentation
 
 Full documentation is available on Read the Docs.
 
-### Citing mrcfile
+# Citing mrcfile
 
 If you find mrcfile useful in your work, please cite:
 
 Burnley T, Palmer C & Winn M (2017) Recent developments in the CCP-EM software suite. Acta Cryst. D73:469--477. doi: 10.1107/S2059798317007859
 
-Contributing
+# Contributing
 
 Please use the GitHub issue tracker for bug reports and feature requests, or email CCP-EM.
 
@@ -98,6 +98,6 @@ Code contributions are also welcome, please submit pull requests to the GitHub r
 
 To run the test suite, go to the top-level project directory (which contains the mrcfile and tests packages) and run python -m unittest tests. (Or, if you have tox installed, run tox.)
 
-Licence
+# Licence
 
 The project is released under the BSD licence.
