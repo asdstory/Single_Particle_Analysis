@@ -1,6 +1,6 @@
 #From https://github.com/ccpem/mrcfile
 
-mrcfile.py
+# mrcfile.py
 
 Build Status Documentation Python Versions  Python Package Index  conda-forge
 
@@ -10,23 +10,32 @@ It allows MRC files to be created and opened easily using a very simple API, whi
 
 This library aims to allow users and developers to read and write standard-compliant MRC files in Python as easily as possible, and with no dependencies on any compiled libraries except numpy. You can use it interactively to inspect files, correct headers and so on, or in scripts and larger software packages to provide basic MRC file I/O functions.
 
-Key Features
+# Key Features
 
 Clean, simple API for access to MRC files
+
 Easy to install and use
+
 Validation of files according to the MRC2014 format
+
 Seamless support for gzip and bzip2 files
+
 Memory-mapped file option for fast random access to very large files
+
 Asynchronous opening option for background loading of multiple files
+
 Runs in Python 2 & 3, on Linux, Mac OS X and Windows
+
 Installation
 
 The mrcfile library is available from the Python package index:
 
 pip install mrcfile
+
 Or from conda-forge:
 
 conda install --channel conda-forge mrcfile
+
 It is also included in the ccpem-python environment in the CCP-EM software suite.
 
 The source code (including the full test suite) can be found on GitHub.
@@ -62,16 +71,20 @@ The data will be saved to disk when the file is closed, either automatically at 
 To validate an MRC file:
 
 >>> mrcfile.validate('tests/test_data/EMD-3197.map')
+
 File does not declare MRC format version 20140: nversion = 0
+
 False
 
 >>> mrcfile.validate('tmp.mrc')
+
 True
+
 Documentation
 
 Full documentation is available on Read the Docs.
 
-Citing mrcfile
+### Citing mrcfile
 
 If you find mrcfile useful in your work, please cite:
 
