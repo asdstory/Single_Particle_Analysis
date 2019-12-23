@@ -84,6 +84,47 @@ Mask diameter (A): 160
 
 #2D classification results showed good alignment.
 
+# Step07 - Select 2D model interested
+
+# Step08 - Make an initio model
+
+
+
+# Step09 - Class3D /Job163
+
+## I/O
+
+Input images STAR file: Select/job156/particles.star
+
+Reference map: 4QTN/4QTN15_box64.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? No
+
+Initial low-pass filter (A): 50
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Has reference been CTF-corrected? Yes
+
+## Optimisation
+
+Number of classes: 4
+
+Regularisation parameter T: 4
+
+Number of iterations: 50
+
+Mask diameter (A): 150
+
+
+
+
 # Further optimization - 1 Optimize the box size and Mask diameter
 #I changed the Mask diameter to 170, redo the Particle extraction and 2D classification, see if this will make 2D alignment results much better.
 
