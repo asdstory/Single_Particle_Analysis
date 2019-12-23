@@ -123,11 +123,16 @@ Number of iterations: 50
 Mask diameter (A): 150
 
 
-# Step10 - Extract Particles /Job166
+# Step10 - Select Model
+
+
+
+
+# Step11 - Extract Particles /Job166
 
 ## I/O
 
-micrograph STAR file: CtfFind/job489/micrographs_ctf.star
+micrograph STAR file: CtfFind/job002/micrographs_ctf.star
 
 OR re-extract refined particles? Yes
 
@@ -150,7 +155,7 @@ Diameter background circle (pix): 180
 Rescale particles? No
 
 
-# Step16 - Refine3D /Job167
+# Step11 - Refine3D /Job167
 
 ## I/O
 
@@ -170,6 +175,10 @@ Symmetry: C3
 
 Do CTF-correction? Yes
 
+Ignore CTFs until first peak? Yes
+
+
+
 ## Optimisation
 
 Mask diameter (A): 160
@@ -182,8 +191,12 @@ Use solvent-flattened FSCs? No
 
 Use GPUs
 
+## Running
 
-# Step17 - MaskCreate /Job180
+MPI procs should be an odd number. Here we use 9.
+
+
+# Step12 - MaskCreate /Job180
 
 ## I/O
 
@@ -203,7 +216,7 @@ Add a soft-edge of this many pixels: 20
 
 using CPUs.
 
-# Step18 - PostProcess /Job181
+# Step13 - PostProcess /Job181
 
 ## I/O
 
