@@ -112,7 +112,7 @@ Do CTF-correction? Yes
 
 Has reference been CTF-corrected? Yes
 
-## Optimisation
+# Optimisation
 
 Number of classes: 4
 
@@ -125,7 +125,7 @@ Mask diameter (A): 150
 
 
 
-# Further optimization - 1 Optimize the box size and Mask diameter
+## Further optimization - 1 Optimize the box size and Mask diameter
 #I changed the Mask diameter to 170, redo the Particle extraction and 2D classification, see if this will make 2D alignment results much better.
 
 #Try 1: 
@@ -140,9 +140,21 @@ Particle box size (pix): 170
 Mask diameter (A): 150
 
 
-# Further optimization - 2 Select good particles/classes from last 2D classification, and redo 2D classification.
+## Further optimization - 2 Redo particle picking by optimizing GAutomatch parameters
 
 
-# Further optimization - 3 Select some templates from last 2D classification, and do template-based particle picking again, using RELION-Autopick.
+[user@biowulf]$ sinteractive --gres=gpu:k20x:1 --mem=20g 
+
+[user@biowulf]$ module load gautomatch
+
+[user@cn3144 ~]$ gautomatch --apixM 1.26 --diameter 70 *_sum_DW.mrc 
+
+#Here I lowered the diameter because I want to pick more particles, as more as possible.
+
+
+
+
+
+
 
 
