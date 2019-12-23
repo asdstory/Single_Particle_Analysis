@@ -116,6 +116,18 @@ Mask diameter (A): 150
 
 # Step13 - Class3D /Job163
 
+## I/O
+
+Input images STAR file: Select/job156/particles.star
+
+Reference map: 4QTN/4QTN15_box64.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? No
+
+
+
 # Step14 - Select /Job165
 
 # Step15 - Extract Particles /Job166
