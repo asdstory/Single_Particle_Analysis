@@ -126,6 +126,26 @@ Reference map: 4QTN/4QTN15_box64.mrc
 
 Ref. map is on absolute greyscale? No
 
+Initial low-pass filter (A): 50
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Has reference been CTF-corrected? Yes
+
+## Optimisation
+
+Number of classes: 4
+
+Regularisation parameter T: 4
+
+Number of iterations: 50
+
+Mask diameter (A): 150
+
 
 
 # Step14 - Select /Job165
