@@ -151,7 +151,7 @@ Mask diameter (A): 150
 
 #Here I lowered the diameter because I want to pick more particles, as more as possible.
 
-
+After this, redo particle extraction, 2D classification and 3D classification, see if the 3D structure we get could be better.  
 
 
 
