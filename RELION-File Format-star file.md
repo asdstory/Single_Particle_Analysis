@@ -79,7 +79,7 @@ RELION 3.1 automatically upgrades old-style STAR files from RELION 3.0 and earli
 
 Orientations (rlnAngleRot, rlnAngleTilt, rlnAnglePsi) in a STAR file rotate the reference into observations (i.e. particle image), while translations (rlnOriginXAngstrom and rlnOriginYAngstrom) shifts observations into the reference projection. For developers, a good starting point for code reading is ObservationModel::predictObservation() in src/jaz/obs_model.cpp.
 
-## Coordinate system
+# Coordinate system
 In compliance with the Heymann, Chagoyen and Belnap (2005) standard RELION uses a right-handed coordinate system with orthogonal axes X, Y and Z. Right-handed rotations are called positive.
 
 ## Image center
