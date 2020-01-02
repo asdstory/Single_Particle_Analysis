@@ -98,7 +98,7 @@ Euler angle definitions are according to the Heymann, Chagoyen and Belnap (2005)
 * The third rotation is denoted by psi and is around the new Z axis
 As such, RELION uses the same Euler angles as XMIPP, SPIDER and FREALIGN.
 
-## Contrast Transfer Function
+# Contrast Transfer Function
 CTF parameters are defined as in CTFFIND3, also see the publication by Mindell et al (2003).
 
 ## Higher order aberrations
@@ -106,12 +106,12 @@ rlnOddZernike contains coefficients for asymmetric (antisymmetric) Zernike polyn
 
 Look at the table in Wikipedia https://en.wikipedia.org/wiki/Zernike_polynomials#Zernike_polynomials but ignore square root terms, as the coefficients are not normalised in RELION. For example, Z3-1 = (3r3 - 2r) sin θ = 3 (kx2 + ky2) ky - 2 ky, where kx and ky are wave-numbers in the reciprocal space (1 / Å).
 
-## Anisotropic magnification corrections
+# Anisotropic magnification corrections
 Transformation by anisotropic magnification brings the reference into observations (i.e. particle images) in real space. Note that stretching in real space is shrinking in reciprocal space and vice versa.
 
 rlnMagMatrix_00 to rlnMagMatrix_11 represent the matrix M in the section 2.4 of our preprint. The values become larger when the observed particle in the real space looks larger than the reference projection at the nominal pixel size. This also means that the true pixel size is actually smaller than the nominal pixel size.
 
-## Symmetry
+# Symmetry
 Symmetry libraries have been copied from XMIPP. As such, with the exception of tetrahedral symmetry, they comply with the Heymann, Chagoyen and Belnap (2005) standard:
 
 Symmetry Group	Notation	Origin	Orientation
