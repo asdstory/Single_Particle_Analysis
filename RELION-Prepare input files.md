@@ -69,7 +69,7 @@ relion_star_loopheader rlnImageName rlnMicrographName rlnDefocusU rlnDefocusV rl
 awk '{if ($1!="C") {print $1"@./my/abs/path/bigstack.mrcs", $8, $9, $10, $11, " 80 2.0 0.1"}  }' < frealign.par >> all_images.star
 Assuming the voltage is 80kV, the spherical aberration is 2.0 and the amplitude contrast is 0.1. Also, a single stack is assumed called: /my/abs/path/bigstack.mrcs.
 
-## Preparing references
+# Preparing references
 2D class averaging is typically performed in an unsupervised manner, i.e. without user-provided references. 3D classification or refinement does require a (single) 3D reference structure. This map should be provided in MRC or SPIDER format, and it should have the same dimensions as the input images. Take care that the pixel size (in Angstroms) matches that of the experimental images, as currently an internal magnification correction is not implemented. Because the Gaussian model used to calculate probabilities is based on the squared differences between the experimental images and projections of the reference, the absolute intensity scale (or grey-scale) of the reference map is relevant. However, RELION may correct for the greyscale internally at relatively small computational costs (just set the Ref. map is on absolute greyscale? option in the GUI to No.)
 
 To limit model bias it is generally recommended to strongly low-pass filter your initial reference. The Optimisation tab in the GUI has an entry to set an initial low-pass filter.
