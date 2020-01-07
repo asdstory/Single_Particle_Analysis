@@ -1,6 +1,6 @@
-Example-PnuC_3NR_20200107Krios.md
 
-# Example - Processing PnuC_3NR data_20190429, totally 102 images
+
+# Example - Processing PnuC_3NR data_20200107, totally ??? images
 
 # Step01 - Import images (motion corrected by MotionCorr2)
 
@@ -15,7 +15,7 @@ Node type: 2D micrographs/tomograms(*.mrc)
 Spherical aberration (mm): 2.7
 Voltage (kV): 300 # Because this dataset was collected on Titan Krios, Building 13, under low mag (13kx)
 Amplitude contrast: 0.1
-Magnified pixel size (Angstrom): 1.08
+Magnified pixel size (Angstrom): 1.06
 Amount of astigmastism (A): 100
 
 #Searches
@@ -26,7 +26,7 @@ Use as default
 
 Use CTFFIND-4.1? Yes
 
-#Step03 - Particle Picking using GAutomatch
+# Step03 - Particle Picking using GAutomatch
 
 [user@biowulf]$ sinteractive --gres=gpu:k80:1 --mem=20g -c14
 [user@biowulf]$ module load gautomatch
