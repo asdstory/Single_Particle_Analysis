@@ -1,12 +1,17 @@
 
 
-# Example - Processing PnuC_3NR data_20200107, totally ??? images
+# Example - Processing PnuC_0NR_C8_20200106, totally 4525 images
 
-# Step01 - Import images (motion corrected by MotionCorr2)
+# Step01 - Import images 
 
-Input files: *_sum_DW.mrc
+Input files: 2020-01-06-PnuC_0NR_C8-leginon-counting-finished-frames/*.tif
 
-Node type: 2D micrographs/tomograms(*.mrc)
+Node type: 2D micrographs movies (*.mrcs, *tiff)
+
+# Step02 - Motion correction
+
+
+
 
 # Step02 - CTF estimation
 
