@@ -91,7 +91,7 @@ Metadata label for subset selection: rlnCtfMaxResolution
 Minimum metadata value: -9999.
 Maximum metadata value: 5
 
-## Runnig
+## Running
 
 Running without submitting to queue.
 
