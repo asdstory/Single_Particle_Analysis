@@ -108,7 +108,22 @@ Node type: 2D/3D particle coordinates (*.box, *_pick.star)
 
 Particle box size (pix): 200
 
+Diameter background circle (pix): 180
 
+# Step08 - 2D classfiicaiton
+
+# CTF
+
+Do CTF-correction? Yes
+Ignore CTFs until first peak? Yes
+
+# Optimization
+
+Number of classes: 100
+
+Mask diameter (A): 160
+
+#2D classification results showed good alignment.
 
 # Step06 - 2D classificaiton
 
