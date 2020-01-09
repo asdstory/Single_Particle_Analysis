@@ -10,12 +10,45 @@ Node type: 2D micrographs movies (*.mrcs, *tiff)
 
 # Step02 - Motion correction
 
+## I/O
+
+Input movies STAR file: Import/job003/movies.star
+
+First frame for corrected sum: 1
+
+Last frame for corrected sum: 0 
+
+Pixel size (A): 1.06
+
+Voltage (kV): 300
+
+Dose per frame (e/A2): 1.42
+
+Pre-exposure (e/A2): 0
+
+## Motion
+
+Bfactor: 150
+
+Number of patches X, Y: 5 5
+
+Use RELION's own implementation? Yes
+
+## Running
+
+Number of MPI procs: 100
+
+Number of threads: 2
+
+Submit to queue? Yes
+
+Queue name: multinode
 
 
 
 # Step02 - CTF estimation
 
-#I/O
+## I/O
 
 Spherical aberration (mm): 2.7
 Voltage (kV): 300 # Because this dataset was collected on Titan Krios, Building 13, under low mag (13kx)
