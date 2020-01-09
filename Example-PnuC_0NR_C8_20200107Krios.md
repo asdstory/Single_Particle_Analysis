@@ -100,7 +100,11 @@ Running without submitting to queue.
 Input files: *_automatch.star
 Node type: 2D/3D particle coordinates (*.box, *_pick.star)
 
-# Step07 - Extract Particles
+# Step07 - Subset selection 
+
+Select ~200 images to make a subset, then extract particles from these images and do a quick Class2D. After quick Class2D, we can get templates that may used for template-based Autopick. In this way, we can get more accurate particle picking, and thus lower down the requirement for computational capability of following work, e.g. Class2D, Class 3D, which always cost several days for iterations and calcutations.   
+
+# Step08 - Extract Particles
 
 #Extract
 
@@ -108,7 +112,7 @@ Particle box size (pix): 200
 
 Diameter background circle (pix): 180
 
-# Step08 - 2D classfiicaiton
+# Step09 - 2D classfiicaiton
 
 # CTF
 
@@ -120,5 +124,61 @@ Ignore CTFs until first peak? Yes
 Number of classes: 100
 
 Mask diameter (A): 160
+
+# Step10 - Subset selection
+
+Select classes that interested, and save as templates.
+
+# Step11 - Autopicking
+
+Now, it's time to do template-based Auto-picking.
+
+## I/O
+
+Input micrographs for autopick: CtfFind/job005/micrographs_ctf.star
+
+Pixel size in micrographs (A): -1
+
+2D references: Select/job017/class_averages.star
+
+## References
+
+Pixel sieze in references (A): -1
+
+## autopikcing
+
+Picking thresold: 0.8
+
+Minimum inter-particle distanc (A): 100
+
+Maximum stddev noise: 1.1
+
+Minimum avg noise: -0.5
+
+Shrink factor: 1
+
+## Running
+
+Submit to queue? Yes
+
+Queue name: gpu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
