@@ -61,9 +61,9 @@ For this case, try 70, 80, 90, 100.
 
 #Extract
 
-Particle box size (pix): 200
+Particle box size (pix): 400
 
-Diameter background circle (pix): 180
+Diameter background circle (pix): 360
 
 # Step06 - 2D classfiicaiton
 
