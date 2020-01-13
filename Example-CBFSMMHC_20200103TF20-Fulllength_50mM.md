@@ -28,6 +28,11 @@ Use as default
 
 Use CTFFIND-4.1? Yes
 
+## Running
+
+Number of MPI procs: 9
+
+
 # Step03 - Particle Picking Manually
 
 ## In RELION Manual picking, Display Tab
