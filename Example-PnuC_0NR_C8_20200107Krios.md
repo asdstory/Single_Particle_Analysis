@@ -163,6 +163,30 @@ Submit to queue? Yes
 
 Queue name: gpu
 
+# Step12 3D initial model 
+
+## I/O
+
+Input images STAR file: Select/job030/particles.star
+
+## CTF
+
+Do CTF-correction? Yes
+
+Ingore CTFs until first peak? Yes
+
+## Optimisation
+
+Number of classes: 1
+
+Mask diameter (A): 200
+
+Symmetry: C1
+
+## Compute
+
+Use GPU acceleration? Yes
+
 
 
 
