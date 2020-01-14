@@ -169,6 +169,8 @@ Queue name: gpu
 
 Input images STAR file: Select/job030/particles.star
 
+Reference map: InitialModel/job031/run_it300_class001.mrc
+
 ## CTF
 
 Do CTF-correction? Yes
@@ -177,7 +179,7 @@ Ingore CTFs until first peak? Yes
 
 ## Optimisation
 
-Number of classes: 1
+Number of classes: 6
 
 Mask diameter (A): 200
 
@@ -186,6 +188,158 @@ Symmetry: C1
 ## Compute
 
 Use GPU acceleration? Yes
+
+# Step13 - Class3D /Job163
+
+## I/O
+
+Input images STAR file: Select/job030/particles.star
+
+Reference map: InitialModel/job031/run_it300_class001.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? No
+
+Initial low-pass filter (A): 50
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Has reference been CTF-corrected? Yes
+
+## Optimisation
+
+Number of classes: 4
+
+Regularisation parameter T: 4
+
+Number of iterations: 50
+
+Mask diameter (A): 150
+
+## Compute
+
+Use GPU acceleration? Yes
+
+
+# Step14 - Select Model /Job165
+
+## I/O
+
+Select classes from model.star: 
+
+## Class options
+
+Re-center the class averages? Yes
+
+# Step15 - Extract Particles /Job166
+
+## I/O
+
+micrograph STAR file: CtfFind/job489/micrographs_ctf.star
+
+OR re-extract refined particles? Yes
+
+Refined particles STAR file: Select/job165/particles.star
+
+OR: re-center refined coordinates? Yes
+
+Recenter on - X,Y,Z (pix): 0 0 0 
+
+## Extract
+
+Particle box size (pix): 256
+
+Invert contrast? Yes
+
+Normalize particles? Yes
+
+Diameter background circle (pix): 200
+
+Rescale particles? No
+
+
+# Step16 - Refine3D /Job167
+
+## I/O
+
+Input images STAR file: Extract/job166/particles.star
+
+Reference map: Class3D/job163/run_ct25_it050_class001_box256.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? No
+
+Initial low-pass filter (A): 50
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+## Optimisation
+
+Mask diameter (A): 150
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? No
+
+## Compute
+
+Use GPUs
+
+
+# Step17 - MaskCreate /Job180
+
+## I/O
+
+Input 3D map: Refine3D/job167/run_ct15_class001.mrc
+
+## Mask
+
+Lowpass filter map (A): 15
+
+Initial binarisation threshold: 0.02
+
+Extend binary map this many pixels: 20
+
+Add a soft-edge of this many pixels: 20
+
+## Running
+
+using CPUs.
+
+# Step18 - PostProcess /Job181
+
+## I/O
+
+One of the 2 unfiltered half-map: Refine3D/job167/run_ct15_half1_class001_unfil.mrc
+
+Solvent mask: MaskCreate/job180/mask.mrc
+
+Calibrated pixel size (A): 1.08
+
+## Sharpen
+
+Estimate B-factor automatically? Yes
+
+## Running
+
+Using CPUs.
+
+
+
+
+# Step19 - Polish
+
+
 
 
 
