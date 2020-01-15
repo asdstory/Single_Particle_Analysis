@@ -21,3 +21,11 @@ relion_image_handler --i cryosparc_P7_J30__localfilter_2.8A.mrc --new_box 200 --
 #Let say you want to change the pixel size of your map from before to 4 Å:
 
 relion_image_handler --i cryosparc_200Pix.mrc --rescale_angpix 1.26 --o cryosparc_200Pix1.26A.mrc
+
+# You may want to change the pixel size first.
+
+## If you want to get a map with Boxsize 200 and Pixel size 1.06A, you may want to do Pixel size first, and then box size, while use EMAN2 to check the box size that is :
+
+- [ ] elion_image_handler --i cryosparc_P7_J30__localfilter_2.8A.mrc --rescale_angpix 1.26 --o cryosparc_Pix1.26A.mrc
+- [ ] relion_image_handler --i cryosparc_Pix1.26A.mrc --new_box 200 --o cryosparc_200Pix1.26A.mrc
+- [ ] e2iminfo.py cryosparc_200Pix1.26A.mrc
