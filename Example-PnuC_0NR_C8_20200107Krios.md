@@ -236,15 +236,16 @@ Select classes from model.star:
 
 Re-center the class averages? Yes
 
+
 # Step15 - Extract Particles /Job166
 
 ## I/O
 
-micrograph STAR file: CtfFind/job489/micrographs_ctf.star
+micrograph STAR file: Select/job006/micrographs.star
 
 OR re-extract refined particles? Yes
 
-Refined particles STAR file: Select/job165/particles.star
+Refined particles STAR file: Select/job041/particles.star
 
 OR: re-center refined coordinates? Yes
 
@@ -252,13 +253,13 @@ Recenter on - X,Y,Z (pix): 0 0 0
 
 ## Extract
 
-Particle box size (pix): 256
+Particle box size (pix): 200
 
 Invert contrast? Yes
 
 Normalize particles? Yes
 
-Diameter background circle (pix): 200
+Diameter background circle (pix): 180
 
 Rescale particles? No
 
