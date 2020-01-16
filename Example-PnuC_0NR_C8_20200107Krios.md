@@ -297,7 +297,7 @@ Use solvent-flattened FSCs? No
 Use GPUs
 
 
-# Step17 - MaskCreate /Job180
+# Step17 - MaskCreate /Job056
 
 ## I/O
 
@@ -317,6 +317,8 @@ Add a soft-edge of this many pixels: 20
 
 using CPUs.
 
+Number of threads: 9. #Here we can also use 16
+
 # Step18 - PostProcess /Job181
 
 ## I/O
@@ -325,7 +327,7 @@ One of the 2 unfiltered half-map: Refine3D/job167/run_ct15_half1_class001_unfil.
 
 Solvent mask: MaskCreate/job180/mask.mrc
 
-Calibrated pixel size (A): 1.08
+Calibrated pixel size (A): 1.06
 
 ## Sharpen
 
