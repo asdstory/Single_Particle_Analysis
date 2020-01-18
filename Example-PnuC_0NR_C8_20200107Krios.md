@@ -338,9 +338,105 @@ Estimate B-factor automatically? Yes
 Using CPUs.
 
 
+# Step19 - CtfRefine
+
+## I/O
+
+Particles (from Refine3D): Refine3D/job182/run_data.star
+
+Postprocess STAR file: PostProcess/job406/postprocess.star
+
+## Fit
+
+Minimum resolution for fits (A): 30
+
+Perform CTF parameters fitting? Yes
+
+Fit per-particles defocus? Yes
+
+Range for defocus fit (A): 2000
+
+Fit per-micrograph astigmatism? No
+
+Fit per-particle astigmatism? No
+
+Fit per-micrograph phase-shift? No
+
+Perform beamtilt estimation? Yes
+
+## Running
+
+Number of MPI procs: 65
+
+Number of threads: 4
+
+Submit to queue? Yes
+
+Queue name: multinode
+
+Queue submit command: sbatch
+
+Walltime: 1-00:00:00
+
+Memory Per Thread: 8g
+
+Gres: lscratch:200
 
 
-# Step19 - Bayesian Polishing - Running in training mode
+
+
+# Step20 - Bayesian Polishing - Running in training mode
+
+## I/O
+
+Micrographs (from MotionCorr): MotionCorr/job485/corrected_micrographs.star
+
+Particles (from Refine3D or CtfRefine): CtfRefine/job520/particles_ctf_refine.star
+
+Postprocess STAR file: PostProcess/job519/postprocess.star
+
+First movie frame: 1
+
+Last movie frame: -1
+
+## Train
+
+Train optimal parameters? No
+
+## Polish
+
+Perform particle polishing? Yes
+
+Optimised parameter file: Polish/job522/opt_params.txt
+
+OR use your own parameters? No
+
+Minimum resolution for B-factor fit (A): 20
+
+Maximum resolution for B-factor fit (A): -1
+
+## Running 
+
+Number of MPI procs: 1
+
+Number of threads: 16
+
+Submit to queue? Yes
+
+Queue name: multinode
+
+Queue submit command: sbatch
+
+Walltime: 1-00:00:00
+
+Memory Per Thread: 8g
+
+Gres: lscratch:200
+
+
+
+
+# Step21 - Bayesian Polishing - Running in polishing mode
 
 ## I/O
 
@@ -373,8 +469,6 @@ Number of MPI procs: 1
 Number of threads: 1
 
 Submit to queue? No
-
-
 
 
 
