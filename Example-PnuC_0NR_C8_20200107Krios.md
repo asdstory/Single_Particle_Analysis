@@ -340,7 +340,40 @@ Using CPUs.
 
 
 
-# Step19 - Polish
+# Step19 - Bayesian Polishing - Running in training mode
+
+## I/O
+
+Micrographs (from MotionCorr): MotionCorr/job004/corrected_micrographs.star
+
+Particles (from Refine3D or CtfRefine): Refine3D/job065/run_data.star
+
+Postprocess STAR file: PostProcess/job067/postprocess.star
+
+First movie frame: 1
+
+Last movie frame: -1
+
+## Train
+
+Train optimal parameters? Yes
+
+Fraction of Fourier pixels for testing: 0.5
+
+Use this many particles: 5000
+
+## Polish
+
+Perform particle polishing? No
+
+## Running 
+
+Number of MPI procs: 1
+
+Number of threads: 1
+
+Submit to queue? No
+
 
 
 
