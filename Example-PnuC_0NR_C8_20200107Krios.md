@@ -389,11 +389,11 @@ Gres: lscratch:200
 
 ## I/O
 
-Micrographs (from MotionCorr): MotionCorr/job485/corrected_micrographs.star
+Micrographs (from MotionCorr): MotionCorr/job004/corrected_micrographs.star
 
-Particles (from Refine3D or CtfRefine): CtfRefine/job520/particles_ctf_refine.star
+Particles (from Refine3D or CtfRefine): CtfRefine/job070/particles_ctf_refine.star
 
-Postprocess STAR file: PostProcess/job519/postprocess.star
+Postprocess STAR file: PostProcess/job067/postprocess.star
 
 First movie frame: 1
 
@@ -442,7 +442,7 @@ Gres: lscratch:200
 
 Micrographs (from MotionCorr): MotionCorr/job004/corrected_micrographs.star
 
-Particles (from Refine3D or CtfRefine): Refine3D/job065/run_data.star
+Particles (from Refine3D or CtfRefine): CtfRefine/job070/particles_ctf_refine.star
 
 Postprocess STAR file: PostProcess/job067/postprocess.star
 
