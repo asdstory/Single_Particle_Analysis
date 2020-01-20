@@ -319,6 +319,7 @@ using CPUs.
 
 Number of threads: 9. #Here we can also use 16
 
+
 # Step18 - PostProcess /Job181
 
 ## I/O
@@ -471,6 +472,46 @@ Number of threads: 1
 Submit to queue? No
 
 
+# Step22 - MaskCreate /Job0
+
+## I/O
+
+Input 3D map: Refine3D/job167/run_ct15_class001.mrc
+
+## Mask
+
+Lowpass filter map (A): 15
+
+Initial binarisation threshold: 0.02
+
+Extend binary map this many pixels: 20
+
+Add a soft-edge of this many pixels: 20
+
+## Running
+
+using CPUs.
+
+Number of threads: 9. #Here we can also use 16
+
+
+# Step23 - PostProcess /Job
+
+## I/O
+
+One of the 2 unfiltered half-map: Refine3D/job167/run_ct15_half1_class001_unfil.mrc
+
+Solvent mask: MaskCreate/job180/mask.mrc
+
+Calibrated pixel size (A): 1.06
+
+## Sharpen
+
+Estimate B-factor automatically? Yes
+
+## Running
+
+Using CPUs.
 
 
 
