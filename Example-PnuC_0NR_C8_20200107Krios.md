@@ -392,9 +392,47 @@ Gres: lscratch:200
 
 Micrographs (from MotionCorr): MotionCorr/job004/corrected_micrographs.star
 
-Particles (from Refine3D or CtfRefine): CtfRefine/job070/particles_ctf_refine.star
+Particles (from Refine3D or CtfRefine): CtfRefine/job079/particles_ctf_refine.star
 
-Postprocess STAR file: PostProcess/job067/postprocess.star
+Postprocess STAR file: PostProcess/job060/postprocess.star
+
+First movie frame: 1
+
+Last movie frame: -1
+
+## Train
+
+Train optimal parameters? Yes
+
+Fraction of Fourier pixels for testing: 0.5
+
+Use this many particles: 5000
+
+## Polish
+
+Perform particle polishing? No
+
+## Running 
+
+Number of MPI procs: 1
+
+Number of threads: 1
+
+Submit to queue? No
+
+
+
+
+# Step21 - Bayesian Polishing - Running in polishing mode
+
+
+## I/O
+
+Micrographs (from MotionCorr): MotionCorr/job004/corrected_micrographs.star
+
+Particles (from Refine3D or CtfRefine): CtfRefine/job079/particles_ctf_refine.star
+
+Postprocess STAR file: PostProcess/job060/postprocess.star
 
 First movie frame: 1
 
@@ -433,43 +471,6 @@ Walltime: 1-00:00:00
 Memory Per Thread: 8g
 
 Gres: lscratch:200
-
-
-
-
-# Step21 - Bayesian Polishing - Running in polishing mode
-
-## I/O
-
-Micrographs (from MotionCorr): MotionCorr/job004/corrected_micrographs.star
-
-Particles (from Refine3D or CtfRefine): CtfRefine/job070/particles_ctf_refine.star
-
-Postprocess STAR file: PostProcess/job067/postprocess.star
-
-First movie frame: 1
-
-Last movie frame: -1
-
-## Train
-
-Train optimal parameters? Yes
-
-Fraction of Fourier pixels for testing: 0.5
-
-Use this many particles: 5000
-
-## Polish
-
-Perform particle polishing? No
-
-## Running 
-
-Number of MPI procs: 1
-
-Number of threads: 1
-
-Submit to queue? No
 
 
 
