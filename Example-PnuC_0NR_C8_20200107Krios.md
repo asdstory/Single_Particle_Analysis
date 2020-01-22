@@ -472,7 +472,42 @@ Number of threads: 1
 Submit to queue? No
 
 
-# Step22 - MaskCreate /Job0
+
+# Step22 - Refine3D /Job167
+
+## I/O
+
+Input images STAR file: Extract/job166/particles.star
+
+Reference map: Class3D/job163/run_ct25_it050_class001_box256.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? No
+
+Initial low-pass filter (A): 50
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+## Optimisation
+
+Mask diameter (A): 150
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? No
+
+## Compute
+
+Use GPUs
+
+
+
+# Step23 - MaskCreate /Job0
 
 ## I/O
 
@@ -495,7 +530,7 @@ using CPUs.
 Number of threads: 9. #Here we can also use 16
 
 
-# Step23 - PostProcess /Job
+# Step24 - PostProcess /Job
 
 ## I/O
 
