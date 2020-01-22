@@ -477,9 +477,9 @@ Submit to queue? No
 
 ## I/O
 
-Input images STAR file: Extract/job166/particles.star
+Input images STAR file: Polish/job081/shiny.star
 
-Reference map: Class3D/job163/run_ct25_it050_class001_box256.mrc
+Reference map: Class3D/job038/run_ct6_it025_class005.mrc
 
 ## Reference
 
@@ -493,9 +493,11 @@ Symmetry: C3
 
 Do CTF-correction? Yes
 
+Ignore CTFs until first peak? Yes
+
 ## Optimisation
 
-Mask diameter (A): 150
+Mask diameter (A): 200
 
 Mask individual particles with zeros? Yes
 
@@ -507,30 +509,7 @@ Use GPUs
 
 
 
-# Step23 - MaskCreate /Job0
-
-## I/O
-
-Input 3D map: Refine3D/job167/run_ct15_class001.mrc
-
-## Mask
-
-Lowpass filter map (A): 15
-
-Initial binarisation threshold: 0.02
-
-Extend binary map this many pixels: 20
-
-Add a soft-edge of this many pixels: 20
-
-## Running
-
-using CPUs.
-
-Number of threads: 9. #Here we can also use 16
-
-
-# Step24 - PostProcess /Job
+# Step23 - PostProcess /Job
 
 ## I/O
 
