@@ -446,7 +446,7 @@ Train optimal parameters? No
 
 Perform particle polishing? Yes
 
-Optimised parameter file: Polish/job522/opt_params.txt
+Optimised parameter file: Polish/job084/opt_params.txt
 
 OR use your own parameters? No
 
