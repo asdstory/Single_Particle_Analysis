@@ -264,13 +264,13 @@ Diameter background circle (pix): 180
 Rescale particles? No
 
 
-# Step16 - Refine3D /Job167
+# Step16 - Refine3D /Job049
 
 ## I/O
 
-Input images STAR file: Extract/job166/particles.star
+Input images STAR file: Extract/job042/particles.star
 
-Reference map: Class3D/job163/run_ct25_it050_class001_box256.mrc
+Reference map: Class3D/job038/run_ct6_it025_class005.mrc
 
 ## Reference
 
@@ -284,9 +284,11 @@ Symmetry: C3
 
 Do CTF-correction? Yes
 
+Ignore CTFs until first peak? Yes
+
 ## Optimisation
 
-Mask diameter (A): 150
+Mask diameter (A): 200
 
 Mask individual particles with zeros? Yes
 
@@ -296,18 +298,38 @@ Use solvent-flattened FSCs? No
 
 Use GPUs
 
+## Running
+
+Number of MPI procs: 9
+
+Number of threads: 1
+
+Submit to queue? Yes
+
+Queue name: gpu
+
+Queue submit command: sbatch
+
+Walltime: 1-00:00:00
+
+Memory Per Thread: 8g
+
+Gres: lscratch:200
+
+Addl (ex4) SBATCH Directives: -N 3 --ntaks-per-node=3
+
 
 # Step17 - MaskCreate /Job056
 
 ## I/O
 
-Input 3D map: Refine3D/job167/run_ct15_class001.mrc
+Input 3D map: Refine3D/job049/run_class001.mrc
 
 ## Mask
 
 Lowpass filter map (A): 15
 
-Initial binarisation threshold: 0.02
+Initial binarisation threshold: 0.01 #Usually we start this parameter with 0.01, and then optimize around 0.01 by step of 0.002 to get best resolution. 
 
 Extend binary map this many pixels: 20
 
@@ -317,16 +339,16 @@ Add a soft-edge of this many pixels: 20
 
 using CPUs.
 
-Number of threads: 9. #Here we can also use 16
+Number of threads: 16
 
 
-# Step18 - PostProcess /Job181
+# Step18 - PostProcess /Job060
 
 ## I/O
 
-One of the 2 unfiltered half-map: Refine3D/job167/run_ct15_half1_class001_unfil.mrc
+One of the 2 unfiltered half-map: Refine3D/job049/run_half1_class001_unfil.mrc
 
-Solvent mask: MaskCreate/job180/mask.mrc
+Solvent mask: MaskCreate/job059/mask.mrc
 
 Calibrated pixel size (A): 1.06
 
@@ -337,6 +359,9 @@ Estimate B-factor automatically? Yes
 ## Running
 
 Using CPUs.
+
+Submit to queue? No
+
 
 
 # Step19 - CtfRefine
