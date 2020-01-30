@@ -108,7 +108,7 @@ Select ~200 images to make a subset, then extract particles from these images an
 
 #Extract
 
-Particle box size (pix): 200
+Particle box size (pix): 200 #Since the PnuC trimer particle size is only ~80A, we may extract the particle using box size 100pix, and diameter background circle of 90 pix? 
 
 Diameter background circle (pix): 180
 
@@ -123,7 +123,7 @@ Ignore CTFs until first peak? Yes
 
 Number of classes: 100
 
-Mask diameter (A): 160
+Mask diameter (A): 160  #Since the PnuC trimer particle size is only ~80A, we may use 90A for the mask diameter here? 
 
 # Step10 - Subset selection
 
