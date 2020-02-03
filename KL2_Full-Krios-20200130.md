@@ -1,10 +1,41 @@
-# Example - Processing CBFSMMHC_20201130TF20,the fulllength version of filament from Tao Zhen, totally 318 images
+# Example - Processing KL2_Fulllength-20200130Krios data,the fulllength version of filament from Tao Zhen, totally 7910 images
 
-# Step01 - Import images (motion corrected by MotionCorr2)
+# Step01 - Import 
 
-Input files: corrected-averages/*_sum_DW.mrc
+## Movies/mics
 
-Node type: 2D micrographs/tomograms(*.mrc)
+Import raw movies/micrographs? Yes
+
+Raw input files: Micrographs/*.tif
+
+Are these multi-frame movies? Yes
+
+Optics group name: opticsGroup1
+
+MTF of the detector: ../Gain-reference/mtf_k2_300kv_FL2.star
+
+Pixel size (Angstrom): 1.058
+
+Voltage (kV): 300
+
+Spherical aberration (mm): 2.7
+
+Amplitude contrast: 0.1
+
+Beamtilt in X (mrad): 0
+
+Beamtilt in Y (mrad): 0
+
+## Other
+
+Import other node types? No
+
+## Running
+
+Just click "Run!"
+
+
+
 
 # Step02 - CTF estimation
 
