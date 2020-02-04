@@ -34,32 +34,81 @@ Import other node types? No
 
 Just click "Run!"
 
+# Step02 - Motion correction
+
+## I/O
+
+Input movies STAR file: Import/job001/movies.star
+
+First frame for corrected sum: 1
+
+Last frame for corrected sum: 0
+
+Dose per frame (e/A2): 1.43
+
+Pre-exposure (e/A2): 0
+
+Do dose-weighting? Yes
+
+Save non-dose weighted as well? No
+
+Save sum of power spectra? Yes
+
+Sum power spectra every e/A2: 4
+
+## Motion
+
+Bfactor: 150
+
+Number of particles X, Y: 5, 5
+
+Group frames: 1
+
+Binning factor: 2
+
+Gain-reference image: No
+
+Gain rotation: No
+
+Gain flip: No
+
+Use RELION's own implementation? Yes
+
+## Running
+
+Number of MPI procs: 100
+
+Number of threads:2
+
+Submit to queue? Yes
+
+Queue name: multinode
 
 
+# Step03 - CTF estimation
 
-# Step02 - CTF estimation
+## I/O
 
-#I/O
+Input micrographs STAR file: MotionCorr/job003/corrected_micrographs.star
 
-Spherical aberration (mm): 1.2 #this dataset was collected on TF20, Building 8, under low mag (29kx)
+Use micrograph without dose-weighting? No
 
-Voltage (kV): 200
+Estimate phase shifts? No
 
-Amplitude contrast: 0.1
+Amount of astigmatism (A): 100
 
-Magnified pixel size (Angstrom): 1.26
-
-Amount of astigmastism (A): 100
-
-#Searches
-
-Use as default
-
-#CTFFIND-4.1
+## CTFFIND-4.1
 
 Use CTFFIND-4.1? Yes
 
-# Step03 - Particle Picking Manually
+## Running
+
+Numberof MPI procs: 16
+
+
+
+
+# Step04 - Particle Picking Manually
 
 #In RELION Manual picking, Display Tab
 
@@ -68,7 +117,7 @@ particle diameter (A): 400
 Pick star-end coordinates helices? Yes
 
 
-# Step04 - Extract Particles
+# Step05 - Extract Particles
 
 #Extract
 
@@ -94,7 +143,7 @@ Number of asymmetrical units: 1
 
 Helical rise (A): 100
 
-# Step05 - 2D classificaiton
+# Step06 - 2D classificaiton
 
 #CTF
 
