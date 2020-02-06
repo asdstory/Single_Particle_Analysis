@@ -7,3 +7,5 @@
 - [ ] module load EMAN
 - [ ] eman&
 
+- [ ] ls /data/JiangLab/Apps/modulefiles/
+- [ ] vi ~/.bashrc 
