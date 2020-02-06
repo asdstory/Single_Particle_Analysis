@@ -1,4 +1,4 @@
-# Example - Processing KL2_Fulllength-20200130Krios data,the fulllength version of filament from Tao Zhen, totally 7910 images
+# Example - Processing KL2_Fulllength-20200130Krios data,the fulllength version of filament from Tao Zhen, totally 8124 images
 
 # Step01 - Import 
 
@@ -14,7 +14,7 @@ Optics group name: opticsGroup1
 
 MTF of the detector: ../Gain-reference/mtf_k2_300kv_FL2.star
 
-Pixel size (Angstrom): 1.058
+Pixel size (Angstrom): 0.529
 
 Voltage (kV): 300
 
@@ -105,14 +105,14 @@ Use CTFFIND-4.1? Yes
 
 Numberof MPI procs: 16
 
-
+# Subset selelction by rlnCtfMaxResolution 6A, totoally 6412 images selected, 1712 images were throw away. 
 
 
 # Step04 - Particle Picking Manually
 
 #In RELION Manual picking, Display Tab
 
-particle diameter (A): 400
+particle diameter (A): 150
 
 Pick star-end coordinates helices? Yes
 
