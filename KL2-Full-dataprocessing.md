@@ -2,8 +2,8 @@ Data Processing on Tao Mac:
 
 # Step01 - ssh to biowulf
 ## Open your terminal on Mac, and type:
-- [] ssh -Y dout2@biowulf.nih.gov
-- [] Password: Ty2020$$
+- [ ] ssh -Y dout2@biowulf.nih.gov
+- [ ] Password: Ty2020$$
 ## When successfully login to biowulf, type:
 - [ ] sinteractive --cpus-per-task=16 --mem-per-cpu=2g --gres=lscratch:200 --time=12:00:00
 *This is to start an interactive node, so that you can see the GUI of RELION for picking particles
