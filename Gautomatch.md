@@ -47,3 +47,5 @@ sbatch --partition=gpu --gres=gpu:k20x:1 --cpus-per-task=14 --mem=20g gautomatch
 module load Gautomatch/0.56
 
 Gautomatch --apixM 1.26 --diameter 100 *_sum_DW.mrc
+
+Gautomatch --apixM 1.26 --diameter 80 --min_dist 30 *_sum_DW.mrc
