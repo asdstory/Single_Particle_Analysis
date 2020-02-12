@@ -66,7 +66,7 @@ For example, when I am processing the following data, just copy bfactor_plot.py 
     ############ typically no need to change anything below this line
     ####################################################################### 
 ``````
-## It should be noted that, here we submit jobs to Biowulf using "sbatch" command and want to use GPU (queue_name='gpu'), refine_mpi=9 means you want to use 9 MPIs. Moreover, the exact GPU node used (e.g. K80, P100) is usually the same as the Refine3D job you defined. 
+### It should be noted that, here we submit jobs to Biowulf using "sbatch" command and want to use GPU (queue_name='gpu'), refine_mpi=9 means you want to use 9 MPIs. Moreover, the exact GPU node used (e.g. K80, P100) is usually the same as the Refine3D job you defined here in this script. 
 
 # Step 03 - Run the script
 - [ ] ./bfactor_plot.py
