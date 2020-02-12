@@ -1,7 +1,7 @@
 *This doccument shows step by step how to do the bfactor plot, from which one can estimate how many particles or how many raw image still needed if we want to push the resolution to the number we want. 
 
 # The main algrithm 
-## The main algrithm here is, this script need your Refine3D job and postprocess job, and extract certain amount of particles and redo Refine3D and postprocess by 12 iterations, each cycle has different number (more particles next cycle) of particles and finally give a Particle number ~ Resolution plot. 
+## This script need your Refine3D job and postprocess job, and extract certain amount of particles and redo Refine3D and postprocess by 12 iterations, each cycle has different number (more particles next cycle) of particles and finally give a Particle number ~ Resolution plot. 
 
 # Step 01 - Copy the bfactor_plot.py script to the RELION folder
 ## Copy the bfactor_plot.py script to the project folder where you start the RELION GUI. 
