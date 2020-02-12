@@ -3,7 +3,7 @@
 # The main algrithm 
 ## This script need your Refine3D job and postprocess job, and extract certain amount of particles and redo Refine3D and postprocess by 12 iterations, each cycle has different number (more particles next cycle) of particles and finally give a Particle number ~ Resolution plot. 
 
-# Step 01 - Copy the bfactor_plot.py script to the RELION folder
+# Step 01 - Copy the bfactor_plot.py script
 ## Copy the bfactor_plot.py script to the project folder where you start the RELION GUI. 
 For example, when I am processing the following data, just copy bfactor_plot.py here into this folder
 - [ ] /data/dout2/20200107Krios_PnuC_0NR_C8 
