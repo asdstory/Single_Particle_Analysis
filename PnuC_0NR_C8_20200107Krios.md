@@ -439,9 +439,9 @@ Perform particle polishing? No
 
 ## Running 
 
-Number of MPI procs: 1
+Number of MPI procs: 1 #Here training mode, you can only use 1 MPI, but may use multi threads to speed up
 
-Number of threads: 1
+Number of threads: 16
 
 Submit to queue? No
 
