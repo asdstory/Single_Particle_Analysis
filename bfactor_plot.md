@@ -10,6 +10,7 @@ For example, when I am processing the following data, just copy bfactor_plot.py 
 
 # Step 02 - Edit bfactor_plot.py to reflect your experiment
 ## Open the bfactor_plot.py script by any text editor you like, and change parameters to reflect your experiment:
+*For example, here I use nano
 - [ ] nano bfactor_plot.py 
 
 ``````
