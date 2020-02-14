@@ -503,9 +503,11 @@ Gres: lscratch:200
 
 ## I/O
 
-Input images STAR file: Polish/job081/shiny.star
+Input images STAR file: Polish/job106/shiny.star
 
-Reference map: Class3D/job038/run_ct6_it025_class005.mrc
+Reference map: Class3D/job021/run_it025_class004.mrc
+
+Reference mask (optional): MaskCreate/job027/mask.mrc
 
 ## Reference
 
@@ -523,11 +525,11 @@ Ignore CTFs until first peak? Yes
 
 ## Optimisation
 
-Mask diameter (A): 200
+Mask diameter (A): 106
 
 Mask individual particles with zeros? Yes
 
-Use solvent-flattened FSCs? No
+Use solvent-flattened FSCs? Yes
 
 ## Compute
 
