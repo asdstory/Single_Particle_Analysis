@@ -9,3 +9,5 @@ Finally, if you want to run MotionCor2 directly on the unnormalized data, you sh
 where the fileWithFrames is used only to set the size of the output and can be any file of the right X and Y size. To make a compressed TIFF file, which will be much smaller, use:
 
 - [ ] clip defect -D defects...txt  -f tif  fileWithFrames  defects...tif
+
+*Information from: https://sphinx-emdocs.readthedocs.io/en/latest/cryo-em_faq.html
