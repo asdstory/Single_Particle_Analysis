@@ -7,8 +7,16 @@ import matplotlib.pyplot as plt
   
 # Read Images 
 img = mpimg.imread('g4g.png') 
-  
+
 # Output Images 
 plt.imshow(img) 
+plt.imsave('test.png',img)
 
+# Importing numpy modules
+import numpy as np
 
+# Do FFT for the image
+img_FFT = np.fft.fft2(img)
+
+# Output transformed image
+plt.imsave('FFT.png',img_FFT)
