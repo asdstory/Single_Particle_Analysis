@@ -10,3 +10,5 @@ img = mpimg.imread('g4g.png')
   
 # Output Images 
 plt.imshow(img) 
+
+
