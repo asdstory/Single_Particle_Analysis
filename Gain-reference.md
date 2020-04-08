@@ -1,3 +1,5 @@
+# Image acquisition with Leginon; counting mode on K2
+
 ```
 #[2020-01-06-00-00-PnuC_3NR_C8-leginon-counting]
 #sum_bin = 1
