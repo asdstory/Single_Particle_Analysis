@@ -1,9 +1,9 @@
-High level flowchart of RELION. 
+# High level flowchart of RELION. 
 
 ![](https://github.com/asdstory/Single-particle-cryo-EM-data-processing/blob/master/Fig%201%20High%20level%20flowchart%20of%20RELION.jpeg)
 
 
-Prepare input files
+# Prepare input files
 
 Following information is from: https://www3.mrc-lmb.cam.ac.uk/relion/index.php/Prepare_input_files
 
