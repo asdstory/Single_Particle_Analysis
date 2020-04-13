@@ -1,6 +1,6 @@
 # High level flowchart of RELION. 
 
-![](https://github.com/asdstory/Single-particle-cryo-EM-data-processing/blob/master/Fig%201%20High%20level%20flowchart%20of%20RELION.jpeg)
+![](https://github.com/asdstory/Single-particle-cryo-EM-data-processing/blob/master/Figures/Fig%201%20High%20level%20flowchart%20of%20RELION.jpeg)
 
 *Figure from Kimanius et al. eLife 2016;5:e18722. DOI: 10.7554/eLife.18722
 
