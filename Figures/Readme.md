@@ -1,1 +1,1 @@
-# This folder contains all the figures used in this 
+# This folder contains all the figures used in this repository.
