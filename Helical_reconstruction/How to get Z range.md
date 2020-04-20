@@ -2,6 +2,8 @@
 
 - [ ] relion_helix_toolbox --check --boxdim 200 --cyl_outer_diameter 20 --rise_max 50 --sphere_percentage 0.75 --angpix 1.058 --rise 47.7 --twist 0 --z_percentage 0.5
 
+- [ ] relion_helix_toolbox --check --boxdim 200 --cyl_outer_diameter 150 --rise_max 50 --sphere_percentage 0.95 --angpix 1.058 --rise 48.6 --twist 0.75 --z_percentage 0.5
+
 ```
 
 ##########################################################
