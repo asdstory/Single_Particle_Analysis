@@ -134,7 +134,7 @@ memmap([[[0, 0, 0, 0],
          [2, 2, 2, 2],
          [2, 2, 2, 2]]], dtype=int8)
 ```
-Asynchronous opening
+# Asynchronous opening
 When processing several files in a row, asynchronous (background) opening can improve performance by allowing you to open multiple files in parallel. The mrcfile.open_async() function starts a background thread to open a file, and returns a FutureMrcFile object which you can call later to get the file after it’s been opened:
 ```
 >>> # Open the first example file
@@ -160,7 +160,7 @@ array([[ 0,  3,  6,  9],
 ```
 As we saw in that example, calling result() will give us the MrcFile from the file opening operation. If the file hasn’t been fully opened yet, result() will simply wait until it’s ready. To avoid waiting, call done() to check if it’s finished.
 
-File modes
+# File modes
 MrcFile objects can be opened in three modes: r, r+ and w+. These correspond to the standard Python file modes, so r opens a file in read-only mode:
 ```
 >>> # The default mode is 'r', for read-only access:
@@ -207,7 +207,7 @@ ValueError: File 'empty.mrc' already exists; set overwrite=True to overwrite it
 MrcFile('empty.mrc', mode='w+')
 >>> mrc.close()
 ```
-#Permissive read mode
+# Permissive read mode
 Normally, if an MRC file is badly invalid, an exception is raised when the file is opened. This can be a problem if we want to, say, open a file and fix a header problem. To deal with this situation, open() and mmap() provide an optional permissive argument. If this is set to True, problems with the file will cause warnings to be issued (using Python’s warnings module) instead of raising exceptions, and the file will continue to be interpreted as far as possible.
 
 Let’s see an example. First we’ll deliberately make an invalid file:
@@ -257,8 +257,8 @@ In the last two cases, the data block will not be read and the data attribute wi
 
 Fixing invalid files can be quite complicated! This usage guide might be expanded in future to explain how to analyse and fix problems, or the library itself might be improved to fix certain problems automatically. For now, if you have trouble with an invalid file, inspecting the code in this library might help you to work out how to approach the problem (start with MrcInterpreter._read_header()), or you could try asking on the CCP-EM mailing list for advice.
 
-Using MrcFile objects
-Accessing the header and data
+# Using MrcFile objects
+## Accessing the header and data
 The header and data arrays can be accessed using the header, extended_header and data attributes:
 ```
 >>> mrc = mrcfile.open('tmp.mrc')
@@ -337,9 +337,10 @@ ny              : 2
 nz              : 2
 mode            : 1
 nxstart ...
-Voxel size
+```
+### Voxel size
 The voxel (or pixel) size in the file can be accessed using the voxel_size attribute, which returns a numpy record array with three fields, x, y and z, for the voxel size in each dimension:
-
+```
 >>> with mrcfile.open('tmp.mrc') as mrc:
 ...     mrc.voxel_size
 ...
@@ -453,7 +454,7 @@ rec.array(( 2.5,  0.66666669,  1.),
 
 >>> mrc.close()
 ```
-#Keeping the header and data in sync
+# Keeping the header and data in sync
 When a new data array is given (using set_data() or the data argument to mrcfile.new()), the header is automatically updated to ensure the file is is valid:
 ```
 >>> mrc = mrcfile.open('tmp.mrc', mode='r+')
@@ -548,7 +549,7 @@ True
 ```
 In general, if you’re changing the shape, type or endianness of the data, it’s easiest to use set_data() and the header will be kept up to date for you. If you start changing values in the data, remember that the statistics in the header will be out of date until you call update_header_stats() or reset_header_stats().
 
-Data dimensionality
+# Data dimensionality
 MRC files can be used to store several types of data: single images, image stacks, volumes and volume stacks. These are distinguished by the dimensionality of the data array and the space group number (the header’s ispg field):
 
 Data type	Dimensions	Space group
@@ -631,7 +632,7 @@ False
 ```
 Note that the MRC format allows the data axes to be swapped using the header’s mapc, mapr and maps fields. This library does not attempt to swap the axes and simply assigns the columns to X, rows to Y and sections to Z. (The data array is indexed in C style, so data values can be accessed using mrc.data[z][y][x].) In general, EM data is written using the default axes, but crystallographic data files might use swapped axes in certain space groups – if this might matter to you, you should check the mapc, mapr and maps fields after opening the file and consider transposing the data array if necessary.
 
-#Data types
+# Data types
 Various numpy data types can be used for MRC data arrays. The conversions to MRC mode numbers are:
 
 Data type	MRC mode
@@ -664,7 +665,7 @@ array([[0, 0, 0, 0, 0],
 
 >>> mrc.close()
 ```
-#Validating MRC files
+# Validating MRC files
 MRC files can be validated with mrcfile.validate():
 ```
 >>> mrcfile.validate('tmp.mrc')
@@ -708,12 +709,12 @@ Behind the scenes, mrcfile.validate() opens the file in permissive mode using mr
 
 If you find that a file created with this library is invalid, and you haven’t altered anything in the header in a way that might cause problems, please file a bug report on the issue tracker!
 
-Command line usage
+# Command line usage
 Some mrcfile functionality is available directly from the command line, via scripts that are installed along with the package, or in some cases by running modules with python -m.
 
 (If you’ve downloaded the source code instead of installing via pip, run pip install <path-to-mrcfile> or python setup.py install to make the command line scripts available.)
 
-#Validation
+# Validation
 MRC files can be validated with the mrcfile-validate script:
 ```
 $ mrcfile-validate tests/test_data/EMD-3197.map
@@ -753,8 +754,8 @@ cellb           : (90.0, 90.0, 90.0)
 ```
 Like mrcfile-validate, this also works for multiple files. If you want to access the same functionality from within Python, call print_header() on an open MrcFile object, or mrcfile.command_line.print_headers() with a list of file names.
 
-#API overview
-Class hierarchy
+# API overview
+# Class hierarchy
 The following classes are provided by the mrcfile.py library:
 
 MrcObject: Represents a generic MRC-like data object in memory, and provides header, extended header and data arrays and methods for operating on them.
