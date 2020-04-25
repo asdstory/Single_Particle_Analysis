@@ -45,7 +45,7 @@ The source code (including the full test suite) can be found on GitHub.
 The easiest way to open a file is with the mrcfile.open and mrcfile.new functions. These return an MrcFile object which represents an MRC file on disk.
 
 To open an MRC file and read a slice of data:
-
+```
 >>> import mrcfile
 
 >>> with mrcfile.open('tests/test_data/EMD-3197.map') as mrc:
@@ -58,9 +58,9 @@ array([ 2.58179283,  3.1406002 ,  3.64495397,  3.63812137,  3.61837363,
         4.0115056 ,  3.66981959,  2.07317996,  0.1251585 , -0.87975615,
         0.12517013,  2.07319379,  3.66982722,  4.0115037 ,  3.61837196,
         3.6381247 ,  3.64495087,  3.14059472,  2.58178973,  1.92690361], dtype=float32)
-        
+```        
 To create a new file with a 2D data array, and change some values:
-
+```
 >>> with mrcfile.new('tmp.mrc') as mrc:
 
 ...     mrc.set_data(np.zeros((5, 5), dtype=np.int8))
@@ -76,11 +76,11 @@ array([[ 0,  0,  0,  0,  0],
        [ 0, 10, 10, 10,  0],
        [ 0, 10, 10, 10,  0],
        [ 0,  0,  0,  0,  0]], dtype=int8)
-       
+```       
 The data will be saved to disk when the file is closed, either automatically at the end of the with block (like a normal Python file object) or manually by calling close(). You can also call flush() to write any changes to disk and keep the file open.
 
 # To validate an MRC file:
-
+```
 >>> mrcfile.validate('tests/test_data/EMD-3197.map')
 
 File does not declare MRC format version 20140: nversion = 0
@@ -90,7 +90,7 @@ False
 >>> mrcfile.validate('tmp.mrc')
 
 True
-
+```
 Documentation
 
 Full documentation is available on Read the Docs.
