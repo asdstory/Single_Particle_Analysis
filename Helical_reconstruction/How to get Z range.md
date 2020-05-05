@@ -6,6 +6,8 @@
 
 - [ ] relion_helix_toolbox --check --boxdim 200 --cyl_outer_diameter 150 --rise_max 50 --sphere_percentage 0.95 --angpix 1.058 --rise 48.6 --twist 0.75 --z_percentage 0.5
 
+- [ ] relion_helix_toolbox --check --boxdim 200 --cyl_outer_diameter 150 --sphere_percentage 0.95 --angpix 1.058 --z_percentage 0.6 --search_sym --twist 10 --twist_min 0 --twist_max 10 --rise 40 --rise_min 2 --rise_max 60
+
 - [ ] `which relion_refine_mpi` --o Class3D/job306/run --i Select/job262/particles.star --ref InitialModel/job263/run_it300_class001.mrc --firstiter_cc --ini_high 15 --dont_combine_weights_via_disc --pool 3 --pad 2  --ctf --ctf_corrected_ref --iter 25 --tau2_fudge 4 --particle_diameter 212 --K 4 --flatten_solvent --zero_mask --strict_highres_exp 12 --oversampling 1 --healpix_order 3 --offset_range 30 --offset_step 2 --sym C6 --norm --scale  --helix --helical_outer_diameter 150 --helical_nr_asu 1 --helical_twist_initial 10 --helical_rise_initial 40 --helical_z_percentage 0.4 --helical_symmetry_search --helical_twist_min 0 --helical_twist_max 10 --helical_twist_inistep 1 --helical_rise_min 20 --helical_rise_max 60 --helical_rise_inistep 1 --sigma_tilt 5 --sigma_psi 3.33333 --sigma_rot 0 --j 1 --gpu "" -dont_check_norm --pipeline_control Class3D/job306/
 
 ```
