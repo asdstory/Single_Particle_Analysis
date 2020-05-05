@@ -28,3 +28,22 @@
  Done! All the parameters seem OK for 3D helical reconstruction in RELION.
 
 ```
+
+```
+##########################################################
+   CHECKING PARAMETERS FOR 3D HELICAL RECONSTRUCTION...
+##########################################################
+ Pixel size = 1.058 Angstrom(s)
+ Box size = 200 pixels = 211.6 Angstroms
+ Particle diameter = 190 pixels = 201.02 Angstroms
+ Half box size = 99 pixels = 104.742 Angstroms
+ Outer tube diameter = 141.777 pixels = 150 Angstroms
+ Helical twist (min, initial, average, max) = 0, 10, 5, 10 degrees
+ Helical rise  (min, initial, average, max) = 1.89036, 37.8072, 29.3006, 56.7108 pixels
+ Helical rise  (min, initial, average, max) = 2, 40, 31, 60 Angstroms
+ Z percentage = 0.6 = 60 %
+ Z percentage should be > 0.567108 and < 0.632442 (under current settings)
+ Upper bound of maximum rise = 60 pixels = 63.48 Angstroms (under current settings)
+ Number of asymmetrical units = 1, maximum value = 1 (under current settings)
+ Done! All the parameters seem OK for 3D helical reconstruction in RELION.
+```
