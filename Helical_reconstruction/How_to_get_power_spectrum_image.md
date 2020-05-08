@@ -2,6 +2,8 @@
 
 https://blake.bcm.edu/emanwiki/EMAN2/Programs/e2evalimage
 
+- [ ] e2evalimage.py --apix 1.058 --voltage 300 --ac 0.1 --cs 2.7 ‪C:\Users\asdst_000\Desktop\class_averages-1.png
+
 # e2proc2d.py
 
 https://blake.bcm.edu/emanwiki/EMAN2/Programs/e2proc2d
