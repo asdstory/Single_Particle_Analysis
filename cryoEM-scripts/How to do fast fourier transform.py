@@ -18,9 +18,13 @@ import numpy as np
 # Do FFT for the image
 img_FFT = np.fft.fft2(img)
 
+# Center spectrum
+center = np.fft.fftshift(img_FFT)
+
 # Output transformed image
-plt.imsave('FFT.png',img_FFT)
+plt.imsave('FFT_center.png',center)
 
 # Method 2: Using OpenCV
 
-https://medium.com/@hicraigchen/digital-image-processing-using-fourier-transform-in-python-bcb49424fd82
+# https://medium.com/@hicraigchen/digital-image-processing-using-fourier-transform-in-python-bcb49424fd82
+
