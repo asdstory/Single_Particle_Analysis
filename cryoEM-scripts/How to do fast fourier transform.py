@@ -20,3 +20,7 @@ img_FFT = np.fft.fft2(img)
 
 # Output transformed image
 plt.imsave('FFT.png',img_FFT)
+
+# Method 2: Using OpenCV
+
+https://medium.com/@hicraigchen/digital-image-processing-using-fourier-transform-in-python-bcb49424fd82
