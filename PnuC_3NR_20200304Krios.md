@@ -2,7 +2,7 @@
 
 # Step01 - Import images 
 
-Input files: 2020-01-06-PnuC_0NR_C8-leginon-counting-finished-frames/*.tif
+Input files: finished/*.tif
 
 Node type: 2D micrographs movies (*.mrcs, *tiff)
 
@@ -16,11 +16,11 @@ First frame for corrected sum: 1
 
 Last frame for corrected sum: 0 
 
-Pixel size (A): 1.06
+Pixel size (A): 0.83
 
 Voltage (kV): 300
 
-Dose per frame (e/A2): 1.42
+Dose per frame (e/A2): 1.089
 
 Pre-exposure (e/A2): 0
 
@@ -48,17 +48,23 @@ Queue name: multinode
 
 ## I/O
 
+Input micrographs STAR file: MotionCorr/job004/corrected_micrographs.star
+
 Spherical aberration (mm): 2.7
+
 Voltage (kV): 300 # Because this dataset was collected on Titan Krios, Building 13, under low mag (13kx)
+
 Amplitude contrast: 0.1
-Magnified pixel size (Angstrom): 1.06
+
+Magnified pixel size (Angstrom): 0.83
+
 Amount of astigmastism (A): 100
 
-#Searches
+## Searches
 
 Use as default
 
-#CTFFIND-4.1
+## CTFFIND-4.1
 
 Use CTFFIND-4.1? Yes
 
