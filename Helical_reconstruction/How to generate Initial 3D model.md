@@ -20,3 +20,9 @@
 - [ ] relion_helix_inimodel2d --i Select/job382/class_averages.star --iter 1 --sym 2 --crossover_distance 800 --angpix 1.058 --o Select/job382/ref --mask_diameter 400
 - [ ] relion_image_handler --i IniModel/bigclass_class001_rec3d.mrc --o IniModel/bigclass_class001_rec3d_box256.mrc --angpix 3.45 --rescale_angpix 1.058 --new_box 256
 
+# Initial model from multiple smaller 2D class averages
+
+- [ ] relion_stack_create --i Select/job060/class_averages.star --o IniModel/smallclasses_box256 --ignore_optics
+- [ ] relion_image_handler --i IniModel/smallclasses_box256.mrcs --new_box 400 --o IniModel/smallclasses_box400.mrcs
+- [ ] relion_helix_inimodel2d --i IniModel/smallclasses_box220.star --iter 10 --crossover_distance 700 --angpix 1.058 --o IniModel/smallclasses --mask_diameter 150 --search_shift 3 --search_angle 1 --step_angle 1 --sym 2 --maxres 5 --j 12
+- [ ] relion_image_handler --i IniModel/smallclasses_class001_rec3d.mrc --o IniModel/smallclasses_class001_rec3d_box256.mrc --new_box 256
