@@ -1160,6 +1160,26 @@ Plotting bfactor: -100
 
 Batch size per class: 1000
 
+# Step29 Cryosparc - Homogeneous Refinement (NEW!!) 
+
+## Input 
+
+particles: J36.particles_class_0
+
+volume: J36.volume_class_0
+
+mask: No input groups
+
+## Homogeneous Refinement
+
+Refinement box size (voxels): NONE
+
+Symmetry: C3
+
+Initial lowpass resolution (A): 30
+
+GSFSC split resolution (A): 20
+
 
 
 
