@@ -326,11 +326,29 @@ Number of iterations: 20
 
 Use fast subsets (for large datasets)? Yes
 
+Mask diameter (A): 200
+
 Mask individual particles with zeros? Yes
 
 *If set to Yes, then in the individual particles, the area outside a circle with the radius of the particle will be set to zeros prior to taking the Fourier transform. This will remove noise and therefore increase sensitivity in the alignment and classification. However, it will also introduce correlations between the Fourier components that are not modelled. When set to No, then the solvent area is filled with random noise, which prevents introducing correlations.High-resolution refinements (e.g. ribosomes or other large complexes in 3D auto-refine) tend to work better when filling the solvent area with random noise (i.e. setting this option to No), refinements of smaller complexes and most classifications go better when using zeros (i.e. setting this option to Yes).*
 
-Mask diameter (A): 200
+Limit resolution E-step to (A): -1
+
+*If set to a positive number, then the expectation step (i.e. the alignment) will be done only including the Fourier components up to this resolution (in Angstroms). This is useful to prevent overfitting, as the classification runs in RELION are not to be guaranteed to be 100% overfitting-free (unlike the 3D auto-refine with its gold-standard FSC). In particular for very difficult data sets, e.g. of very small or featureless particles, this has been shown to give much better class averages. In such cases, values in the range of 7-12 Angstroms have proven useful.*
+
+## Sampling
+
+Perfomr image alignment? Yes
+
+Angular sampling interval: 7.5 degrees
+
+Offset search range (pix): 5
+
+Offset search step (pix): 1
+
+Perform local angular searches? No
+
+*If set to Yes, then rather than performing exhaustive angular searches, local searches within the range given below will be performed. A prior Gaussian distribution centered at the optimal orientation in the previous iteration and with a stddev of 1/3 of the range given below will be enforced.
 
 ## Compute
 
