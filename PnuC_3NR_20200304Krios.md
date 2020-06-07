@@ -1181,6 +1181,27 @@ Initial lowpass resolution (A): 30
 GSFSC split resolution (A): 20
 
 
+# Step30 Cryosparc - Non-uniform Refinement (BETA)
+
+## Input
+
+particles: J37.particles
+
+volume: J37.volume
+
+mask: J37.mask
+
+## Non-uniform Refinement
+
+Refinement box size (voxels): NONE
+
+Symmetry: C3
+
+Initial lowpass resolution (A): 30
+
+GSFSC split resolution (A): 20
+
+# Step31 repeat Ab0-Initio Reconstruction (2 class) -> Heterogeneous refinment -> Non-uniform refinement until resolution can't be further improved. 
 
 
 
