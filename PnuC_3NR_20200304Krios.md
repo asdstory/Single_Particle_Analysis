@@ -76,7 +76,7 @@ then,
 
 [user@biowulf]$ sinteractive --gres=gpu:k80:1 --mem=20g -c14
 [user@biowulf]$ module load gautomatch
-[user@cn3144 ~]$ gautomatch --apixM 1.06 --diameter 160 *.mrc 
+[user@cn3144 ~]$ gautomatch --apixM 0.83 --diameter 160 *.mrc 
 
 or,
 
@@ -84,7 +84,7 @@ or,
 
 module load Gautomatch/0.56
 
-Gautomatch --apixM 1.06 --diameter 160 *.mrc
+Gautomatch --apixM 0.83 --diameter 160 *.mrc
 
 # Step05 - Subset selection, to discard unsatisfied micrographs
 
@@ -95,7 +95,7 @@ Select based on metadata values? Yes
 Metadata label for subset selection: rlnCtfMaxResolution
 
 Minimum metadata value: -9999.
-Maximum metadata value: 5
+Maximum metadata value: 4
 
 ## Running
 
@@ -112,7 +112,7 @@ Select ~200 images to make a subset, then extract particles from these images an
 
 # Step08 - Extract Particles
 
-#Extract
+## Extract
 
 Particle box size (pix): 200 #Since the PnuC trimer particle size is only ~80A, we may extract the particle using box size 100pix, and diameter background circle of 90 pix? 
 
@@ -120,12 +120,12 @@ Diameter background circle (pix): 180
 
 # Step09 - 2D classfiicaiton
 
-# CTF
+## CTF
 
 Do CTF-correction? Yes
 Ignore CTFs until first peak? Yes
 
-# Optimization
+## Optimization
 
 Number of classes: 100
 
@@ -153,21 +153,108 @@ Pixel sieze in references (A): -1
 
 ## autopikcing
 
-Picking thresold: 0.8
+Picking thresold: 0.5
 
-Minimum inter-particle distanc (A): 100
+Minimum inter-particle distanc (A): 30
 
 Maximum stddev noise: 1.1
 
 Minimum avg noise: -0.5
 
-Shrink factor: 1
+Shrink factor: 0.5
 
 ## Running
 
 Submit to queue? Yes
 
 Queue name: gpu
+
+
+# Step12 - 2D classification -1
+
+## I/O
+
+Imput images STAR file: Extract/job022/particles.star
+
+## CTF
+
+Do CTF-correction? Yes
+
+Have data been phase flipped? No
+
+Ignore CTFs until first peak? Yes
+
+## Optimization
+
+Number of classes: 100
+
+Regularisation parameter T: 2
+
+Number of iterations: 25
+
+Use fast subsets (for large data sets)? Yes
+
+Mask diameter (A): 200  #Since the PnuC trimer particle size is only ~80A, we may use 90A for the mask diameter here? 
+
+## Sampling
+
+Perform image alignment? Yes
+
+In-plane angular sampling? 6
+
+Offset search range (pix): 5
+
+Offset search step (pix): 1
+
+## Helix
+
+Classify 2D helical segments? No
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 3
+
+Pre-read all particles into RAM? No
+
+Copy particles to scratch directory: No
+
+Combine iterations through disc? No
+
+Use GPU accelerations? Yes 
+
+## Running
+
+Number of MPI procs: 18
+
+Number of threads: 1
+
+Submit to queue? Yes
+
+Queue name: gpu
+
+Queue submit command: sbatch
+
+Walltime: 3-00:00:00
+
+Memory Per Thread: 8g
+
+Gres: lscratch:200, gpu:v100x:4
+
+Addl (ex4) SBATCH Directives: -N 6 --ntasks-per-node=3
+
+Standard submission script: /usr/local/apps/RELION/templates/common.sh
+
+Minimum dedicated cores per node: 1
+
+
+
+
+
+
+
+
 
 # Step12 3D initial model 
 
