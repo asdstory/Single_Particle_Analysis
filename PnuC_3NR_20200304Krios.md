@@ -170,7 +170,7 @@ Submit to queue? Yes
 
 Queue name: gpu
 
-# Step 12 Partcle extraction
+# Step12 Partcle extraction
 
 ## I/O
 
@@ -392,11 +392,11 @@ Standard submission script: /usr/local/apps/RELION/templates/common.sh
 
 Minimum dedicated cores per node: 1
 
-# Step 16 Subset selection
+# Step16 Subset selection
 
 Select classes from model.star: Class3D/job037/run_it020_model.star
 
-# Step 17 Particle extraction
+# Step17 Particle extraction
 
 ## I/O
 
@@ -526,7 +526,7 @@ Standard submission script: /usr/local/apps/RELION/templates/common.sh
 
 Minimum dedicated cores per node: 1
 
-# Step 19 Subset selection /job042
+# Step19 Subset selection /job042
 
 Select classes from model.star: Class2D/job041/run_it025_model.star
 
@@ -632,11 +632,11 @@ Standard submission script: /usr/local/apps/RELION/templates/common.sh
 
 Minimum dedicated cores per node: 1
 
-# Step 21 Subset selection /job044
+# Step21 Subset selection /job044
 
 Select classes from model.star: Class2D/job043/run_it025_model.star
 
-# Step 22 Particle extraction /job058
+# Step22 Particle extraction /job058
 
 ## I/O
 
