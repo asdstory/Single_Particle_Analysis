@@ -1,4 +1,4 @@
-# Example - Processing PnuC_0NR_C8_20200106, totally 4525 images
+# Example - Processing 20200304Krios_PnuC_3NR_Nanodisc dataset, totally 6910 images
 
 # Step01 - Import images 
 
