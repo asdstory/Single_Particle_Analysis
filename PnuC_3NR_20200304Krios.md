@@ -1204,6 +1204,96 @@ GSFSC split resolution (A): 20
 # Step31 repeat Ab0-Initio Reconstruction (2 class) -> Heterogeneous refinment -> Non-uniform refinement until resolution can't be further improved. 
 
 
+# Step32 Cryosparc - Non-uniform Refinement (BETA)
+
+## Input
+
+particles: J74.particles
+
+volume: J74.volume
+
+mask: J74.mask
+
+## Non-uniform Refinement
+
+Refinement box size (voxels): NONE
+
+Symmetry: C3
+
+Initial lowpass resolution (A): 30
+
+GSFSC split resolution (A): 20
+
+# Step33 Cryosparc - Local Refinement (BETA)
+
+## Inputs:
+
+particles: J75.particles
+
+volume: J75.volume
+
+mask: J75.mask
+
+# Step34 Cryosparc - Local Resolution Estimation
+
+## Inputs
+
+Volume: J82.volume
+
+mask: J82.mask
+
+## Local resolution
+
+Step size: 1
+
+FSC threshold: 0.5
+
+Adaptive Window Factor: 6
+
+# Step35 Cryosparc - Local Filtering
+
+*This should get the final map for model building? *
+
+## Inputs:
+
+Volume: J87.volume
+
+## Local filtering
+
+Filter type to apply: lanczos
+
+Use GPU OR CPU for computation: GPU
+
+# Step36 Sharpening Tools
+
+## Inputs
+
+volume : J88.volume
+
+## Sharpening:
+
+B-Factor to apply: 0
+
+Use full FSC: Yes
+
+Lowpass filter order: 8
+
+Lowpass filter offset: 0 
+
+Generate new FSC mask: No
+
+Threshold: 0.5
+
+Mask near (A): 6
+
+Mask far (A): 12
+
+
+
+
+
+
+
 
 
 
