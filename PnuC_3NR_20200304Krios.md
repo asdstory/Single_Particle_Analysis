@@ -327,6 +327,7 @@ Number of iterations: 20
 Use fast subsets (for large datasets)? Yes
 
 Mask individual particles with zeros? Yes
+
 *If set to Yes, then in the individual particles, the area outside a circle with the radius of the particle will be set to zeros prior to taking the Fourier transform. This will remove noise and therefore increase sensitivity in the alignment and classification. However, it will also introduce correlations between the Fourier components that are not modelled. When set to No, then the solvent area is filled with random noise, which prevents introducing correlations.High-resolution refinements (e.g. ribosomes or other large complexes in 3D auto-refine) tend to work better when filling the solvent area with random noise (i.e. setting this option to No), refinements of smaller complexes and most classifications go better when using zeros (i.e. setting this option to Yes).*
 
 Mask diameter (A): 200
