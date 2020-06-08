@@ -16,6 +16,7 @@ OR select from micrographs.star: CtfFind/job006/micrographs_ctf.star
 - [ ] click "Run"
 
 - [ ] A Relion display GUI will pop-up, just close it, and mark the above Select job as finished by clicking "Job action" button and then "Mark as finished" 
+
 *Now you will get the selection job number, which will be used in the next step, e.g., here I get "Select/job016/"*
 
 # Step03 - Start a display GUI from command line
