@@ -1,1 +1,0 @@
-- [ ] relion_display --imicrographs_ctf.star --display rlnMicrographName --lowpass 20 --col 5 --ori_scale 0.1 --allow_save true --max_nr_images 100
