@@ -27,6 +27,8 @@ Go back to the terminal and type/copy & paste the following command, make sure y
 `which relion_display` --i CtfFind/job006/micrographs_ctf.star --display rlnMicrographName --scale 0.07 --lowpass 30 --col 5 --ori_scale 0.1 --allow_save --max_nr_images 20 --fn_imgs Select/job016/micrographs.star
 ```
 
+*You may want to change the --max_nr_images from 20 to the image number you have, problem is it may take longer time to open all of them*
+
 # Step04 - Start browing, selecting and saving
 
 Now a new Relion display GUI will pop-up (may take long time if open too many images), in which we will see all raw images. 
