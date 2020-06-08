@@ -15,6 +15,8 @@ OR select from micrographs.star: CtfFind/job006/micrographs_ctf.star
 
 - [ ] click "Run"
 
+![](https://github.com/asdstory/Single-particle-Reconstruction/blob/master/Figures/Fig%201%20High%20level%20flowchart%20of%20RELION.jpeg)
+
 - [ ] A Relion display GUI will pop-up, just close it, and mark the above Select job as finished by clicking "Job action" button and then "Mark as finished" 
 
 *Now you will get the selection job number, which will be used in the next step, e.g., here I get "Select/job016/"*
