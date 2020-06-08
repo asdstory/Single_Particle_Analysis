@@ -35,7 +35,7 @@ Now a new Relion display GUI will pop-up (may take long time if open too many im
 
 - [ ] Click the first image, and then right click again and click "Select all below"
 - [ ] Now, by pulling up and down, we can glance over all raw images, just click any images we don't want. 
-- [ ] When finished, just right click any of the images selected (in red frame), and click "Save STAR with selected images". You will see in the terminal telling you "Saved Select/job016/micrographs.star" with xx selected images".
+- [ ] When finished, just right click any of the images selected (in red frame), and click "Save STAR with selected images". You will see in the terminal telling you "Saved Select/job016/micrographs.star with xx selected images".
 
 Now that we finished image selection by glancing over all raw images, it is ready to pick particles and do following processing steps. Good luck!
 
