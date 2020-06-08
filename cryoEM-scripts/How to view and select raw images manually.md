@@ -15,7 +15,7 @@ OR select from micrographs.star: CtfFind/job006/micrographs_ctf.star
 
 - [ ] click "Run"
 
-![](https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Start%20a%20new%20Selection.png | width=100)
+![](https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Start%20a%20new%20Selection.png =250x)
 
 
 
