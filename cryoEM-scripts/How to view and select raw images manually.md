@@ -23,7 +23,9 @@ OR select from micrographs.star: CtfFind/job006/micrographs_ctf.star
 
 Go back to the terminal and type/copy & paste the following command, make sure you change the job number of the input (CtfFind/job006/micrographs_ctf.star) and the output (Select/job016/micrographs.star), other wise you won't be able to save selected micrographs.star successfully. 
 
-- [ ] ``which relion_display`` --i CtfFind/job006/micrographs_ctf.star --display rlnMicrographName --scale 0.07 --lowpass 30 --col 5 --ori_scale 0.1 --allow_save --max_nr_images 20 --fn_imgs Select/job016/micrographs.star
+```
+`which relion_display` --i CtfFind/job006/micrographs_ctf.star --display rlnMicrographName --scale 0.07 --lowpass 30 --col 5 --ori_scale 0.1 --allow_save --max_nr_images 20 --fn_imgs Select/job016/micrographs.star
+```
 
 # Step04 - Start browing, selecting and saving
 
