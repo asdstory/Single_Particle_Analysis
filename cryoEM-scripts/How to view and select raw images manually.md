@@ -15,7 +15,7 @@ OR select from micrographs.star: CtfFind/job006/micrographs_ctf.star
 
 - [ ] click "Run"
 
-![](https://github.com/asdstory/Single-particle-Reconstruction/blob/master/Figures/Fig%201%20High%20level%20flowchart%20of%20RELION.jpeg | width=100)
+![](Figures/Start a new Selection.png | width=100)
 
 
 
