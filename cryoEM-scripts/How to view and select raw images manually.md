@@ -17,7 +17,7 @@ OR select from micrographs.star: CtfFind/job006/micrographs_ctf.star
 
 ![](https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Start%20a%20new%20Selection.png =250x)
 
-
+<img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Start%20a%20new%20Selection.png" width="48">
 
 - [ ] A Relion display GUI will pop-up, just close it, and mark the above Select job as finished by clicking "Job action" button and then "Mark as finished" 
 
