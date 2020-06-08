@@ -44,7 +44,7 @@ Now a new Relion display GUI will pop-up (may take long time if open too many im
 
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Save%20STAR.png" width="600">
 
-<img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Saved%20terminal.png" width="600">
+<img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Saved%20terminal.png" width="800">
 
 Now that we finished image selection by glancing over all raw images, it is ready to pick particles and do following processing steps. Good luck!
 
