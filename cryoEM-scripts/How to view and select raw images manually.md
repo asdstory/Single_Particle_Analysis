@@ -15,8 +15,6 @@ OR select from micrographs.star: CtfFind/job006/micrographs_ctf.star
 
 - [ ] click "Run"
 
-![](https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Start%20a%20new%20Selection.png =250x)
-
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Start%20a%20new%20Selection.png" width="600">
 
 - [ ] A Relion display GUI will pop-up, just close it, and mark the above Select job as finished by clicking "Job action" button and then "Mark as finished" 
@@ -38,6 +36,9 @@ Go back to the terminal and type/copy & paste the following command, make sure y
 Now a new Relion display GUI will pop-up (may take long time if open too many images), in which we will see all raw images. 
 
 - [ ] Click the first image, and then right click again and click "Select all below"
+
+<img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Select%20all%20below.png" width="600">
+
 - [ ] Now, by pulling up and down, we can glance over all raw images, just click any images we don't want. 
 - [ ] When finished, just right click any of the images selected (in red frame), and click "Save STAR with selected images". You will see in the terminal telling you "Saved Select/job016/micrographs.star with xx selected images".
 
