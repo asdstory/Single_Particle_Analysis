@@ -31,7 +31,7 @@ relion_image_handler --i cryosparc_200Pix.mrc --rescale_angpix 1.26 --o cryospar
 - [ ] e2iminfo.py cryosparc_200Pix1.26A.mrc
 
 
-```
+```shell
 relion_image_handler --i cryosparc_P7_J30__localfilter_2.8A.mrc --rescale_angpix 1.26 --o cryosparc_Pix1.26A.mrc
 relion_image_handler --i cryosparc_Pix1.26A.mrc --new_box 200 --o cryosparc_200Pix1.26A.mrc
 e2iminfo.py cryosparc_200Pix1.26A.mrc
