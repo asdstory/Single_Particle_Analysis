@@ -49,9 +49,13 @@ Queue name: multinode
 ## I/O
 
 Spherical aberration (mm): 2.7
+
 Voltage (kV): 300 # Because this dataset was collected on Titan Krios, Building 13, under low mag (13kx)
+
 Amplitude contrast: 0.1
+
 Magnified pixel size (Angstrom): 1.06
+
 Amount of astigmastism (A): 100
 
 #Searches
