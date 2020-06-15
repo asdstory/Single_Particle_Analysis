@@ -58,13 +58,21 @@ Magnified pixel size (Angstrom): 1.06
 
 Amount of astigmastism (A): 100
 
-#Searches
+## Searches
 
 Use as default
 
-#CTFFIND-4.1
+## CTFFIND-4.1
 
 Use CTFFIND-4.1? Yes
+
+## Running
+
+Number of MPI procs: 128
+
+Submit to queue? Yes
+
+Queue name: multinode
 
 # Step04 - Particle Picking using GAutomatch
 
