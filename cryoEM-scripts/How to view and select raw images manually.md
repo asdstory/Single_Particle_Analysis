@@ -33,7 +33,7 @@ Go back to the terminal and type/copy & paste the following command, make sure y
 
 # Step04 - Start browing, selecting and saving
 
-Now a new Relion display GUI will pop-up (may take long time if open too many images), in which we will see all raw images. 
+A new Relion display GUI will pop-up (may take long time if open too many images), in which we will see all raw images. 
 
 - [ ] Click the first image, and then right click again and click "Select all below"
 
