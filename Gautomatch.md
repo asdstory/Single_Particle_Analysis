@@ -1,6 +1,6 @@
 # Automatic Particle picking
-#Reference: 
-#https://hpc.nih.gov/apps/gautomatch.html
+## Reference: 
+https://hpc.nih.gov/apps/gautomatch.html
 
 # For TF20 data, at 29kx:
 
@@ -29,7 +29,7 @@ gautomatch --apixM 1.27 --diameter 150 *_sum_DW.mrc
 
 # For Titan Krios data at low mag (13kx)
 ```
-gautomatch --apixM 1.06 --diameter 80 *_sum_DW.mrc 
+gautomatch --apixM 1.06 --diameter 80 --min_dist 30 *_sum_DW.mrc
 
 #Batch job on biowulf
 
