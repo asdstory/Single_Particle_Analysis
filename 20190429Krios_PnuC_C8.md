@@ -1,4 +1,4 @@
-# This is a data set of 1676 images, processed by Jiansen. I learned from it and here are some notes: 
+# This is a data set of 1676 images, processed by Jiansen. Here are some notes: 
 
 # Step01 - Import images 
 
