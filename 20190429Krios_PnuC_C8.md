@@ -1,8 +1,8 @@
-# Example - Processing 20200304Krios_PnuC_3NR_Nanodisc dataset, totally 6910 images
+# This is a data set of 1676 images, processed by Jiansen. I learned from it and here are some notes: 
 
 # Step01 - Import images 
 
-Input files: finished/*.tif
+Input files: Micrographs/*.tif
 
 Node type: 2D micrographs movies (*.mrcs, *tiff)
 
@@ -10,37 +10,51 @@ Node type: 2D micrographs movies (*.mrcs, *tiff)
 
 ## I/O
 
-Input movies STAR file: Import/job003/movies.star
+Input movies STAR file: Import/job001/movies.star
 
 First frame for corrected sum: 1
 
-Last frame for corrected sum: 0 
+Last frame for corrected sum: -1 
 
-Pixel size (A): 0.83
+Pixel size (A): 1.06
 
 Voltage (kV): 300
 
-Dose per frame (e/A2): 1.089
+Dose per frame (e/A2): 1.5
 
 Pre-exposure (e/A2): 0
+
+Do dose-weighting? Yes
+
+Save non-dose weighted as well? Yes
+
+
 
 ## Motion
 
 Bfactor: 150
 
-Number of patches X, Y: 5 5
+Number of patches X, Y: 7 7
 
-Use RELION's own implementation? Yes
+Group frames: 1
+
+Binning factor: 1
+
+Gain rotation: No rotation (0)
+
+Gain flip: No flipping (0)
+
+Use RELION's own implementation? No
+
+Which GPUs to use: 0:1:2:3
 
 ## Running
 
-Number of MPI procs: 100
+Number of MPI procs: 4
 
-Number of threads: 2
+Number of threads: 8
 
-Submit to queue? Yes
-
-Queue name: multinode
+Submit to queue? No
 
 
 
@@ -48,17 +62,19 @@ Queue name: multinode
 
 ## I/O
 
-Input micrographs STAR file: MotionCorr/job004/corrected_micrographs.star
+Input micrographs STAR file: MotionCorr/job002/corrected_micrographs.star
+
+Use micrograph without dose-weighting? Yes
 
 Spherical aberration (mm): 2.7
 
-Voltage (kV): 300 # Because this dataset was collected on Titan Krios, Building 13, under low mag (13kx)
+Voltage (kV): 300 
 
 Amplitude contrast: 0.1
 
-Magnified pixel size (Angstrom): 0.83
+Magnified pixel size (Angstrom): 1.06
 
-Amount of astigmastism (A): 100
+Amount of astigmastism (A): 500
 
 ## Searches
 
