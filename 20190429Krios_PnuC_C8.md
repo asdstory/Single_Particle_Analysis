@@ -248,7 +248,7 @@ Submit to queue? No
 
 Select classes that interested, and save as templates.
 
-![](https://github.com/asdstory/Single-particle-Reconstruction/blob/master/Figures/Fig%201%20High%20level%20flowchart%20of%20RELION.jpeg)
+![](https://github.com/asdstory/Single-particle-Reconstruction/blob/master/Figures/SubsetSelection-job007-20190429dataset.png)
 
 # Step11 - Autopicking
 
