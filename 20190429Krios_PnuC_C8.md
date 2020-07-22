@@ -78,11 +78,37 @@ Amount of astigmastism (A): 500
 
 ## Searches
 
-Use as default
+FFT box size (pix): 512
+
+Minimum resolution (A): 30
+
+Maximum resolution (A): 4
+
+Minimum defocus value (A): 5000
+
+Maximum defocus value (A): 30000
+
+Defocus step size (A): 500
+
+Estimate phase shifts? No
+
 
 ## CTFFIND-4.1
 
 Use CTFFIND-4.1? Yes
+
+CTFFIND-4.1 executable: /data/jianglab-nfs/programs/apps/ctffind-4.1.13/ctffind
+
+Use exhaustive search? No
+
+Estimate CTF on window size (pix): -1
+
+## Running
+
+Number of MPI procs: 12
+
+Submit to queue? No
+
 
 
 # Step04 - Particle Picking using GAutomatch
