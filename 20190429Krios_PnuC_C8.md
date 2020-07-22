@@ -228,6 +228,8 @@ Use parallel disc I/O? Yes
 
 Number of pooled particles: 30
 
+Pre-read all particles into RAM? No
+
 Copy partilces to scratch directory: No
 
 Combine iterations through disc? No
@@ -249,6 +251,88 @@ Submit to queue? No
 Select classes that interested, and save as templates.
 
 ![](https://github.com/asdstory/Single-particle-Reconstruction/blob/master/Figures/SubsetSelection-job007-20190429dataset.png)
+
+# Step11 - 2D classfiicaiton
+
+## I/O
+
+Input image STAR file: Extract/job007/particles.star
+
+## CTF
+
+Do CTF-correction? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs until first peak? Yes
+
+## Optimization
+
+Number of classes: 50
+
+Regularisation parameter T: 3
+
+Number of iterations: 50
+
+Use fast subsets (for large data sets)? Yes
+
+Mask diameter (A): 170  
+
+Mask individual particles with zeros? Yes
+
+Limit resolution E-step to (A): -1
+
+## Sampling
+
+Perform image alignment? Yes
+
+In-plane angular sampling: 6
+
+Offet search range (pix): 10
+
+Offet search step (pix): 1
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy partilces to scratch directory: No
+
+Combine iterations through disc? No
+
+Use GPU acceleration? Yes
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 10
+
+Number of threads: 3
+
+Submit to queue? No
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Step11 - Autopicking
 
