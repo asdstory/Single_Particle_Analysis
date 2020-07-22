@@ -248,6 +248,8 @@ Submit to queue? No
 
 Select classes that interested, and save as templates.
 
+![](https://github.com/asdstory/Single-particle-Reconstruction/blob/master/Figures/Fig%201%20High%20level%20flowchart%20of%20RELION.jpeg)
+
 # Step11 - Autopicking
 
 Now, it's time to do template-based Auto-picking.
