@@ -32,6 +32,8 @@ Number of patches X, Y: 5 5
 
 Use RELION's own implementation? Yes
 
+*You may also select NO, and use the MotionCor2 implementation, then run on GPU. Only problem is that, MotionCor2 runs only on P100. Not recommended to use K80, which will get in some errors. 
+
 ## Running
 
 Number of MPI procs: 100
