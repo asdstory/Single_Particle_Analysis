@@ -27,6 +27,13 @@
 - You can also change any of the thresold to get desired micrograph, e.g. default resolution thresold is 4, but you can change it to 5 to select more micrographs.
 - When trying to extract particles from selected micrographs using RELION, you will find that RELION only show "micrographs_ctf.star" in the default I/O. In the I/O panel, just select "micrographs_ctf.starCtfFind/job002/micrographs_ctf.satr" and change it to "CtfFind/job002/micrographs_ctf_new.star". In this way, you will extract particles only from micrographs you just selected. 
 
+### How to caculate averaged resolution for all the micrographs selected: 
+
+```
+awk '{ total += $13; count++ } END { print "The average resolution for all micrograhs here is:" total/count " A" }' micrographs_ctf.star 
+```
+
+
 
 ### More detail about the awk command:
 https://likegeeks.com/awk-command/
