@@ -10,3 +10,6 @@ pdb2mrc 4qim.pdb 4qim.mrc apix=1.06 res=2.6 center box=200
 
 In this way, we get initial model with desired pixel size and box size for class3D reconstruction. 
 
+*For more details, see: https://www.mrc-lmb.cam.ac.uk/rlw/text/doc/progs/pdb2mrc.html. 
+
+
