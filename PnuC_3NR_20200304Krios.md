@@ -857,7 +857,7 @@ Fit per-micrograh phase-shift? No
 
 ## Running
 
-Number of MPI procs: 65
+Number of MPI procs: 65 
 
 Number of threads: 2
 
@@ -879,6 +879,7 @@ Standard submission script: /usr/local/apps/RELION/templates/common.sh
 
 Minimum dedicated cores per node: 1
 
+* This task usually take less than 30 mins by using these setting. Therefore, we can also directly run on a 16 CPU interactive node, which will also finish in less than 30 min? 
 
 # Step27 - Bayesian Polishing - Running in training mode
 
