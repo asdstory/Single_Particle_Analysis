@@ -117,7 +117,9 @@ Submit to queue? No
 then,
 
 [user@biowulf]$ sinteractive --gres=gpu:k80:1 --mem=20g -c14
+
 [user@biowulf]$ module load gautomatch
+
 [user@cn3144 ~]$ gautomatch --apixM 0.83 --diameter 160 *.mrc 
 
 or,
