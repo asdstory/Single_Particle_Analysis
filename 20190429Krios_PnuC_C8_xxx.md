@@ -2426,750 +2426,19 @@ Ad-hoc low-pass filter (A): 5
 
 Submit to queue? No
 
-# Step63
-
-# Step64
-
-# Step65
-
-# Step66
-
-# Step67
-
-# Step68
-
-# Step69
-
-# Step70
-
-# Step71
-
-# Step72
-
-# Step73
-
-# Step74
-
-# Step75
-
-# Step76
-
-# Step77
-
-# Step78
-
-# Step79
-
-# Step80
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Step11 - Autopicking
-
-Now, it's time to do template-based Auto-picking.
+# Step63 - Bayesian Polishing/polish_30frames_job074/
 
 ## I/O
 
-Input micrographs for autopick: CtfFind/job005/micrographs_ctf.star
+Micrographs (from MotionCorr): MotionCorr/job002/corrected_micrographs.star
 
-Pixel size in micrographs (A): -1
+Particles (from Refine3D or CtfRefine): Refine3D/job072/run_data.star
 
-2D references: Select/job017/class_averages.star
-
-## References
-
-Pixel sieze in references (A): -1
-
-## autopikcing
-
-Picking thresold: 0.5
-
-Minimum inter-particle distanc (A): 30
-
-Maximum stddev noise: 1.1
-
-Minimum avg noise: -0.5
-
-Shrink factor: 0.5
-
-## Running
-
-Submit to queue? Yes
-
-Queue name: gpu
-
-# Step12 Partcle extraction
-
-## I/O
-
-micrograph STAR file: CtfFind/job005/micrographs_ctf_new.star
-
-Input coordinates: Import/job021/coords_suffix_automatch.star
-
-OR re-extract refined particles? No
-
-Manually set pixel size? No
-
-## extract
-
-Particle box size (pix): 320
-
-Invert contrast? Yes
-
-Normalize particles? Yes
-
-Diameter background circle (pix): -1
-
-Stddev for white dust removal: -1 
-
-Stddev for black dust removal: -1
-
-Rescale particles? Yes #This will help fast the 2D classification of large datasets, especially preliminary data from autopicking. 
-
-Re-scale size (pixels): 80
-
-## Helix
-
-No
-
-## Running 
-
-Number of MPI procs: 16
-
-Submit to queue? No
-
-# Step13 - 2D classification  /job023
-
-## I/O
-
-Imput images STAR file: Extract/job022/particles.star
-
-## CTF
-
-Do CTF-correction? Yes
-
-Have data been phase flipped? No
-
-Ignore CTFs until first peak? Yes
-
-## Optimization
-
-Number of classes: 100
-
-Regularisation parameter T: 2
-
-Number of iterations: 25
-
-Use fast subsets (for large data sets)? Yes
-
-Mask diameter (A): 200  #Since the PnuC trimer particle size is only ~80A, we may use 90A for the mask diameter here? 
-
-## Sampling
-
-Perform image alignment? Yes
-
-In-plane angular sampling? 6
-
-Offset search range (pix): 5
-
-Offset search step (pix): 1
-
-## Helix
-
-Classify 2D helical segments? No
-
-## Compute
-
-Use parallel disc I/O? Yes
-
-Number of pooled particles: 3
-
-Pre-read all particles into RAM? No
-
-Copy particles to scratch directory: No
-
-Combine iterations through disc? No
-
-Use GPU accelerations? Yes 
-
-## Running
-
-Number of MPI procs: 18
-
-Number of threads: 1
-
-Submit to queue? Yes
-
-Queue name: gpu
-
-Queue submit command: sbatch
-
-Walltime: 3-00:00:00
-
-Memory Per Thread: 8g
-
-Gres: lscratch:200, gpu:v100x:4
-
-Addl (ex4) SBATCH Directives: -N 6 --ntasks-per-node=3
-
-Standard submission script: /usr/local/apps/RELION/templates/common.sh
-
-Minimum dedicated cores per node: 1
-
-# Step14 Select /job026
-
-Select classes from model.star: Class2D/job023/run_it025_model.star
-
-# Step15 3D classification /job037
-
-This class3D aimed at centering all the particles and further aid following 2D classifications. 
-
-## I/O
-
-Input images STAR file: Select/job026/particles.star
-
-Reference map: ../PnuC_3NR_ModelBuilding/cryosparc_80Pix0.83A.mrc
-
-## Reference
-
-Ref. map is on absolute greyscale? No
-
-Initial low-pass filter (A): 50
-
-Symmetry: C3
-
-## CTF
-
-Do CTF-correction? Yes
-
-Has reference been CTF-corrected? Yes
-
-## Optimisation
-
-Number of classes: 1
-
-Regularisation parameter T: 4
-
-Number of iterations: 20
-
-Use fast subsets (for large datasets)? Yes
-
-Mask diameter (A): 200
-
-Mask individual particles with zeros? Yes
-
-*If set to Yes, then in the individual particles, the area outside a circle with the radius of the particle will be set to zeros prior to taking the Fourier transform. This will remove noise and therefore increase sensitivity in the alignment and classification. However, it will also introduce correlations between the Fourier components that are not modelled. When set to No, then the solvent area is filled with random noise, which prevents introducing correlations.High-resolution refinements (e.g. ribosomes or other large complexes in 3D auto-refine) tend to work better when filling the solvent area with random noise (i.e. setting this option to No), refinements of smaller complexes and most classifications go better when using zeros (i.e. setting this option to Yes).*
-
-Limit resolution E-step to (A): -1
-
-*If set to a positive number, then the expectation step (i.e. the alignment) will be done only including the Fourier components up to this resolution (in Angstroms). This is useful to prevent overfitting, as the classification runs in RELION are not to be guaranteed to be 100% overfitting-free (unlike the 3D auto-refine with its gold-standard FSC). In particular for very difficult data sets, e.g. of very small or featureless particles, this has been shown to give much better class averages. In such cases, values in the range of 7-12 Angstroms have proven useful.*
-
-## Sampling
-
-Perfomr image alignment? Yes
-
-Angular sampling interval: 7.5 degrees
-
-Offset search range (pix): 5
-
-Offset search step (pix): 1
-
-Perform local angular searches? No
-
-*If set to Yes, then rather than performing exhaustive angular searches, local searches within the range given below will be performed. A prior Gaussian distribution centered at the optimal orientation in the previous iteration and with a stddev of 1/3 of the range given below will be enforced.*
-
-## Helix
-
-No
-
-## Compute
-
-Use parallel disc I/O? Yes
-
-Number of pooled particles: 3
-
-Pre-read all particles into RAM? No
-
-Copy particles to scratch directory: No
-
-Combine iterations through disc? No
-
-Use GPU accelerations? Yes 
-
-## Running
-
-Number of MPI procs: 15
-
-Number of threads: 1
-
-Submit to queue? Yes
-
-Queue name: gpu
-
-Queue submit command: sbatch
-
-Walltime: 1-00:00:00
-
-Memory Per Thread: 8g
-
-Gres: lscratch:200, gpu:v100x:4
-
-Addl (ex4) SBATCH Directives: -N 5 --ntasks-per-node=3
-
-Standard submission script: /usr/local/apps/RELION/templates/common.sh
-
-Minimum dedicated cores per node: 1
-
-# Step16 Subset selection
-
-Select classes from model.star: Class3D/job037/run_it020_model.star
-
-# Step17 Particle extraction
-
-## I/O
-
-micrograph STAR file: CtfFind/job005/micrographs_ctf_new.star
-
-Input coordinates: 
-
-OR re-extract refined particles? Yes
-
-Refined particles STAR file: Select/job039/particles.star
-
-Reset the refined offsets to zero? No
-
-Re-center refined coordinates? yes
-
-Recenter on -X, Y, Z (pix): 0 0 0 
-
-Manually set pixel size? No
-
-## extract
-
-Particle box size (pix): 320
-
-Invert contrast? Yes
-
-Normalize particles? Yes
-
-Diameter background circle (pix): -1
-
-Stddev for white dust removal: -1 
-
-Stddev for black dust removal: -1
-
-Rescale particles? Yes #This will help fast the 2D classification of large datasets, especially preliminary data from autopicking. 
-
-Re-scale size (pixels): 80
-
-## Helix
-
-No
-
-## Running 
-
-Number of MPI procs: 16
-
-Submit to queue? No
-
-# Step18 - 2D classification  /job041
-
-## I/O
-
-Imput images STAR file: Extract/job044/particles.star
-
-## CTF
-
-Do CTF-correction? Yes
-
-Have data been phase flipped? No
-
-Ignore CTFs until first peak? No
-
-## Optimization
-
-Number of classes: 100
-
-Regularisation parameter T: 2
-
-Number of iterations: 25
-
-Use fast subsets (for large data sets)? Yes
-
-Mask diameter (A): 200  #Since the PnuC trimer particle size is only ~80A, we may use 90A for the mask diameter here? 
-
-Mask individual particles with zeros? Yes
-
-Limit resolution E-step to (A): -1 
-
-## Sampling
-
-Perform image alignment? Yes
-
-In-plane angular sampling? 6
-
-Offset search range (pix): 5
-
-Offset search step (pix): 1
-
-## Helix
-
-Classify 2D helical segments? No
-
-## Compute
-
-Use parallel disc I/O? Yes
-
-Number of pooled particles: 3
-
-Pre-read all particles into RAM? No
-
-Copy particles to scratch directory: No
-
-Combine iterations through disc? No
-
-Use GPU accelerations? Yes 
-
-## Running
-
-Number of MPI procs: 15
-
-Number of threads: 1
-
-Submit to queue? Yes
-
-Queue name: gpu
-
-Queue submit command: sbatch
-
-Walltime: 3-00:00:00
-
-Memory Per Thread: 8g
-
-Gres: lscratch:200, gpu:v100x:4
-
-Addl (ex4) SBATCH Directives: -N 5 --ntasks-per-node=3
-
-Standard submission script: /usr/local/apps/RELION/templates/common.sh
-
-Minimum dedicated cores per node: 1
-
-# Step19 Subset selection /job042
-
-Select classes from model.star: Class2D/job041/run_it025_model.star
-
-
-
-# Step21 Subset selection /job044
-
-Select classes from model.star: Class2D/job043/run_it025_model.star
-
-# Step22 Particle extraction /job058
-
-## I/O
-
-micrograph STAR file: CtfFind/job005/micrographs_ctf_new.star
-
-Input coordinates: 
-
-OR re-extract refined particles? Yes
-
-Refined particles STAR file: Select/job044/particles.star
-
-Reset the refined offsets to zero? No
-
-Re-center refined coordinates? yes
-
-Recenter on -X, Y, Z (pix): 0 0 0 
-
-Manually set pixel size? No
-
-## extract
-
-Particle box size (pix): 320
-
-Invert contrast? Yes
-
-Normalize particles? Yes
-
-Diameter background circle (pix): -1
-
-Stddev for white dust removal: -1 
-
-Stddev for black dust removal: -1
-
-Rescale particles? No
-
-Re-scale size (pixels): 
-
-## Helix
-
-No
-
-## Running 
-
-Number of MPI procs: 16
-
-Submit to queue? No
-
-
-# Step23 - Refine3D /Job059
-
-## I/O
-
-Input images STAR file: Extract/job058/particles.star
-
-Reference map: Class3D/job046/run_ct150_it200_class001.mrc
-
-## Reference
-
-Ref. map is on absolute greyscale? No
-
-Initial low-pass filter (A): 50
-
-Symmetry: C3
-
-## CTF
-
-Do CTF-correction? Yes
-
-Ignore CTFs until first peak? Yes
-
-Have data been phase-flipped? No
-
-Ignore CTFs unitl first peak? No
-
-## Optimisation
-
-Mask diameter (A): 200
-
-Mask individual particles with zeros? Yes
-
-Use solvent-flattened FSCs? No
-
-## Auto-sampling
-
-Initial angular sampling: 7.5 degrees
-
-Initial offset range (pix): 5
-
-Initial offset step (pix): 1
-
-Searches from auto-sampling: 1.8 degrees
-
-*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
-
-## Helix 
-
-No
-
-## Compute
-
-Use parallel disc I/O? Yes
-
-Number of pooled particles: 3
-
-Pre-read all particles into RAM? No
-
-Copy particles to scratch directory: /lscratch/$SLURM_JOB_ID
-
-Combine iterations through disc? No
-
-Use GPU accelerations? Yes 
-
-## Running
-
-Number of MPI procs: 15
-
-Number of threads: 1
-
-Submit to queue? Yes
-
-Queue name: gpu
-
-Queue submit command: sbatch
-
-Walltime: 1-00:00:00
-
-Memory Per Thread: 8g
-
-Gres: lscratch:200, gpu:v100x:4
-
-Addl (ex4) SBATCH Directives: -N 5 --ntasks-per-node=3
-
-Standard submission script: /usr/local/apps/RELION/templates/common.sh
-
-Minimum dedicated cores per node: 1
-
-
-# Step24 - MaskCreate /Job060
-
-## I/O
-
-Input 3D map: Refine3D/job059/run_class001.mrc
-
-## Mask
-
-Lowpass filter map (A): 15
-
-Initial binarisation threshold: 0.01 #Usually we start this parameter with 0.01, and then optimize around 0.01 by step of 0.002 to get best resolution. 
-
-Extend binary map this many pixels: 5
-
-Add a soft-edge of this many pixels: 15
-
-## Running
-
-using CPUs.
-
-Number of threads: 16
-
-
-# Step25 - PostProcess /Job061
-
-## I/O
-
-One of the 2 unfiltered half-map: Refine3D/job059/run_half1_class001_unfil.mrc
-
-Solvent mask: MaskCreate/job060/mask.mrc
-
-Calibrated pixel size (A): 0.83
-
-## Sharpen
-
-Estimate B-factor automatically? Yes
-
-Lowest resolution for auto-B fit (A): 10
-
-Use your own B-factor? No
-
-Skip FSC-weighting? No
-
-## Running
-
-Submit to queue? No
-
-
-
-# Step26 - CTF refinement
-
-## I/O
-
-Partcles (from Refine3D): Refine3D/job059/run_data.star
-
-Postprocess STAR: PostProcess/job061/postprocess.star
-
-## Fit
-
-Minimum resolution for fits (A): 30
-
-Perform CTF parameter fitting? Yes
-
-Fit per-particle defocus? Yes
-
-Range for defocus fit (A): 2000
-
-Fit per-micrograh astigmatism? No
-
-*If set to Yes, ctf_refine will try to refine astigamtism on a per-micrograph basis. This will require many particles and good signal-to-noise ratios per micrograph.*
-
-Fit per-particle astigmatism? No
-
-*If set to Yes, astigmatism will be estimated on a per-particle basis. This requires very strong data, i.e. very large particles with excellent signal-to-noise ratios.*
-
-Fit per-micrograh phase-shift? No
-
-*If set to Yes, ctf_refine will try to refine a phase-shift (amplitude contrast) on a per-micrograph basis. This may be useful for Volta-phase plate data, but will require many particles and good signal-to-noise ratios per micrograph.*
-
-## Running
-
-Number of MPI procs: 65
-
-Number of threads: 2
-
-Submit to queue? Yes
-
-Queue name: multinode
-
-Queue submit command: sbatch
-
-Walltime: 1-00:00:00
-
-Memory Per Thread: 8g
-
-Gres: lscratch:200
-
-Addl (ex4) SBATCH Directives: 
-
-Standard submission script: /usr/local/apps/RELION/templates/common.sh
-
-Minimum dedicated cores per node: 1
-
-
-# Step27 - Bayesian Polishing - Running in training mode
-
-## I/O
-
-Micrographs (from MotionCorr): MotionCorr/job004/corrected_micrographs.star
-
-Particles (from Refine3D or CtfRefine): CtfRefine/job062/particles_ctf_refine.star
-
-Postprocess STAR file: PostProcess/job061/postprocess.star
+Postprocess STAR file: PostProcess/job073/postprocess.star
 
 First movie frame: 1
 
-Last movie frame: -1
-
-## Train
-
-Train optimal parameters? Yes
-
-Fraction of Fourier pixels for testing: 0.5
-
-Use this many particles: 5000
-
-## Polish
-
-Perform particle polishing? No
-
-## Running 
-
-Number of MPI procs: 1 #Here training mode, you can only use 1 MPI, but may use multi threads to speed up
-
-Number of threads: 16
-
-Submit to queue? No
-
-
-
-# Step28 - Bayesian Polishing - Running in polishing mode
-
-
-## I/O
-
-Micrographs (from MotionCorr): MotionCorr/job004/corrected_micrographs.star
-
-Particles (from Refine3D or CtfRefine): CtfRefine/job062/particles_ctf_refine.star
-
-Postprocess STAR file: PostProcess/job061/postprocess.star
-
-First movie frame: 1
-
-Last movie frame: -1
+Last movie frame: 30
 
 ## Train
 
@@ -3179,7 +2448,7 @@ Train optimal parameters? No
 
 Perform particle polishing? Yes
 
-Optimised parameter file: Polish/job064/opt_params.txt
+Optimised parameter file: Polish/job065/opt_params.txt
 
 OR use your own parameters? No
 
@@ -3189,39 +2458,97 @@ Maximum resolution for B-factor fit (A): -1
 
 ## Running 
 
-Number of MPI procs: 1
+Number of MPI procs: 8
 
-Number of threads: 16
+Number of threads: 6
 
-Submit to queue? Yes
+Submit to queue? No
 
-Queue name: norm
-
-Queue submit command: sbatch
-
-Walltime: 1-00:00:00
-
-Memory Per Thread: 8g
-
-Gres: lscratch:200
-
-
-
-# Step29 - Refine3D /Job067
+# Step64 Class2D/job075
 
 ## I/O
 
-Input images STAR file: Polish/job066/shiny.star
+Input image STAR file: Polish/job074/shiny.star
 
-Reference map: Class3D/job046/run_ct150_it200_class001.mrc
+## CTF
 
-Reference mask (optional): 
+Do CTF-correction? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs until first peak? Yes
+
+## Optimization
+
+Number of classes: 50
+
+Regularisation parameter T: 3
+
+Number of iterations: 50
+
+Use fast subsets (for large data sets)? Yes
+
+Mask diameter (A): 130  
+
+Mask individual particles with zeros? Yes
+
+Limit resolution E-step to (A): -1
+
+## Sampling
+
+Perform image alignment? Yes
+
+In-plane angular sampling: 6
+
+Offet search range (pix): 3
+
+Offet search step (pix): 1
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy partilces to scratch directory: /scratch/nvme-ssd/
+
+Combine iterations through disc? No
+
+Use GPU acceleration? Yes
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 4
+
+Submit to queue? No
+
+# Step65 Subset selection/job076/
+
+## I/O
+
+Select classes from model.star: Class2D/job075/run_it031_model.star
+
+# Step66 Refine3D/job077/
+
+## I/O: 
+
+Input images STAR file: Select/job076/particles.star
+
+Reference map: Refine3D/job041/run_class001.mrc
+
+Reference mask (optional): Refine3D/job041/mask.mrc
 
 ## Reference
 
-Ref. map is on absolute greyscale? No
+Ref. map is on absolute greyscale? Yes
 
-Initial low-pass filter (A): 50
+Initial low-pass filter (A): 20
 
 Symmetry: C3
 
@@ -3237,7 +2564,7 @@ Ignore CTFs unitl first peak? No
 
 ## Optimisation
 
-Mask diameter (A): 200
+Mask diameter (A): 150
 
 Mask individual particles with zeros? Yes
 
@@ -3245,7 +2572,7 @@ Use solvent-flattened FSCs? Yes
 
 ## Auto-sampling
 
-Initial angular sampling: 7.5 degrees
+Initial angular sampling: 3.7 degrees
 
 Initial offset range (pix): 5
 
@@ -3263,75 +2590,39 @@ No
 
 Use parallel disc I/O? Yes
 
-Number of pooled particles: 3
+Number of pooled particles: 30
 
 Pre-read all particles into RAM? No
 
-Copy particles to scratch directory: /lscratch/$SLURM_JOB_ID
+Copy particles to scratch directory: /scratch/nvme-ssd/
 
 Combine iterations through disc? No
 
 Use GPU accelerations? Yes 
 
-## Running
-
-Number of MPI procs: 15
-
-Number of threads: 1
-
-Submit to queue? Yes
-
-Queue name: gpu
-
-Queue submit command: sbatch
-
-Walltime: 1-00:00:00
-
-Memory Per Thread: 8g
-
-Gres: lscratch:200, gpu:v100x:4
-
-Addl (ex4) SBATCH Directives: -N 5 --ntasks-per-node=3
-
-Standard submission script: /usr/local/apps/RELION/templates/common.sh
-
-Minimum dedicated cores per node: 1
-
-
-# Step30 - MaskCreate /Job071
-
-## I/O
-
-Input 3D map: Refine3D/job067/run_class001.mrc
-
-## Mask
-
-Lowpass filter map (A): 15
-
-Initial binarisation threshold: 0.01 #Usually we start this parameter with 0.01, and then optimize around 0.01 by step of 0.002 to get best resolution. 
-
-Extend binary map this many pixels: 5
-
-Add a soft-edge of this many pixels: 15
+Which GPUs to use: 0:1:2
 
 ## Running
 
-using CPUs.
+Number of MPI procs: 7
 
-Number of threads: 16
+Number of threads: 3
 
+Submit to queue? No
 
-# Step25 - PostProcess /Job061
+# Step67 - Post-processing/job078/
 
 ## I/O
 
-One of the 2 unfiltered half-map: Refine3D/job067/run_half1_class001_unfil.mrc
+One of the 2 unfiltered half-maps: Refine3D/job077/run_half1_class001_unfil.mrc
 
-Solvent mask: MaskCreate/job071/mask.mrc
+Solvent mask: Refine3D/job041/mask.mrc
 
-Calibrated pixel size (A): 0.83
+Calibrated pixel size (A): 1.06
 
-## Sharpen
+## Sharpen:
+
+MTF of the detector (STAR): 
 
 Estimate B-factor automatically? Yes
 
@@ -3339,215 +2630,182 @@ Lowest resolution for auto-B fit (A): 10
 
 Use your own B-factor? No
 
+## Filter
+
 Skip FSC-weighting? No
+
+Ad-hoc low-pass filter (A): 5
 
 ## Running
 
 Submit to queue? No
 
-# Step26 Copy polished particle data into Cryosparc workstation
+# Step68 CTFRefine/job079/
 
-copy the "/data/dout2/20200304Krios_PnuC_3NR_Nanodisc/Polish/job066" folder into "/data/data2/dout2/P2".
+## I/O
 
-# Step27 Cryosparc - Import Particle Stack /J24
+Particles (from Refine3D): Refine3D/job077/run_data_1.star
 
-Particle meta path: /data/data2/dout2/P2/job066/shiny.star
+Postprocess STAR file: PostProcess/job078/postprocess.star
 
-Particle data path: /data/data2/dout2/P2/job066/finished
+## Fit
 
-# Step28 Cryosparc - Ab-Initia Reconstruction /J33
+Minimum resolution for fits (A): 30
 
-## Input
+Perform CTF parameter fitting? Yes
 
-particles: J24.Imported_particles
+Fit per-particle defocus?  Yes
 
-## Particle preprocessing
+Range for defocus fit (A): 2000
 
-Window dataset (real-space)
+Fit per-micrograph astigmatism? No
 
-Window Inner radius: 0.85
+Fit per-particle astigmatism? No
 
-Window outer radius: 0.99
+Fit per-micrograph phase-shift? No
 
-## Ab0-Initio reconstruction
+Perform beamtilt estimation? Yes
 
-Number of Ab-Initio classes: 2
+## Running
 
-Maximum resolution (Angstroms): 12
+Number of MPI procs: 4
 
-Initial resolution (Angstroms): 35
+Number of threads: 12
 
-Number of initial iterations: 200
+Submit to queue: No
 
-Number of final iterations: 300
 
-Fourier radius step: 0.04
 
-# Step29 Cryosparc - Heterogeneous Refinement /J36
+# Step69 Refine3D/job080/
 
-## Inputs
+## I/O: 
 
-particles: J33.particles_all_classes
+Input images STAR file: CtfRefine/job079/particles_ctf_refine.star
 
-volume: J33.volume_class_0
-        J33.volume_class_1
-        
-## Heterogeneous Refinement
+Reference map: Refine3D/job041/run_class001.mrc
 
-Refinement box size (Voxels): 128
+Reference mask (optional): Refine3D/job041/mask.mrc
 
-Symmetry: C3
+## Reference
 
-Plotting bfactor: -100
+Ref. map is on absolute greyscale? Yes
 
-Batch size per class: 1000
-
-# Step29 Cryosparc - Homogeneous Refinement (NEW!!) 
-
-## Input 
-
-particles: J36.particles_class_0
-
-volume: J36.volume_class_0
-
-mask: No input groups
-
-## Homogeneous Refinement
-
-Refinement box size (voxels): NONE
+Initial low-pass filter (A): 20
 
 Symmetry: C3
 
-Initial lowpass resolution (A): 30
+## CTF
 
-GSFSC split resolution (A): 20
+Do CTF-correction? Yes
 
+Ignore CTFs until first peak? Yes
 
-# Step30 Cryosparc - Non-uniform Refinement (BETA)
+Have data been phase-flipped? No
 
-## Input
+Ignore CTFs unitl first peak? No
 
-particles: J37.particles
+## Optimisation
 
-volume: J37.volume
+Mask diameter (A): 150
 
-mask: J37.mask
+Mask individual particles with zeros? Yes
 
-## Non-uniform Refinement
+Use solvent-flattened FSCs? Yes
 
-Refinement box size (voxels): NONE
+## Auto-sampling
 
-Symmetry: C3
+Initial angular sampling: 3.7 degrees
 
-Initial lowpass resolution (A): 30
+Initial offset range (pix): 5
 
-GSFSC split resolution (A): 20
+Initial offset step (pix): 1
 
-# Step31 repeat Ab0-Initio Reconstruction (2 class) -> Heterogeneous refinment -> Non-uniform refinement until resolution can't be further improved. 
+Searches from auto-sampling: 1.8 degrees
 
+*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
 
-# Step32 Cryosparc - Non-uniform Refinement (BETA)
+## Helix 
 
-## Input
+No
 
-particles: J74.particles
+## Compute
 
-volume: J74.volume
+Use parallel disc I/O? Yes
 
-mask: J74.mask
+Number of pooled particles: 30
 
-## Non-uniform Refinement
+Pre-read all particles into RAM? No
 
-Refinement box size (voxels): NONE
+Copy particles to scratch directory: /scratch/nvme-ssd/
 
-Symmetry: C3
+Combine iterations through disc? No
 
-Initial lowpass resolution (A): 30
+Use GPU accelerations? Yes 
 
-GSFSC split resolution (A): 20
+Which GPUs to use: 0:1:2
 
-# Step33 Cryosparc - Local Refinement (BETA)
+## Running
 
-## Inputs:
+Number of MPI procs: 7
 
-particles: J75.particles
+Number of threads: 3
 
-volume: J75.volume
+Submit to queue? No
 
-mask: J75.mask
+# Step70 - Post-processing/job081/
 
-# Step34 Cryosparc - Local Resolution Estimation
+## I/O
 
-## Inputs
+One of the 2 unfiltered half-maps: Refine3D/job080/run_half1_class001_unfil.mrc
 
-Volume: J82.volume
+Solvent mask: Refine3D/job041/mask.mrc
 
-mask: J82.mask
+Calibrated pixel size (A): 1.06
 
-## Local resolution
+## Sharpen:
 
-Step size: 1
+MTF of the detector (STAR): 
 
-FSC threshold: 0.5
+Estimate B-factor automatically? Yes
 
-Adaptive Window Factor: 6
+Lowest resolution for auto-B fit (A): 10
 
-# Step35 Cryosparc - Local Filtering
+Use your own B-factor? No
 
-*This should get the final map for model building? *
+## Filter
 
-## Inputs:
+Skip FSC-weighting? No
 
-Volume: J87.volume
+Ad-hoc low-pass filter (A): 5
 
-## Local filtering
+## Running
 
-Filter type to apply: lanczos
+Submit to queue? No
+# Step71 LocalRes/job082
 
-Use GPU OR CPU for computation: GPU
+## I/O
 
-# Step36 Sharpening Tools
+One of the two unfiltered half-maps: Refine3D/job080/run_half1_class001_unfil.mrc
 
-## Inputs
+Calibrated pixel size (A): 1.06
 
-volume : J88.volume
+## ResMap
 
-## Sharpening:
+Use ResMap? No
 
-B-Factor to apply: 0
+## Relion
 
-Use full FSC: Yes
+Use Relion? Yes
 
-Lowpass filter order: 8
+User-provided B-factor: -100
 
-Lowpass filter offset: 0 
+MTF of the detector (STAR file): 
 
-Generate new FSC mask: No
+## Running
 
-Threshold: 0.5
+Number of MPI procs: 8
 
-Mask near (A): 6
+Number of threads: 6
 
-Mask far (A): 12
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Submit to queue? No
 
