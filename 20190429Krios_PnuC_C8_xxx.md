@@ -1493,8 +1493,6 @@ Submit to queue? No
 
 ## Select classes from model.star: Class3D/job050/run_it038_model.star
 
-
-
 # Step42 - Refine3D/job052/
 
 ## I/O
@@ -1571,43 +1569,257 @@ Number of threads: 3
 
 Submit to queue? No
 
-# Step43
+# Step43 - Post-processing/job053/
 
-# Step45
+## I/O
 
-# Step46
+One of the 2 unfiltered half-maps: Refine3D/job052/run_half1_class001_unfil.mrc
 
-# Step47
+Solvent mask: Refine3D/job041/mask.mrc
+
+Calibrated pixel size (A): 1.06
+
+## Sharpen:
+
+MTF of the detector (STAR): 
+
+Estimate B-factor automatically? Yes
+
+Lowest resolution for auto-B fit (A): 10
+
+Use your own B-factor? No
+
+## Filter
+
+Skip FSC-weighting? No
+
+Ad-hoc low-pass filter (A): 5
+
+## Running
+
+Submit to queue? No
+
+# Step44 - Class2D/job054/
+
+## I/O
+
+Input image STAR file: Refine3D/job052/run_data.star
+
+## CTF
+
+Do CTF-correction? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs until first peak? Yes
+
+## Optimization
+
+Number of classes: 50
+
+Regularisation parameter T: 3
+
+Number of iterations: 50
+
+Use fast subsets (for large data sets)? Yes
+
+Mask diameter (A): 140  
+
+Mask individual particles with zeros? Yes
+
+Limit resolution E-step to (A): -1
+
+## Sampling
+
+Perform image alignment? No
+
+In-plane angular sampling: 6
+
+Offet search range (pix): 5
+
+Offet search step (pix): 1
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy partilces to scratch directory: /scratch/nvme-ssd/
+
+Combine iterations through disc? No
+
+Use GPU acceleration? No
+
+Which GPUs to use: 
+
+## Running
+
+Number of MPI procs: 12
+
+Number of threads: 4
+
+Submit to queue? No
+
+# Step45 Subset selection
+
+## I/O
+
+Select classes from model.star: Class2D/job054/run_it031_model.star
+
+# Step46 Particle extraction: 
+
+## I/O
+
+micrograph STAR file: CtfFind/job003/micrographs_ctf_selected.star
+
+Input coordinates: 
+
+OR re-extract refined particles? Yes
+
+Refined particles STAR file: Select/job055/particles.star
+
+Reset the refined offsets to zero? No
+
+OR: re-center refined coordinates? Yes
+
+Recenter on - X, Y, Z (pix): 0, 0, 0
+
+Manually set pixel size? No
+
+## Extract
+
+Particle box size (pix): 160
+
+Invert contrast? Yes
+
+Normalize particles? Yes
+
+Diameter background circle (pix): -1
+
+Stddev for white dust removal: 5
+
+Stddev for black dust removal: 5
+
+Rescale particles? No
+
+Rescaled size (pixels): 
+
+## Running
+
+Number of MPI procs: 12
+
+# Step47 - Class2D/job057/
+
+## I/O
+
+Input image STAR file: Extract/job056/particles.star
+
+## CTF
+
+Do CTF-correction? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs until first peak? Yes
+
+## Optimization
+
+Number of classes: 50
+
+Regularisation parameter T: 3
+
+Number of iterations: 50
+
+Use fast subsets (for large data sets)? Yes
+
+Mask diameter (A): 130  
+
+Mask individual particles with zeros? Yes
+
+Limit resolution E-step to (A): -1
+
+## Sampling
+
+Perform image alignment? Yes
+
+In-plane angular sampling: 6
+
+Offet search range (pix): 3
+
+Offet search step (pix): 1
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy partilces to scratch directory: /scratch/nvme-ssd/
+
+Combine iterations through disc? No
+
+Use GPU acceleration? Yes
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 4
+
+Submit to queue? No
 
 # Step48
 
 # Step49
 
+# Step50
 
+# Step51
 
+# Step52
 
+# Step53
 
+# Step54
 
+# Step55
 
+# Step56
 
+# Step57
 
+# Step58
 
+# Step59
 
+# Step60
 
+# Step61
 
+# Step62
 
+# Step63
 
+# Step64
 
+# Step65
 
+# Step66
 
+# Step67
 
+# Step68
 
+# Step69
 
-
-
-
-
-
+# Step70
 
 
 
