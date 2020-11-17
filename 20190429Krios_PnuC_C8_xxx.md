@@ -520,6 +520,108 @@ Number of threads: 3
 
 Submit to queue? No
 
+# Step17 Import/box_trimer_job024/
+
+## I/O
+
+Input files: Class3D/job014/box/*.box
+
+Node type: 2D/3D particle coordinates (*.box, *_pick.star)
+
+# Step18 Import/box_trimer_job025/
+
+## I/O
+
+Input files: Class3D/job023/box/*.box
+
+Node type: 2D/3D particle coordinates (*.box, *_pick.star)
+
+# Step19 Particle extraction/trimer_job026/
+
+## I/O
+
+micrograph STAR file: CtfFind/job003/micrographs_ctf_selected.star
+
+Input coordinates: Import/job024/coords_suffix.box
+
+OR re-extract refined particles? No
+
+Manually set pixel size? No
+
+## extract
+
+Particle box size (pix): 192
+
+Invert contrast? Yes
+
+Normalize particles? Yes
+
+Diameter background circle (pix): -1
+
+Stddev for white dust removal: 5 
+
+Stddev for black dust removal: 5
+
+Rescale particles? No #This will help fast the 2D classification of large datasets, especially preliminary data from autopicking. 
+
+## Helix
+
+No
+
+## Running 
+
+Number of MPI procs: 12
+
+Submit to queue? No
+
+
+# Step20 Particle extraction/hexamer_job027/
+
+## I/O
+
+micrograph STAR file: CtfFind/job003/micrographs_ctf_selected.star
+
+Input coordinates: Import/job025/coords_suffix.box
+
+OR re-extract refined particles? No
+
+Manually set pixel size? No
+
+## extract
+
+Particle box size (pix): 192
+
+Invert contrast? Yes
+
+Normalize particles? Yes
+
+Diameter background circle (pix): -1
+
+Stddev for white dust removal: 5 
+
+Stddev for black dust removal: 5
+
+Rescale particles? No #This will help fast the 2D classification of large datasets, especially preliminary data from autopicking. 
+
+## Helix
+
+No
+
+## Running 
+
+Number of MPI procs: 12
+
+Submit to queue? No
+
+
+
+
+
+
+
+
+
+
 
 
 
