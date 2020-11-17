@@ -174,6 +174,8 @@ Stddev for white dust removal: 5
 
 Stddev for black dust removal: 5
 
+Rescale particles? Yes
+
 Rescaled size (pixels): 96
 
 ## Running
@@ -613,6 +615,186 @@ Number of MPI procs: 12
 
 Submit to queue? No
 
+# Step21 - Import/job028
+
+## I/O 
+
+Input files: init3d/hexmer_192.mrc
+
+Node type: 3D reference (.mrc)
+
+
+# Step22 - Import/job029
+
+## I/O 
+
+Input files: init3d/mask_combo.mrc
+
+Node type: 3D reference (.mrc)
+
+# Step23 - Refine3D/hexamer_job030
+
+## I/O
+
+Input images STAR file: Extract/job027/particles.star
+
+Reference map: Import/job028/hexmer_192.mrc
+
+Reference mask (optional): Import/job029/mask_combo.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? No
+
+Initial low-pass filter (A): 20
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Ignore CTFs until first peak? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs unitl first peak? No
+
+## Optimisation
+
+Mask diameter (A): 160
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? Yes
+
+## Auto-sampling
+
+Initial angular sampling: 7.5 degrees
+
+Initial offset range (pix): 5
+
+Initial offset step (pix): 1
+
+Searches from auto-sampling: 1.8 degrees
+
+*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
+
+## Helix 
+
+No
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy particles to scratch directory: No
+
+Combine iterations through disc? No
+
+Use GPU accelerations? Yes 
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 3
+
+Submit to queue? No
+
+# Step24 - 2D classfiicaiton
+
+## I/O
+
+Input image STAR file: Extract/job027/particles.star
+
+## CTF
+
+Do CTF-correction? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs until first peak? Yes
+
+## Optimization
+
+Number of classes: 50
+
+Regularisation parameter T: 3
+
+Number of iterations: 30
+
+Use fast subsets (for large data sets)? Yes
+
+Mask diameter (A): 160  
+
+Mask individual particles with zeros? Yes
+
+Limit resolution E-step to (A): -1
+
+## Sampling
+
+Perform image alignment? Yes
+
+In-plane angular sampling: 6
+
+Offet search range (pix): 5
+
+Offet search step (pix): 1
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy partilces to scratch directory: No
+
+Combine iterations through disc? No
+
+Use GPU acceleration? Yes
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 10
+
+Number of threads: 3
+
+Submit to queue? No
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1035,107 +1217,7 @@ Minimum dedicated cores per node: 1
 
 Select classes from model.star: Class2D/job041/run_it025_model.star
 
-# Step20 3D classification /job043
 
-## I/O
-
-Input images STAR file: Select/job042/particles.star
-
-Reference map: ../PnuC_3NR_ModelBuilding/cryosparc_80Pix0.83A.mrc
-
-## Reference
-
-Ref. map is on absolute greyscale? No
-
-Initial low-pass filter (A): 50
-
-Symmetry: C3
-
-## CTF
-
-Do CTF-correction? Yes
-
-Has reference been CTF-corrected? Yes
-
-Have data been phase-flipped? No
-
-Ignore CTFs unitl first peak? No
-
-## Optimisation
-
-Number of classes: 4
-
-Regularisation parameter T: 4
-
-Number of iterations: 25
-
-Use fast subsets (for large datasets)? Yes
-
-Mask diameter (A): 200
-
-Mask individual particles with zeros? Yes
-
-*If set to Yes, then in the individual particles, the area outside a circle with the radius of the particle will be set to zeros prior to taking the Fourier transform. This will remove noise and therefore increase sensitivity in the alignment and classification. However, it will also introduce correlations between the Fourier components that are not modelled. When set to No, then the solvent area is filled with random noise, which prevents introducing correlations.High-resolution refinements (e.g. ribosomes or other large complexes in 3D auto-refine) tend to work better when filling the solvent area with random noise (i.e. setting this option to No), refinements of smaller complexes and most classifications go better when using zeros (i.e. setting this option to Yes).*
-
-Limit resolution E-step to (A): -1
-
-*If set to a positive number, then the expectation step (i.e. the alignment) will be done only including the Fourier components up to this resolution (in Angstroms). This is useful to prevent overfitting, as the classification runs in RELION are not to be guaranteed to be 100% overfitting-free (unlike the 3D auto-refine with its gold-standard FSC). In particular for very difficult data sets, e.g. of very small or featureless particles, this has been shown to give much better class averages. In such cases, values in the range of 7-12 Angstroms have proven useful.*
-
-## Sampling
-
-Perfomr image alignment? Yes
-
-Angular sampling interval: 7.5 degrees
-
-Offset search range (pix): 5
-
-Offset search step (pix): 1
-
-Perform local angular searches? No
-
-*If set to Yes, then rather than performing exhaustive angular searches, local searches within the range given below will be performed. A prior Gaussian distribution centered at the optimal orientation in the previous iteration and with a stddev of 1/3 of the range given below will be enforced.*
-
-## Helix
-
-No
-
-## Compute
-
-Use parallel disc I/O? Yes
-
-Number of pooled particles: 3
-
-Pre-read all particles into RAM? No
-
-Copy particles to scratch directory: No
-
-Combine iterations through disc? No
-
-Use GPU accelerations? Yes 
-
-## Running
-
-Number of MPI procs: 15
-
-Number of threads: 1
-
-Submit to queue? Yes
-
-Queue name: gpu
-
-Queue submit command: sbatch
-
-Walltime: 2-00:00:00
-
-Memory Per Thread: 8g
-
-Gres: lscratch:200, gpu:v100x:4
-
-Addl (ex4) SBATCH Directives: -N 5 --ntasks-per-node=3
-
-Standard submission script: /usr/local/apps/RELION/templates/common.sh
-
-Minimum dedicated cores per node: 1
 
 # Step21 Subset selection /job044
 
