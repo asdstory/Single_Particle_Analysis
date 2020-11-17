@@ -710,7 +710,7 @@ Number of threads: 3
 
 Submit to queue? No
 
-# Step24 - 2D classfiicaiton
+# Step24 - 2D classfication/hexamer_job031
 
 ## I/O
 
@@ -774,9 +774,400 @@ Number of threads: 3
 
 Submit to queue? No
 
+# Step25 - Select/hexamer_job032
+
+## I/O
+
+Input images STAR file: Extract/job027/particles.star
+
+# Step26 - Refine3D/hexamer_job033
+
+## I/O
+
+Input images STAR file: Select/job032/particles.star
+
+Reference map: Refine3D/job030/run_class001.mrc
+
+Reference mask (optional): Import/job029/mask_combo.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? No
+
+Initial low-pass filter (A): 20
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Ignore CTFs until first peak? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs unitl first peak? No
+
+## Optimisation
+
+Mask diameter (A): 160
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? Yes
+
+## Auto-sampling
+
+Initial angular sampling: 7.5 degrees
+
+Initial offset range (pix): 5
+
+Initial offset step (pix): 1
+
+Searches from auto-sampling: 1.8 degrees
+
+*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
+
+## Helix 
+
+No
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy particles to scratch directory: No
+
+Combine iterations through disc? No
+
+Use GPU accelerations? Yes 
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 3
+
+Submit to queue? No
+
+# Step27 - Import/job034
+
+## I/O 
+
+Input files: Refine3D/job033/mask.mrc
+
+Node type: 3D reference (.mrc) 
+
+# Step28 Subtract/hexamer_job035
+
+## I/O
+
+Input particles: Refine3D/job033/run_data.star
+
+Subtract partial signal? Yes
+
+Map to be projected: Refine3D/job033/run_class001.mrc
+
+Mask to apply to this map: Import/job034/mask.mrc
+
+OR revert to original particles? No
+
+## CTF
+
+Do apply CTFs? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs until first peak? No
 
 
+# Step29 - Refine3D/hexamer_job036
 
+## I/O
+
+Input images STAR file: Subtract/job035/subtracted.star
+
+Reference map: Refine3D/job030/run_class001.mrc
+
+Reference mask (optional): Import/job029/mask_combo.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? No
+
+Initial low-pass filter (A): 20
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Ignore CTFs until first peak? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs unitl first peak? No
+
+## Optimisation
+
+Mask diameter (A): 160
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? Yes
+
+## Auto-sampling
+
+Initial angular sampling: 7.5 degrees
+
+Initial offset range (pix): 5
+
+Initial offset step (pix): 1
+
+Searches from auto-sampling: 1.8 degrees
+
+*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
+
+## Helix 
+
+No
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy particles to scratch directory: /scratch/nvme-ssd/
+
+Combine iterations through disc? No
+
+Use GPU accelerations? Yes 
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 3
+
+Submit to queue? No
+
+# Step30 - Class2D/trimer_job037
+
+## I/O
+
+Input image STAR file: Extract/job026/particles.star
+
+## CTF
+
+Do CTF-correction? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs until first peak? Yes
+
+## Optimization
+
+Number of classes: 50
+
+Regularisation parameter T: 3
+
+Number of iterations: 30
+
+Use fast subsets (for large data sets)? Yes
+
+Mask diameter (A): 160  
+
+Mask individual particles with zeros? Yes
+
+Limit resolution E-step to (A): -1
+
+## Sampling
+
+Perform image alignment? Yes
+
+In-plane angular sampling: 6
+
+Offet search range (pix): 5
+
+Offet search step (pix): 1
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy partilces to scratch directory: No
+
+Combine iterations through disc? No
+
+Use GPU acceleration? Yes
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 10
+
+Number of threads: 3
+
+Submit to queue? No
+
+
+# Ste31 - Subtract/hexamer_job038
+
+## I/O
+
+Input particles: Refine3D/job036/run_data_orig.star
+
+Subtract partial signal? Yes
+
+Map to be projected: Refine3D/job036/run_class001.mrc
+
+Mask to apply to this map: Import/job034/mask.mrc
+
+OR revert to original particles? No
+
+## CTF
+
+Do apply CTFs? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs until first peak? No
+
+# Subset selection/trimer_job039/
+
+## I/O
+
+Select classes from model.star: Class2D/job037/run_it025_model.star
+
+# Step32 - Import/job040
+
+## I/O 
+
+Input files: init3d/trimer_192.mrc
+
+Node type: 3D reference (.mrc) 
+
+# Step33 - Refine3D/hexamer_job041
+
+## I/O
+
+Input images STAR file: Select/job039/particles.star
+
+Reference map: Refine3D/job030/run_class001.mrc
+
+Reference mask (optional): Import/job040/trimer_192.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? No
+
+Initial low-pass filter (A): 20
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Ignore CTFs until first peak? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs unitl first peak? No
+
+## Optimisation
+
+Mask diameter (A): 160
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? No
+
+## Auto-sampling
+
+Initial angular sampling: 7.5 degrees
+
+Initial offset range (pix): 5
+
+Initial offset step (pix): 1
+
+Searches from auto-sampling: 1.8 degrees
+
+*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
+
+## Helix 
+
+No
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy particles to scratch directory: No
+Combine iterations through disc? No
+
+Use GPU accelerations? Yes 
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 3
+
+Submit to queue? No
+
+# Step34 - Post-processing/job042/
+
+## I/O
+
+One of the 2 unfiltered half-maps: Refine3D/job041/run_half1_class001_unfil.mrc
+
+Solvent mask: Refine3D/job041/mask.mrc
+
+Calibrated pixel size (A): 1.06
+
+## Sharpen:
+
+MTF of the detector (STAR): 
+
+Estimate B-factor automatically? Yes
+
+Lowest resolution for auto-B fit (A): 10
+
+Use your own B-factor? No
+
+## Filter
+
+Skip FSC-weighting? No
+
+Ad-hoc low-pass filter (A): 5
+
+## Running
+
+Submit to queue? No
 
 
 
