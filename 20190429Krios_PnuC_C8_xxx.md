@@ -323,6 +323,11 @@ Submit to queue? No
 Selec classes from model.star: Class2D/job008/run_it025_model.star
 
 
+Select classes that interested, and save as templates.
+
+![](https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/SubsetSelection-job009-20190429dataset.png)
+
+
 
 
 
