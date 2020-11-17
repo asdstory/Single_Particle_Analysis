@@ -316,6 +316,12 @@ Number of threads: 3
 
 Submit to queue? No
 
+# Step12 - Subset selection
+
+## I/O 
+
+Selec classes from model.star: Class2D/job008/run_it025_model.star
+
 
 
 
