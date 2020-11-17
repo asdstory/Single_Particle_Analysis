@@ -1775,35 +1775,656 @@ Number of threads: 4
 
 Submit to queue? No
 
-# Step48
+# Step48 Subset selelction/job058/
 
-# Step49
+Select classes from model.star: Class2D/job057/run_it040_model.star
 
-# Step50
+# Step49 Refine3D/job060/
 
-# Step51
+## I/O: 
 
-# Step52
+Input images STAR file: Select/job058/particles.star
 
-# Step53
+Reference map: Refine3D/job041/run_class001_160.mrc
 
-# Step54
+Reference mask (optional): Refine3D/job041/mask_160.mrc
 
-# Step55
+## Reference
 
-# Step56
+Ref. map is on absolute greyscale? Yes
 
-# Step57
+Initial low-pass filter (A): 20
 
-# Step58
+Symmetry: C3
 
-# Step59
+## CTF
 
-# Step60
+Do CTF-correction? Yes
 
-# Step61
+Ignore CTFs until first peak? Yes
 
-# Step62
+Have data been phase-flipped? No
+
+Ignore CTFs unitl first peak? No
+
+## Optimisation
+
+Mask diameter (A): 130
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? Yes
+
+## Auto-sampling
+
+Initial angular sampling: 7.5 degrees
+
+Initial offset range (pix): 5
+
+Initial offset step (pix): 1
+
+Searches from auto-sampling: 1.8 degrees
+
+*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
+
+## Helix 
+
+No
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy particles to scratch directory: /scratch/nvme-ssd/
+
+Combine iterations through disc? No
+
+Use GPU accelerations? Yes 
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 3
+
+Submit to queue? No
+
+# Step50 - Post-processing/job061/
+
+## I/O
+
+One of the 2 unfiltered half-maps: Refine3D/job060/run_half1_class001_unfil.mrc
+
+Solvent mask: Refine3D/job041/mask_160.mrc
+
+Calibrated pixel size (A): 1.06
+
+## Sharpen:
+
+MTF of the detector (STAR): 
+
+Estimate B-factor automatically? Yes
+
+Lowest resolution for auto-B fit (A): 10
+
+Use your own B-factor? No
+
+## Filter
+
+Skip FSC-weighting? No
+
+Ad-hoc low-pass filter (A): 5
+
+## Running
+
+Submit to queue? No
+
+# Step51 Particle extraction/job062
+
+## I/O
+
+micrograph STAR file: CtfFind/job003/micrographs_ctf_selected.star
+
+Input coordinates: 
+
+OR re-extract refined particles? Yes
+
+Refined particles STAR file: Refine3D/job060/run_data.star
+
+Reset the refined offsets to zero? No
+
+OR: re-center refined coordinates? Yes
+
+Recenter on - X, Y, Z (pix): 0, 0, 0
+
+Manually set pixel size? No
+
+## Extract
+
+Particle box size (pix): 192
+
+Invert contrast? Yes
+
+Normalize particles? Yes
+
+Diameter background circle (pix): -1
+
+Stddev for white dust removal: 5
+
+Stddev for black dust removal: 5
+
+Rescale particles? No
+
+Rescaled size (pixels): 
+
+## Running
+
+Number of MPI procs: 12
+
+# Step52 Refine3D/job063/
+
+## I/O: 
+
+Input images STAR file: Extract/job062/particles.star
+
+Reference map: Refine3D/job041/run_class001.mrc
+
+Reference mask (optional): Refine3D/job041/mask.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? Yes
+
+Initial low-pass filter (A): 20
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Ignore CTFs until first peak? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs unitl first peak? No
+
+## Optimisation
+
+Mask diameter (A): 150
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? Yes
+
+## Auto-sampling
+
+Initial angular sampling: 7.5 degrees
+
+Initial offset range (pix): 40
+
+Initial offset step (pix): 4
+
+Searches from auto-sampling: 1.8 degrees
+
+*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
+
+## Helix 
+
+No
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy particles to scratch directory: /scratch/nvme-ssd/
+
+Combine iterations through disc? No
+
+Use GPU accelerations? Yes 
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 3
+
+Submit to queue? No
+
+# Step53 - Post-processing/job064/
+
+## I/O
+
+One of the 2 unfiltered half-maps: Refine3D/job063/run_half1_class001_unfil.mrc
+
+Solvent mask: Refine3D/job041/mask.mrc
+
+Calibrated pixel size (A): 1.06
+
+## Sharpen:
+
+MTF of the detector (STAR): 
+
+Estimate B-factor automatically? Yes
+
+Lowest resolution for auto-B fit (A): 10
+
+Use your own B-factor? No
+
+## Filter
+
+Skip FSC-weighting? No
+
+Ad-hoc low-pass filter (A): 5
+
+## Running
+
+Submit to queue? No
+
+# Step54 Bayesian polishing/train_job065
+
+## I/O
+
+Micrographs (from MotionCorr): MotionCorr/job002/corrected_micrographs.star
+
+Particles (from Refine3D or CtfRefine): Refine3D/job063/run_data.star
+
+Postprocess STAR file: PostProcess/job064/postprocess.star
+
+First movie frame: 1
+
+Last movie frame: -1
+
+## Train
+
+Train optimal parameters? Yes
+
+Fraction of Fourier pixels for testing: 0.5
+
+Use this many particles: 10000
+
+## Polish
+
+Perform particle polishing? No
+
+## Running 
+
+Number of MPI procs: 1 #Here training mode, you can only use 1 MPI, but may use multi threads to speed up
+
+Number of threads: 48
+
+Submit to queue? No
+
+
+
+# Step55 - Bayesian Polishing/polish_job066
+
+## I/O
+
+Micrographs (from MotionCorr): MotionCorr/job002/corrected_micrographs.star
+
+Particles (from Refine3D or CtfRefine): Refine3D/job063/run_data.star
+
+Postprocess STAR file: PostProcess/job064/postprocess.star
+
+First movie frame: 1
+
+Last movie frame: -1
+
+## Train
+
+Train optimal parameters? No
+
+## Polish
+
+Perform particle polishing? Yes
+
+Optimised parameter file: Polish/job065/opt_params.txt
+
+OR use your own parameters? No
+
+Minimum resolution for B-factor fit (A): 20
+
+Maximum resolution for B-factor fit (A): -1
+
+## Running 
+
+Number of MPI procs: 8
+
+Number of threads: 6
+
+Submit to queue? No
+
+# Step56 Class2D/job067
+
+## I/O
+
+Input image STAR file: Polish/job066/shiny.star
+
+## CTF
+
+Do CTF-correction? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs until first peak? Yes
+
+## Optimization
+
+Number of classes: 50
+
+Regularisation parameter T: 3
+
+Number of iterations: 50
+
+Use fast subsets (for large data sets)? Yes
+
+Mask diameter (A): 130  
+
+Mask individual particles with zeros? Yes
+
+Limit resolution E-step to (A): -1
+
+## Sampling
+
+Perform image alignment? Yes
+
+In-plane angular sampling: 6
+
+Offet search range (pix): 3
+
+Offet search step (pix): 1
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy partilces to scratch directory: /scratch/nvme-ssd/
+
+Combine iterations through disc? No
+
+Use GPU acceleration? Yes
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 4
+
+Submit to queue? No
+
+# Step57 Subset selection/job068/
+
+## I/O
+
+Select classes from model.star: Class2D/job067/run_it050_model.star
+
+# Step58 Refine3D/job069
+
+## I/O: 
+
+Input images STAR file: Select/job068/particles.star
+
+Reference map: Refine3D/job041/run_class001.mrc
+
+Reference mask (optional): Refine3D/job041/mask.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? Yes
+
+Initial low-pass filter (A): 20
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Ignore CTFs until first peak? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs unitl first peak? No
+
+## Optimisation
+
+Mask diameter (A): 150
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? Yes
+
+## Auto-sampling
+
+Initial angular sampling: 3.7 degrees
+
+Initial offset range (pix): 5
+
+Initial offset step (pix): 1
+
+Searches from auto-sampling: 1.8 degrees
+
+*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
+
+## Helix 
+
+No
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy particles to scratch directory: /scratch/nvme-ssd/
+
+Combine iterations through disc? No
+
+Use GPU accelerations? Yes 
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 3
+
+Submit to queue? No
+
+# Step59 - Post-processing/job064/
+
+## I/O
+
+One of the 2 unfiltered half-maps: Refine3D/job063/run_half1_class001_unfil.mrc
+
+Solvent mask: Refine3D/job041/mask.mrc
+
+Calibrated pixel size (A): 1.06
+
+## Sharpen:
+
+MTF of the detector (STAR): 
+
+Estimate B-factor automatically? Yes
+
+Lowest resolution for auto-B fit (A): 10
+
+Use your own B-factor? No
+
+## Filter
+
+Skip FSC-weighting? No
+
+Ad-hoc low-pass filter (A): 5
+
+## Running
+
+Submit to queue? No
+
+
+# Step60 CTFRefine/job071/
+
+## I/O
+
+Particles (from Refine3D): Refine3D/job069/run_data.star
+
+Postprocess STAR file: PostProcess/job070/postprocess.star
+
+## Fit
+
+Minimum resolution for fits (A): 30
+
+Perform CTF parameter fitting? Yes
+
+Fit per-particle defocus?  Yes
+
+Range for defocus fit (A): 2000
+
+Fit per-micrograph astigmatism? No
+
+Fit per-particle astigmatism? No
+
+Fit per-micrograph phase-shift? No
+
+Perform beamtilt estimation? No
+
+## Running
+
+Number of MPI procs: 4
+
+Number of threads: 12
+
+Submit to queue: No
+
+
+
+# Step61 Refine3D/job072/
+
+## I/O: 
+
+Input images STAR file: CtfRefine/job071/particles_ctf_refine.star
+
+Reference map: Refine3D/job041/run_class001.mrc
+
+Reference mask (optional): Refine3D/job041/mask.mrc
+
+## Reference
+
+Ref. map is on absolute greyscale? Yes
+
+Initial low-pass filter (A): 20
+
+Symmetry: C3
+
+## CTF
+
+Do CTF-correction? Yes
+
+Ignore CTFs until first peak? Yes
+
+Have data been phase-flipped? No
+
+Ignore CTFs unitl first peak? No
+
+## Optimisation
+
+Mask diameter (A): 150
+
+Mask individual particles with zeros? Yes
+
+Use solvent-flattened FSCs? Yes
+
+## Auto-sampling
+
+Initial angular sampling: 3.7 degrees
+
+Initial offset range (pix): 5
+
+Initial offset step (pix): 1
+
+Searches from auto-sampling: 1.8 degrees
+
+*In the automated procedure to increase the angular samplings, local angular searches of -6/+6 times the sampling rate will be used from this angular sampling rate onwards. For most lower-symmetric particles a value of 1.8 degrees will be sufficient. Perhaps icosahedral symmetries may benefit from a smaller value such as 0.9 degrees.*
+
+## Helix 
+
+No
+
+## Compute
+
+Use parallel disc I/O? Yes
+
+Number of pooled particles: 30
+
+Pre-read all particles into RAM? No
+
+Copy particles to scratch directory: /scratch/nvme-ssd/
+
+Combine iterations through disc? No
+
+Use GPU accelerations? Yes 
+
+Which GPUs to use: 0:1:2
+
+## Running
+
+Number of MPI procs: 7
+
+Number of threads: 3
+
+Submit to queue? No
+
+# Step62 - Post-processing/job073/
+
+## I/O
+
+One of the 2 unfiltered half-maps: Refine3D/job072/run_half1_class001_unfil.mrc
+
+Solvent mask: Refine3D/job041/mask.mrc
+
+Calibrated pixel size (A): 1.06
+
+## Sharpen:
+
+MTF of the detector (STAR): 
+
+Estimate B-factor automatically? Yes
+
+Lowest resolution for auto-B fit (A): 10
+
+Use your own B-factor? No
+
+## Filter
+
+Skip FSC-weighting? No
+
+Ad-hoc low-pass filter (A): 5
+
+## Running
+
+Submit to queue? No
 
 # Step63
 
@@ -1820,6 +2441,29 @@ Submit to queue? No
 # Step69
 
 # Step70
+
+# Step71
+
+# Step72
+
+# Step73
+
+# Step74
+
+# Step75
+
+# Step76
+
+# Step77
+
+# Step78
+
+# Step79
+
+# Step80
+
+
+
 
 
 
