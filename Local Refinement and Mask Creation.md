@@ -13,7 +13,10 @@ You can use the built-in segmentation tool in Chimera to algorithmically segment
 
 ## Fit in Map: 
 If you already have an atomic model of the region of the structure you want to refine, you can open it in the same session as your original structure and use the Fit in Map tool to align it. Then, you can use the molmap command to create a new volume from the atomic model that can serve as a mask.
-Mask Processing: Use the Volume Tools job to dilate your masks, add soft padding, and fill holes. This mask will be used to select a region of the structure to refine, but a dynamically generated mask will be used at each iteration of alignment.
+
+# Mask Processing: 
+
+Use the Volume Tools job to dilate your masks, add soft padding, and fill holes. This mask will be used to select a region of the structure to refine, but a dynamically generated mask will be used at each iteration of alignment.
 
 # Fulcrum: 
 
