@@ -115,3 +115,4 @@ The local refinement job will output heatmaps showing the magnitude of the chang
 
 # Adopted from: 
 - https://cryosparc.com/blog/local-refinement
+- https://guide.cryosparc.com/processing-data/all-job-types-in-cryosparc/local-refinement/mask-selection-and-generation-in-ucsf-chimera
