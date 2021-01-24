@@ -12,9 +12,13 @@ Mostly in order to have quick view of the results, or in another word, for grid/
 ## Step04 - Run the following script, when running smoothly, you will get the 2D classification results directly. Just start Relion GUI again, you should be able to see the 2D classification results.
 
 
+
+
 ```sh
 
 #!/bin/sh
+
+#Fast2D.sh
 
 cd 2021-01-15-TYD-Top1-corrected-averages
 
