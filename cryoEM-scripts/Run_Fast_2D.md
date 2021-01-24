@@ -36,6 +36,7 @@ relion_import  --do_coordinates  --i "CtfFind/job002/2020-12-04-TYD-Top1-correct
 
 
 ```sh
+
 #!/bin/sh
 
 cd 2021-01-07-TYD-Top1-corrected-averages
@@ -54,23 +55,7 @@ relion_import  --do_micrographs  --optics_group_name "opticsGroup1" --angpix 1.2
 
 `which relion_preprocess_mpi` --i CtfFind/job004/micrographs_ctf.star --coord_dir Import/job001/ --coord_suffix _automatch.box --part_star Extract/job006/particles.star --part_dir Extract/job006/ --extract --extract_size 200 --norm --bg_radius 75 --white_dust 5 --black_dust 5 --invert_contrast   --pipeline_control Extract/job006/
 
-
-
-
-relion_import  --do_micrographs  --optics_group_name "opticsGroup1" --angpix 1.26 --kV 200 --Cs 1.2 --Q0 0.1 --beamtilt_x 0 --beamtilt_y 0 --i "2020-12-04-TYD-Top1-corrected-averages/*_sum.mrc" --odir Import/job001/ --ofile micrographs.star --continue  --pipeline_control Import/job001/
-
-`which relion_run_ctffind_mpi` --i Import/job001/micrographs.star --o CtfFind/job002/ --Box 512 --ResMin 30 --ResMax 5 --dFMin 5000 --dFMax 50000 --FStep 500 --dAst 100 --ctffind_exe /data/jianglab-nfs/programs/apps/ctffind-4.1.13/ctffind --ctfWin -1 --is_ctffind4  --fast_search  --only_do_unfinished   --pipeline_control CtfFind/job002/
-
-module load Gautomatch/0.56
-
-Gautomatch --apixM 1.26 --diameter 100 *_sum_DW.mrc
-
-relion_import  --do_coordinates  --i "CtfFind/job002/2020-12-04-TYD-Top1-corrected-averages/*_automatch.box" --odir Import/job015/ --ofile coords_suffix_automatch.box --continue  --pipeline_control Import/job015/
-
-`which relion_preprocess_mpi` --i CtfFind/job002/micrographs_ctf.star --coord_dir Import/job015/ --coord_suffix _automatch.box --part_star Extract/job016/particles.star --part_dir Extract/job016/ --extract --extract_size 200 --norm --bg_radius 75 --white_dust 5 --black_dust 5 --invert_contrast  --only_do_unfinished   --pipeline_control Extract/job016/
-
-`which relion_refine_mpi` --o Class2D/job020/run --i Extract/job016/particles.star --dont_combine_weights_via_disc --pool 30 --pad 2  --ctf  --ctf_intact_first_peak  --iter 25 --tau2_fudge 2 --particle_diameter 200 --fast_subsets  --K 50 --flatten_solvent  --zero_mask  --oversampling 1 --psi_step 12 --offset_range 5 --offset_step 2 --norm --scale  --j 2 --gpu "0"  --pipeline_control Class2D/job020/
-
+`which relion_refine_mpi` --o Class2D/job007/run --i Extract/job005/particles.star --dont_combine_weights_via_disc --pool 3 --pad 2  --ctf  --ctf_intact_first_peak  --iter 25 --tau2_fudge 2 --particle_diameter 200 --fast_subsets  --K 50 --flatten_solvent  --zero_mask  --oversampling 1 --psi_step 12 --offset_range 5 --offset_step 2 --norm --scale  --j 2 --gpu "0"  --pipeline_control Class2D/job007/
 
 
 ```
