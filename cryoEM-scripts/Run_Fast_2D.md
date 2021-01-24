@@ -28,7 +28,7 @@ relion_import  --do_coordinates  --i "2021-01-15-TYD-Top1-corrected-averages/*_a
 
 relion_import  --do_micrographs  --optics_group_name "opticsGroup1" --angpix 1.26 --kV 200 --Cs 1.2 --Q0 0.1 --beamtilt_x 0 --beamtilt_y 0 --i "2021-01-15-TYD-Top1-corrected-averages/*_sum_DW.mrc" --odir Import/job002/ --ofile micrographs.star --pipeline_control Import/job002/
 
-`which relion_run_ctffind_mpi` --i Import/job003/micrographs.star --o CtfFind/job003/ --Box 512 --ResMin 30 --ResMax 5 --dFMin 5000 --dFMax 50000 --FStep 500 --dAst 100 --ctffind_exe /data/jianglab-nfs/programs/apps/ctffind-4.1.13/ctffind --ctfWin -1 --is_ctffind4  --fast_search   --pipeline_control CtfFind/job003/
+`which relion_run_ctffind_mpi` --i Import/job002/micrographs.star --o CtfFind/job003/ --Box 512 --ResMin 30 --ResMax 5 --dFMin 5000 --dFMax 50000 --FStep 500 --dAst 100 --ctffind_exe /data/jianglab-nfs/programs/apps/ctffind-4.1.13/ctffind --ctfWin -1 --is_ctffind4  --fast_search   --pipeline_control CtfFind/job003/
 
 `which relion_preprocess_mpi` --i CtfFind/job003/micrographs_ctf.star --coord_dir Import/job001/ --coord_suffix _automatch.box --part_star Extract/job006/particles.star --part_dir Extract/job004/ --extract --extract_size 200 --norm --bg_radius 75 --white_dust 5 --black_dust 5 --invert_contrast   --pipeline_control Extract/job004/
 
