@@ -6,9 +6,13 @@
 - [ ] cd to the CTF find results job folder, where micrographs_ctf.star exists.
 - [ ] mv micrographs_ctf.star micrographs_ctf_old.star
 - For RELION 3.0:
-- [ ] awk 'NR <= 18 {print $0 > "micrographs_ctf.star"} NR >18 && $3 >= 5000 && $3 <=30000 && $5 <= 1000 && $13 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
+```sh
+awk 'NR <= 18 {print $0 > "micrographs_ctf.star"} NR >18 && $3 >= 5000 && $3 <=30000 && $5 <= 1000 && $13 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
+```
 - For RELION 3.1: 
-- [ ] awk 'NR <= 30 {print $0 > "micrographs_ctf.star"} NR >30 && $4 >= 5000 && $4 <=30000 && $6 <= 1000 && $9 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
+```sh
+awk 'NR <= 30 {print $0 > "micrographs_ctf.star"} NR >30 && $4 >= 5000 && $4 <=30000 && $6 <= 1000 && $9 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
+```
 - How to count how many graphs selected: 
 - [ ] grep MotionCor micrographs_ctf.star | wc -l
 
@@ -17,23 +21,30 @@
 - [ ] cd to the Select/job results folder, where micrographs.star exists.
 - [ ] mv micrographs.star micrographs_old.star
 - For RELION 3.0:
-- [ ] awk 'NR <= 18 {print $0 > "micrographs.star"} NR >18 && $3 >= 5000 && $3 <=30000 && $5 <= 1000 && $13 <=4 {print $0 >> "micrographs.star"}' micrographs_old.star
+```sh
+awk 'NR <= 18 {print $0 > "micrographs.star"} NR >18 && $3 >= 5000 && $3 <=30000 && $5 <= 1000 && $13 <=4 {print $0 >> "micrographs.star"}' micrographs_old.star
+```
 - For RELION 3.1: 
-- [ ] awk 'NR <= 30 {print $0 > "micrographs.star"} NR >30 && $4 >= 5000 && $4 <=30000 && $6 <= 1000 && $9 <=4 {print $0 >> "micrographs.star"}' micrographs_old.star
+```sh
+awk 'NR <= 30 {print $0 > "micrographs.star"} NR >30 && $4 >= 5000 && $4 <=30000 && $6 <= 1000 && $9 <=4 {print $0 >> "micrographs.star"}' micrographs_old.star
+```
 - How to count how many graphs selected: 
-- [ ] grep MotionCor micrographs.star | wc -l
-
+```sh
+grep MotionCor micrographs.star | wc -l
+```
 ### Note: 
 - You can also change any of the thresold to get desired micrograph, e.g. default resolution thresold is 4, but you can change it to 5 to select more micrographs.
 - When trying to extract particles from selected micrographs using RELION, you will find that RELION only show "micrographs_ctf.star" in the default I/O. In the I/O panel, just select "micrographs_ctf.starCtfFind/job002/micrographs_ctf.satr" and change it to "CtfFind/job002/micrographs_ctf_new.star". In this way, you will extract particles only from micrographs you just selected. 
 
 ### How to caculate averaged resolution for all the micrographs selected: 
-
+- For RELION 3.0:
 ```
 awk '{ total += $13; count++ } END { print "The average resolution for all micrograhs here is:" total/count " A" }' micrographs_ctf.star 
 ```
-
-
+- For RELION 3.1:
+```
+awk '{ total += $9; count++ } END { print "The average resolution for all micrograhs here is:" total/count " A" }' micrographs_ctf.star 
+```
 
 ### More detail about the awk command:
 https://likegeeks.com/awk-command/
