@@ -1,4 +1,4 @@
-# Processing 20210121Gracios_PnuC-3NR-C8 dataset, totally xxxx images
+# Processing 20210121Gracios_PnuC-3NR-C8 dataset, totally 2907 images, K3 camera with super resolution mode
 
 # Step01 - Import images 
 
@@ -12,7 +12,7 @@ Optics group name: opticsGroup1
 
 MTF of the detector: 
 
-Pixel size (Angstrom): 0.6
+Pixel size (Angstrom): 0.58
 
 Voltage (kV): 200
 
@@ -26,28 +26,19 @@ Beamtilt in Y (mrad): 0
 
 
 
-
-
-
-
-
 Node type: 2D micrographs movies (*.mrcs, *tiff)
 
 # Step02 - Motion correction
 
 ## I/O
 
-Input movies STAR file: Import/job003/movies.star
+Input movies STAR file: Import/job015/movies.star
 
 First frame for corrected sum: 1
 
 Last frame for corrected sum: 0 
 
-Pixel size (A): 0.83
-
-Voltage (kV): 300
-
-Dose per frame (e/A2): 1.089
+Dose per frame (e/A2): 5.740
 
 Pre-exposure (e/A2): 0
 
@@ -56,6 +47,18 @@ Pre-exposure (e/A2): 0
 Bfactor: 150
 
 Number of patches X, Y: 5 5
+
+Group frames: 1
+
+Binning factor: 2
+
+Gain-reference image: 
+
+Gain rotation: No rotation (0)
+
+Gain flip: No flipping (0)
+
+Defect file: 
 
 Use RELION's own implementation? Yes
 
@@ -70,6 +73,14 @@ Number of threads: 2
 Submit to queue? Yes
 
 Queue name: multinode
+
+
+
+
+
+
+
+
 
 
 
