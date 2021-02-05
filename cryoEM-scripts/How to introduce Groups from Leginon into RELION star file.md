@@ -12,7 +12,7 @@
 - [ ] more leginon_image_shift_data_all_2021-02-04.txt
 
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Leginon_Image_Shift_Information.png?raw=true"
-     alt="Markdown Monster icon"
+     alt="leginon_image_shift_data from leginon"
      style="float: left; margin-right: 10px;" />
 
 # Step 2 - Introduce ImageShift information into the RELION .star file (usually Refine3D job star file)
@@ -26,9 +26,11 @@
 - [ ] module load EMscript/0.1
 ### Just run the program in this way, input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using Leginon, e.g. 4x4 or 5x5), (2)image list,(3)star file, (4)image shift file, it will generate a new star file which you can use in later CTF refine jobs and turn on the estimate Beamtilt option to estimate the beamtilt aberrations.
 - [ ] relion_group_image_shift.py --clusters=16 --image_shift_data=/data/nhlbi-nfs/lab-jiang/EM-RAW-DATA/jiangji2/krios_image_shift_data_all_20201119.txt --image_list=image_list.txt --input_star=run_data.star --output_star=run_data_image-shift-grouped.star
-### You should be able to see the new "run_data_image-shift-grouped.star", which will be like this if you view it.
+### You should be able to see the new "run_data_image-shift-grouped.star", which will be like this if you view it that the "\_rlnBeamTiltClass #32" was inserted.
 - [ ] more run_data_image-shift-grouped.star
 
-
+<img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/run_data_image-shift-grouped-star.png?raw=true"
+     alt="run_data_image-shift-grouped.star"
+     style="float: left; margin-right: 10px;" />
 
 
