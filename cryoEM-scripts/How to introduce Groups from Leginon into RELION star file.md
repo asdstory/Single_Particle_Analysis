@@ -19,6 +19,16 @@
 ### Go to your dataset/project job folder, find the star file "run_data.star", and may remember the absolute address for this file.
 - [ ] cd Refine3D/job300/
 - [ ] pwd
-### Go to our lab folder, find out the script named "relion_group_image_shift.py"
-- [ ] 
+### Go to the import folder of RELION, try export your image list in this way. This image list will be used in the program later.
+- [ ] cat movies.star | grep .tif > image_list.txt
+### Go to our own Linux machine, type "module avail", you will be able to find the "EMscript/0.1" which was written by Jiansen.
+- [ ] module avail
+- [ ] module load EMscript/0.1
+### Just run the program in this way, input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using Leginon, e.g. 4x4 or 5x5), (2)image list,(3)star file, (4)image shift file, it will generate a new star file which you can use in later CTF refine jobs and turn on the estimate Beamtilt option to estimate the beamtilt aberrations.
+- [ ] relion_group_image_shift.py --clusters=16 --image_shift_data=/data/nhlbi-nfs/lab-jiang/EM-RAW-DATA/jiangji2/krios_image_shift_data_all_20201119.txt --image_list=image_list.txt --input_star=run_data.star --output_star=run_data_image-shift-grouped.star
+### You should be able to see the new "run_data_image-shift-grouped.star", which will be like this if you view it.
+- [ ] more run_data_image-shift-grouped.star
+
+
+
 
