@@ -16,5 +16,9 @@
      style="float: left; margin-right: 10px;" />
 
 # Step 2 - Introduce ImageShift information into the RELION .star file (usually Refine3D job star file)
-
+### Go to your dataset/project job folder, find the star file "run_data.star", and may remember the absolute address for this file.
+- [ ] cd Refine3D/job300/
+- [ ] pwd
+### Go to our lab folder, find out the script named "relion_group_image_shift.py"
+- [ ] 
 
