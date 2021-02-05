@@ -32,5 +32,12 @@
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/run_data_image-shift-grouped-star.png?raw=true"
      alt="run_data_image-shift-grouped.star"
      style="float: left; margin-right: 10px;" />
+### Jiansen's script will also generate a pdf file showing how good the cluster/group results will be. In general, if you see something like this then it should be fine/the program should work.
+- [ ] gvfs-open image_shiftPnuC_20apr27a_g3.pdf
+
+<img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Image_shift_cluster%20result%20pdf.png?raw=true"
+     alt="run_data_image-shift-grouped-star"
+     style="float: left; margin-right: 10px;" />
+
 
 
