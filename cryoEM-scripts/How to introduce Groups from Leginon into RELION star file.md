@@ -7,6 +7,11 @@
 - [ ] ssh krios@leginon.niddk.nig.gov
 ### Go to the "/local/bin/" folder and run the script "get_image_shift_data_all.sh" and name the output file, which contain the Beamtilt information for every image Leginon has taken.
 - [ ] cd /local/bin
-- [ ] 
+- [ ]  ./get_image_shift_data_all.sh > leginon_image_shift_data_all_2021-02-04.txt
+### And if you view this file, you will be able to see the ID, date, grid name and the image shift information that Leginon generated when taking each image. 
+- [ ] more leginon_image_shift_data_all_2021-02-04.txt
 
 
+<img src="Figures/Leginon_Image_Shift_Information.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
