@@ -14,3 +14,7 @@
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Leginon_Image_Shift_Information.png?raw=true"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
+
+# Step 2 - Introduce ImageShift information into the RELION .star file (usually Refine3D job star file)
+
+
