@@ -3,4 +3,8 @@
 
 # Step 1 - Export the Beamtilt information from Leginon
 
+### Login to the leginon computer
+- [ ] ssh krios@leginon.niddk.nig.gov
+
+
 
