@@ -22,6 +22,8 @@ gautomatch --apixM 1.27 --diameter 80 --lave_D 100 --lave_min -0.8 --lsigma_cuto
 
 [user@cn3144 ~]$ gautomatch --apixM 1.34 --diameter 400 --T templates_lp40_3.2A.mrcs --apixT 3.2 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2  --cc_cutoff 0.25 test?.mrc
 
+[user@cn3144 ~]$ gautomatch --apixM 1.16 --diameter 80 --T /data/dout2/20200427Krios_PnuC_3NR_Nanodisc/AutoPick/Template/3NR-Nanodisc-2.5A-erase_lp_proj.star --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2  --cc_cutoff 0.25 *.mrc
+
 #Or, for simple use, just
 
 # For TF20 data
