@@ -64,7 +64,7 @@ Submit to queue? No
 
 Input micrographs STAR file: MotionCorr/job002/corrected_micrographs.star
 
-Use micrograph without dose-weighting? Yes #It is recommended that we use micrograph without dose-weight for CTF estimate, but use micrograph with dose-weight. 
+Use micrograph without dose-weighting? Yes #It is recommended that we use micrograph without dose-weight for CTF estimate, but use micrograph with dose-weight for particle picking. 
 
 Spherical aberration (mm): 2.7
 
