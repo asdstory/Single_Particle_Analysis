@@ -2,7 +2,7 @@
 ## How to do it: 
 Just prepare the reference mrc files and then make a list star file as following (similar to the one RELION generated in Class3D jobs, the model.star file), then in the Class3D reference input option, load the star file as input reference. 
 
-### file name: class3D_model_5.star
+### File name: class3D_model_5.star
 ```
 data_
 
