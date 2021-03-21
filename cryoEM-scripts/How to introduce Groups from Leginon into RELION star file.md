@@ -26,7 +26,7 @@
 - [ ] module load EMscript/0.1
 ### Just run the program in this way, input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using Leginon, e.g. 4x4 or 5x5), (2)image list,(3)star file, (4)image shift file, it will generate a new star file which you can use in later CTF refine jobs and turn on the estimate Beamtilt option to estimate the beamtilt aberrations.
 - [ ] relion_group_image_shift.py --clusters=16 --image_shift_data=/data/nhlbi-nfs/lab-jiang/EM-RAW-DATA/jiangji2/krios_image_shift_data_all_20201119.txt --image_list=image_list.txt --input_star=run_data.star --output_star=run_data_image-shift-grouped.star
-- [ ] relion_group_image_shift.py --clusters=16 --image_shift_data=/data/nhlbi-nfs/lab-jiang/EM-RAW-DATA/jiangji2/krios_image_shift_data_all_20201119.txt --image_list=/data/dout2/20200427Krios_PnuC_3NR_Nanodisc/Import/job148/image_list.txt --input_star=run_data.star --output_star=run_data_image-shift-grouped.star
+- [ ] relion_group_image_shift.py --clusters=16 --image_shift_data=/data/nhlbi-nfs/lab-jiang/EM-RAW-DATA/jiangji2/krios_image_shift_data_all_20201119.txt --image_list=/data/biowulf-data-smb/dout2/20200427Krios_PnuC_3NR_Nanodisc/Import/job148/image_list.txt --input_star=run_data.star --output_star=run_data_image-shift-grouped.star
 ### You should be able to see the new "run_data_image-shift-grouped.star", which will be like this if you view it that the "\_rlnBeamTiltClass #32" was inserted.
 - [ ] more run_data_image-shift-grouped.star
 
