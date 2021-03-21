@@ -20,7 +20,7 @@
 - [ ] cd Refine3D/job300/
 - [ ] pwd
 ### Go to the import folder of RELION, try export your image list in this way. This image list will be used in the program later.
-- [ ] cat movies.star | grep .tif > image_list.txt
+- [ ] awk -F/ {'print $2'} movies.star >image_list.txt
 ### Go to our own Linux machine, type "module avail", you will be able to find the "EMscript/0.1" which was written by Jiansen.
 - [ ] module avail
 - [ ] module load EMscript/0.1
