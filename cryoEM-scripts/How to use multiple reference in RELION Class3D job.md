@@ -14,9 +14,9 @@ data_
 
 loop_
 _rlnReferenceImage #1
-class3D/job105/run_it_050_class001.mrc
-class3D/job105/run_it_050_class002.mrc
-class3D/job105/run_it_050_class003.mrc
-class3D/job105/run_it_050_class004.mrc
-class3D/job094/run_it_050_class001.mrc
+Class3D/job105/run_it_050_class001.mrc
+Class3D/job105/run_it_050_class002.mrc
+Class3D/job105/run_it_050_class003.mrc
+Class3D/job105/run_it_050_class004.mrc
+Class3D/job094/run_it_050_class001.mrc
 ```
