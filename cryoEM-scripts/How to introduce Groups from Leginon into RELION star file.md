@@ -4,7 +4,7 @@
 # Step 1 - Export the Beamtilt information from Leginon
 
 ### Login to the leginon computer
-- [ ] ssh krios@leginon.niddk.nig.gov
+- [ ] ssh krios@leginon.niddk.nih.gov
 ### Go to the "/local/bin/" folder and run the script "get_image_shift_data_all.sh" and name the output file, which contain the image shift information for every image Leginon has taken.
 - [ ] cd /local/bin
 - [ ]  ./get_image_shift_data_all.sh > leginon_image_shift_data_all_2021-02-04.txt
