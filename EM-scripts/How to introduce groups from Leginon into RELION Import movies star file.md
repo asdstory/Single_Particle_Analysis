@@ -15,13 +15,15 @@
      alt="leginon_image_shift_data from leginon"
      style="float: left; margin-right: 10px;" />
 
-# Step 2 - ### Just run the program in this way, input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using Leginon, e.g. 4x4 or 5x5), (2)image shift file, (3)input movies.star file, (4)out movies_group.star file (or any name you like), it will generate a new star file which you can use in later motioncor, CTF correction, 2D 3D etc jobs and turn on the estimate Beamtilt option in Ctfrefine to estimate the beamtilt aberrations.
+# Step 2 - Just run the program in this way
+input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using Leginon, e.g. 4x4 or 5x5), (2)image shift file, (3)input movies.star file, (4)out movies_group.star file (or any name you like), it will generate a new star file which you can use in later motioncor, CTF correction, 2D 3D etc jobs and turn on the estimate Beamtilt option in Ctfrefine to estimate the beamtilt aberrations.
 
 - [ ] relion_group_image_shift_import_2.py --clusters=25 --image_shift_data=/data/biowulf-data-smb/dout2/DataLibrary/leginon_image_shift_data_all_2021-03_29.txt --input_star=movies.star --output_star=movies_group.star
 
 movies.star file before group looks like 
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/MoviesStarFileBeforeGroup.png"
      style="float: left; margin-right: 10px;" />
+     
 movies.star file after group will look like this
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/MoviesStarFileAfterGroup.png"
      style="float: left; margin-right: 10px;" />
