@@ -22,7 +22,7 @@ input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using
 
 movies.star file before group looks like 
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/MoviesStarFileBeforeGroup.png"
-     style="float: left; margin-right: 10px;"  />
+     style="float: left; margin-right: 10px;" width="700" height="500"  />
      
 movies.star file after group will look like this
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/MoviesStarFileAfterGroup.png"
