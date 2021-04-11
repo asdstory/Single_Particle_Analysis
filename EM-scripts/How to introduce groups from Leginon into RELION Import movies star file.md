@@ -21,6 +21,7 @@ input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using
 - [ ] relion_group_image_shift_import_2.py --clusters=25 --image_shift_data=/data/biowulf-data-smb/dout2/DataLibrary/leginon_image_shift_data_all_2021-03_29.txt --input_star=movies.star --output_star=movies_group.star
 
 movies.star file before group looks like 
+
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/MoviesStarFileBeforeGroup.png"
      style="float: left; margin-right: 10px;" width="700" height="500"  />
      
