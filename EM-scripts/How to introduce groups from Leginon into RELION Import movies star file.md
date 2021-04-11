@@ -33,7 +33,7 @@ movies.star file after group will look like this
 
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Image_shift_cluster%20result%20pdf.png?raw=true"
      alt="run_data_image-shift-grouped-star"
-     style="float: left; margin-right: 10px;" />
+     style="float: left; margin-right: 10px;" width="800" height="800" />
 
 
 
