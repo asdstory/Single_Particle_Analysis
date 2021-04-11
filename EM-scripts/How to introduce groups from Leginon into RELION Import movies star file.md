@@ -22,11 +22,11 @@ input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using
 
 movies.star file before group looks like 
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/MoviesStarFileBeforeGroup.png"
-     style="float: left; margin-right: 10px;" />
+     style="float: left; margin-right: 10px;"  />
      
 movies.star file after group will look like this
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/MoviesStarFileAfterGroup.png"
-     style="float: left; margin-right: 10px;" />
+     style="float: left; margin-right: 10px;" width="400" height="200" />
  
 ### Jiansen's script will also generate a pdf file showing how good the cluster/group results will be. In general, if you see something like this then it should be fine/the program should work.
 - [ ] gvfs-open image_shiftPnuC_20apr27a_g3.pdf
