@@ -96,6 +96,23 @@ def read_image_full_name(fn):
             break
     return tmp
 
+def read_optical_parameter(fn):
+    try:
+        l = file(fn).readlines()
+    except:
+        print "Can't read image list file " + fn + "."
+        exit(1)
+    tmp = []
+    for i in range(len(l)):
+        pat = re.compile(r"(\w+)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)")
+        #"opticsGroup1            1     0.850000   300.000000     2.700000     0.100000"
+        result = pat.match(l[i])
+        if result:
+            tmp = result.groups()
+            print "Input optical parameters are:" + str(tmp) + "\n"
+            break
+    return tmp
+
 def correlate_timestamp(ts1, ts2):
     if ts1[0] > ts2[0]: d_start = ts1[0]
     else: d_start = ts2[0]
@@ -293,8 +310,11 @@ f.write("_rlnMicrographOriginalPixelSize #3"+"\n")
 f.write("_rlnVoltage #4"+"\n")
 f.write("_rlnSphericalAberration #5"+"\n")
 f.write("_rlnAmplitudeContrast #6"+"\n")
+
+Optical_parameter = read_optical_parameter((options.input_star))
+
 for i in range(cn):
-    line = "opticsGroup" + str(i+1) + "            " + str(i+1) +"     0.850000   300.000000     2.700000     0.100000"+"\n"
+    line = "opticsGroup" + str(i+1) + "            " + str(i+1) +"     "+str(Optical_parameter[2])+"   "+str(Optical_parameter[3])+"     "+str(Optical_parameter[4])+"     "+str(Optical_parameter[])"+"\n"
     f.write(line)
 f.write("\n")
 f.write("\n")
