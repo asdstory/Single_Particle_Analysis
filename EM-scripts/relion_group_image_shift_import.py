@@ -307,6 +307,6 @@ f.write("_rlnOpticsGroup #2"+"\n")
 Image_name = read_image_full_name((options.input_star))
 
 for x in sorted(shift_class_dict.keys()):
-    line = str(Image_name[0])+str(x)+"."+str(Image_name[8])+"            "+str(shift_class_dict[x])+"\n"
+    line = str(Image_name[0])+str(x)+"."+str(Image_name[8])+"            "+str(shift_class_dict[x]+1)+"\n"
     f.write(line)
 f.close()
