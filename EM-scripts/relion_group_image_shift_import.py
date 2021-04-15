@@ -104,7 +104,7 @@ def read_optical_parameter(fn):
         exit(1)
     tmp = []
     for i in range(len(l)):
-        pat = re.compile(r"(\w+)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)")
+        pat = re.compile(r"(\w+)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)")
         #"opticsGroup1            1     0.850000   300.000000     2.700000     0.100000"
         result = pat.match(l[i])
         if result:
@@ -314,7 +314,7 @@ f.write("_rlnAmplitudeContrast #6"+"\n")
 Optical_parameter = read_optical_parameter((options.input_star))
 
 for i in range(cn):
-    line = "opticsGroup" + str(i+1) + "            " + str(i+1) +"     "+str(Optical_parameter[2])+"   "+str(Optical_parameter[3])+"     "+str(Optical_parameter[4])+"     "+str(Optical_parameter[])"+"\n"
+    line = "opticsGroup" + str(i+1) + "            " + str(i+1) +"     "+str(Optical_parameter[2])+"   "+str(Optical_parameter[3])+"     "+str(Optical_parameter[4])+"     "+str(Optical_parameter[5])+"\n"
     f.write(line)
 f.write("\n")
 f.write("\n")
