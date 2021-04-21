@@ -13,3 +13,6 @@ usage: subparticles.py [-h] [--apix APIX] [--boxsize BOXSIZE] [--class CLS]
 
 ```
 
+```py 
+python3 /home/dout2/programs/apps/pyem/pyem-0.4/subparticles.py input subtracted.star output subtracted_shift.star --apix 0.83 --boxsize 200 --shift-only 
+```
