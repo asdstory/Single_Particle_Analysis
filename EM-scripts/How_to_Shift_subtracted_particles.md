@@ -16,8 +16,15 @@ subparticles.py --apix 0.83 --boxsize 200 --target 0,0,-68 --shift-only subtract
 ```
 
 ### By using the pyem/0.4 version, it is: 
+
+### However, you may want to switch python version from 2 to 3 first before running subparticles.py
+
+```sh
+sudo update-alternatives --config python
+```
+
 ```py
-python3 /home/dout2/programs/apps/pyem/pyem-0.4/subparticles.py
+subparticles.py
 usage: subparticles.py [-h] [--apix APIX] [--boxsize BOXSIZE] [--class CLS]
                        [--displacement DISPLACEMENT] [--origin x,y,z]
                        [--target x,y,z] [--invert] [--psi PSI]
@@ -30,5 +37,6 @@ usage: subparticles.py [-h] [--apix APIX] [--boxsize BOXSIZE] [--class CLS]
 ```
 
 ```py 
-python3 /home/dout2/programs/apps/pyem/pyem-0.4/subparticles.py --apix 0.83 --boxsize 200 --target 0,0,-68 --shift-only subtracted.star subtracted_shift.star
+subparticles.py --apix 0.83 --boxsize 200 --target 0,0,-68 --shift-only subtracted.star subtracted_shift.star
 ```
+
