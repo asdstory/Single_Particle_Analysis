@@ -39,4 +39,4 @@ usage: subparticles.py [-h] [--apix APIX] [--boxsize BOXSIZE] [--class CLS]
 ```py 
 subparticles.py --apix 0.83 --boxsize 200 --target 0,0,-68 --shift-only subtracted.star subtracted_shift.star
 ```
-
+#### From: https://github.com/asarnow/pyem
