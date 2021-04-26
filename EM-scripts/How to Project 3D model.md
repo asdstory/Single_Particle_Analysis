@@ -8,7 +8,7 @@ We will use RELION for projecting the 3D volume. But, before projecting, we will
 ## Log into any lab machine and type: 
 ```sh
 $ module load relion
-$ relion_image_handler --i input.mrc --o input_lp.mrc --angpix 1 --lowpass=10
+$ relion_image_handler --i input.mrc --o input_lp.mrc --angpix 1 --lowpass 10
 $ relion_project --i input_lp.mrc --o input_lp_proj --nr_uniform 10
 ```
 *This will output a stack of projects in .mrcs format and an accompanying .star file.
