@@ -24,6 +24,9 @@ gautomatch --apixM 1.27 --diameter 80 --lave_D 100 --lave_min -0.8 --lsigma_cuto
 
 [user@cn3144 ~]$ gautomatch --apixM 1.16 --diameter 80 --T /data/dout2/20200427Krios_PnuC_3NR_Nanodisc/AutoPick/Template/3NR-Nanodisc-2.5A-erase_lp_proj.star --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2  --cc_cutoff 0.25 *.mrc
 
+[user@cn3144 ~]$ gautomatch --apixM 0.093 --diameter 80 --T /data/dout2/PnuC_Map-Model/PnuCT0-3NR-C8_P6_J36_lf_3.0A_lp10_pj.mrcs --apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 *Fractions.mrc
+
+
 #Or, for simple use, just
 
 # For TF20 data
