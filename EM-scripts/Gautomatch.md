@@ -22,7 +22,7 @@ gautomatch --apixM 1.27 --diameter 80 --lave_D 100 --lave_min -0.8 --lsigma_cuto
 
 [user@cn3144 ~]$ gautomatch --apixM 1.34 --diameter 400 --T templates_lp40_3.2A.mrcs --apixT 3.2 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2  --cc_cutoff 0.25 test?.mrc
 
-[user@cn3144 ~]$ gautomatch --apixM 0.093 --diameter 80 --T /data/dout2/PnuC_Map-Model/PnuCT0-3NR-C8_P6_J36_lf_3.0A_lp10_pj.mrcs --apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 *Fractions.mrc
+[user@cn3144 ~]$ gautomatch --apixM 0.93 --diameter 80 --T /data/dout2/PnuC_Map-Model/PnuCT0-3NR-C8_P6_J36_lf_3.0A_lp10_pj.mrcs --apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 *Fractions.mrc
 
 
 #Or, for simple use, just
