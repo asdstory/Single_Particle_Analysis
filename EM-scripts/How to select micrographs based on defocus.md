@@ -13,6 +13,11 @@ awk 'NR <= 18 {print $0 > "micrographs_ctf.star"} NR >18 && $3 >= 5000 && $3 <=3
 ```sh
 awk 'NR <= 30 {print $0 > "micrographs_ctf.star"} NR >30 && $4 >= 5000 && $4 <=30000 && $6 <= 1000 && $9 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
 ```
+
+- For RELION 3.1 with Import groups: 
+```sh
+awk 'NR <= 79 {print $0 > "micrographs_ctf.star"} NR >79 && $5 >= 5000 && $5 <=30000 && $7 <= 1000 && $10 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
+```
 - How to count how many graphs selected: 
 - [ ] grep MotionCor micrographs_ctf.star | wc -l
 
