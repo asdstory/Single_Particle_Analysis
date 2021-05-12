@@ -33,7 +33,7 @@ relion_image_handler --i cryosparc_200Pix.mrc --rescale_angpix 1.26 --o cryospar
 
 ```shell
 ml RELION/3.0.8
-relion_image_handler --i cryosparc_P7_J30__localfilter_2.8A.mrc --rescale_angpix 1.26 --o cryosparc_Pix1.26A.mrc
+relion_image_handler --i job051_run_it050_class001.mrc --rescale_angpix 0.85 --o --force_header_angpix 0.85 class001_pix0.85.mrc 
 relion_image_handler --i cryosparc_Pix1.26A.mrc --new_box 200 --o cryosparc_200Pix1.26A.mrc
 module load EMAN2
 e2iminfo.py cryosparc_200Pix1.26A.mrc
