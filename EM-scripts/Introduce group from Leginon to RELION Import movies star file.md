@@ -22,6 +22,8 @@ input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using
 
 - [ ] relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/biowulf-data-smb/dout2/DataLibrary/leginon_image_shift_data_all_2021-03_29.txt --input_star=movies.star --output_star=movies_group.star
 - [ ] relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/biowulf-data-smb/dout2/DataLibrary/leginon_image_shift_data_all_2021-05-08.txt --input_star=movies.star --output_star=movies_group.star
+- [ ] /home/dout2/programs/apps/EMscript/relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/biowulf-data-smb/dout2/DataLibrary/leginon_image_shift_data_all_2021-05-31.txt --input_star=movies.star --output_star=movies_group.star
+
 
 movies.star file before group looks like 
 
