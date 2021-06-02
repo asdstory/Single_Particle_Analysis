@@ -27,20 +27,14 @@ cat x1.star
 
 for i in MotionCorr/job044/finished-frames/*_????????.mrc; do echo relion_image_handler --i $i --o tmp/`basename $i` --angpix 1 --rescale_angpix 10; done
 
-
 for i in MotionCorr/job044/finished-frames/*_????????.mrc; do relion_image_handler --i $i --o tmp/`basename $i` --angpix 1 --rescale_angpix 20; done
 
 relion_display --i x1.star --display rlnMicrographName
 
 for i in MotionCorr/job044/finished-frames/*_????????.mrc; do echo relion_image_handler --i $i --o tmp/`basename $i` --angpix 1 --rescale_angpix 10; done
 
-
 for i in MotionCorr/job044/finished-frames/*_????????.mrc; do echo relion_image_handler --i $i --o tmp/`basename $i` --angpix 1 --rescale_angpix 10; done > runpar.cmd
 
-
-for i in MotionCorr/job044/finished-frames/*_????????.mrc; do echo relion_image_handler --i $i --o tmp/`basename $i` --angpix 1 --rescale_angpix 10; done > runpar.cmd
-
-` --angpix 1 --rescale_angpix 10; done > runpar.cmd??.mrc; do echo relion_image_handler --i $i --o tmp/`basename $i`
 wc -l runpar.cmd
 cat runpar.cmd
 sjobs
