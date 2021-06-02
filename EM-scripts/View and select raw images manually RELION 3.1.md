@@ -44,5 +44,7 @@ runpar_gpu.py -p32 runpar.cmd
 for i in *.mrc; do echo $i; done > x1.star
 #Then, add head to the x1.star file, and run:
 relion_display --i x1.star --display rlnMicrographName --col 5 --allow_save --fn_imgs x2.star
+relion_display --i x1.star --display rlnMicrographName --scale 0.5  --col 5 --allow_save --fn_imgs x2.star
+
 
 ```
