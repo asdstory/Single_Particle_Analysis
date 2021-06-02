@@ -23,11 +23,15 @@ OR select from micrographs.star: CtfFind/job006/micrographs_ctf.star
 
 # Step03 - Start a display GUI from command line
 
-Go back to the terminal and type/copy & paste the following command, make sure you change the job number of the input (CtfFind/job006/micrographs_ctf.star) and the output (Select/job016/micrographs.star), other wise you won't be able to save selected micrographs.star successfully. 
+Go back to the terminal, cd to the main project folder (the one that contains relion default pipeline.star) and type/copy & paste the following command, make sure you change the job number of the input (CtfFind/job006/micrographs_ctf.star) and the output (Select/job016/micrographs.star), other wise you won't be able to save selected micrographs.star successfully. 
 
 ```shell
 `which relion_display` --i CtfFind/job006/micrographs_ctf.star --display rlnMicrographName --scale 0.07 --lowpass 30 --col 5 --ori_scale 0.1 --allow_save --max_nr_images 20 --fn_imgs Select/job016/micrographs.star
 ```
+```sh
+`which relion_display` --i CtfFind/job047/micrographs_ctf.star --display rlnMicrographName --scale 0.07 --lowpass 30 --col 5 --ori_scale 0.1 --allow_save --max_nr_images 20000 --fn_imgs Select/job049/micrographs.star
+```
+
 
 Or, to select from ctf image:
 
