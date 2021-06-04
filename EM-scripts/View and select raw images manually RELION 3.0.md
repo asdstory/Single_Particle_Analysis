@@ -35,7 +35,7 @@ Go back to the terminal, cd to the main project folder (the one that contains re
 `which relion_display` --gui --i CtfFind/job047/micrographs_ctf.star --allow_save --fn_imgs Select/job049/micrographs.star  --pipeline_control Select/job049/
 ```
 ```sh
-`which relion_display` --i CtfFind/job047/micrographs_ctf.star  --display rlnMicrographName --scale 0.75 --lowpass 0 --col 5 --ori_scale 0.1 --allow_save --max_nr_images 20000 --fn_imgs Select/job049/micrographs.star
+`which relion_display` --i CtfFind/job047/micrographs_ctf.star  --display rlnMicrographName --scale 0.65 --lowpass 0 --col 5 --ori_scale 0.1 --allow_save --max_nr_images 20000 --fn_imgs Select/job049/micrographs.star
 ```
 
 
