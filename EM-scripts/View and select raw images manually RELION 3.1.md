@@ -1,4 +1,4 @@
-*Since RELION 3.1, the relion_display function cannot perform correct lowpass anymore, you will only get dark image instead of raw images with clear particles. Therefore, this new protocol is to compensate this by using relion_image_handler to rescale the raw image first and then we can open relion_display function and manually select/remove raw images after CTFFind step. *
+*Since RELION 3.1, the relion_display function cannot perform correct lowpass anymore, you will only get dark image instead of raw images with clear particles. Therefore, this new protocol is to compensate this by using relion_image_handler to rescale the raw image first and then open relion_display function and manually select/remove raw images after CTFFind step. *
 
 # Step01 - Convert motioncorrected raw image into small scale images 
 
@@ -18,8 +18,6 @@ mv *.mrc tmp/
 
 for i in MotionCorr/job044/finished-frames/tmp/*_????????.mrc; do echo relion_image_handler --i $i --o `basename $i` --angpix 1 --rescale_angpix 10; done > runpar.cmd
 
-wc -l runpar.cmd
-cat runpar.cmd
 module load EMscript
 runpar_gpu.py -p32 runpar.cmd
 
