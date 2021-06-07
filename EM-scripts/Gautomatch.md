@@ -26,6 +26,9 @@ gautomatch --apixM 1.27 --diameter 80 --lave_D 100 --lave_min -0.8 --lsigma_cuto
 
 [user@cn3144 ~]$ gautomatch --apixM 0.85 --diameter 80 --T  /data/dout2/20210430Krios_rOAT1-LMNG/ModelInitial/class001_lp_proj.mrcs -apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 *[0-9].mrc
 
+[user@cn3144 ~]$ gautomatch --apixM 0.85 --diameter 80 --T /data/dout2/InitialModels/job051_run_it050_class001_lp10_proj.mrc.mrcs  -apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 --min_dist 50  *[0-9].mrc
+
+
 #Or, for simple use, just
 
 # For TF20 data
