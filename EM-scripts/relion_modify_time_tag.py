@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import fileinput
+import numpy as np
 from optparse import OptionParser
 
 np.set_printoptions(threshold=np.inf)
