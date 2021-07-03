@@ -36,3 +36,27 @@ def replaceAll(file,searchExp,replaceExp):
 pattern = r'(\d{3})_(\d{2})\.(\d{2})\.(\d{2})\.mrc'
 replace = r'\1_\2_\3_\4.mrc'
 replaceAll(options.input_star,pattern,replace)
+
+import re
+
+def replace(file_i, file_o, pattern, subst):
+    # Read contents from file as a single string
+    file_i_handle = open(file_i, 'r')
+    file_i_string = file_i_handle.read()
+    file_i_handle.close()
+
+    # Use RE package to allow for replacement (also allowing for (multiline) REGEX)
+    file_o_string = (re.sub(pattern, subst, file_i_string))
+
+    # Write contents to file.
+    # Using mode 'w' truncates the file.
+    file_o_handle = open(file_o, 'w')
+    file_o_handle.write(file_o_string)
+    file_o_handle.close()
+    
+pattern = r'(\d{3})_(\d{2})\.(\d{2})\.(\d{2})\.mrc'				
+replace = r'\1_\2_\3_\4.mrc'	
+	if re.search( pattern, filename ):
+		new_name = re.sub(pattern, replace, filename)
+		print(filename + ' -> ' + new_name)
+		os.rename(filename, new_name)	
