@@ -53,10 +53,10 @@ def replace(file_i, file_o, pattern, subst):
     file_o_handle = open(file_o, 'w')
     file_o_handle.write(file_o_string)
     file_o_handle.close()
-    
+
+file_i = "1.star"
+file_o = "2.star"
 pattern = r'(\d{3})_(\d{2})\.(\d{2})\.(\d{2})\.mrc'				
-replace = r'\1_\2_\3_\4.mrc'	
-	if re.search( pattern, filename ):
-		new_name = re.sub(pattern, replace, filename)
-		print(filename + ' -> ' + new_name)
-		os.rename(filename, new_name)	
+subst = r'\1_\2_\3_\4.mrc'	
+
+replace(file_i, file_o, pattern, subst)
