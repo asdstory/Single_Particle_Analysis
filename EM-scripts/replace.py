@@ -1,3 +1,13 @@
+#!/usr/bin/env python     
+
+#####**************************************************************************#####
+#Despcription: This program is used to search and replace pattern in .star file.
+#Author: Tongyi Dou
+#How to use: Just "python replace.py --i run_data.star --o run_data_replace.star"
+#Last Edit: 2021-07-02
+#####**************************************************************************#####
+
+
 import re
 import numpy as np
 from optparse import OptionParser
