@@ -23,3 +23,16 @@ def replaceAll(file,searchExp,replaceExp):
 pattern = r'(\d{3})_(\d{2})\.(\d{2})\.(\d{2})\.mrc'
 replace = r'\1_\2_\3_\4.mrc'
 replaceAll(options.input_star,pattern,replace)
+
+import sys
+import fileinput
+
+def replaceAll(file,searchExp,replaceExp):
+    for line in fileinput.input(file, inplace=1):
+        if searchExp in line:
+            line = line.replace(searchExp,replaceExp)
+        sys.stdout.write(line)
+ 
+pattern = r'(\d{3})_(\d{2})\.(\d{2})\.(\d{2})\.mrc'
+replace = r'\1_\2_\3_\4.mrc'
+replaceAll(options.input_star,pattern,replace)
