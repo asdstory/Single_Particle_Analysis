@@ -4,7 +4,7 @@
 #Despcription: This program is used to introduce optic group into movies.star file.
 #Copyright@JiangLab@NHLBI/NIH
 #Author: Jiansen Jiang & Tongyi Dou
-#Last Edit: 202104-09
+#Last Edit: 2021-07-02
 #####**************************************************************************#####
 
 DEBUG=0
