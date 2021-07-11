@@ -6,7 +6,7 @@
 ### Login to the leginon computer
 - [ ] ssh krios@leginon.niddk.nih.gov
 ### Go to the "/local/bin/" folder and run the script "get_image_shift_data_all.sh" and name the output file, which contain the image shift information for every image Leginon has taken.
-- [ ] cd /local/bin
+- [ ] cd local/bin
 - [ ]  ./get_image_shift_data_all.sh > leginon_image_shift_data_all_2021-02-04.txt
 ### And if you view this file, you will be able to see the ID, date, grid name and the image shift information that Leginon generated when taking each image. 
 - [ ] more leginon_image_shift_data_all_2021-02-04.txt
