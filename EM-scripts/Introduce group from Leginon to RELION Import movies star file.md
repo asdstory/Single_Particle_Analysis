@@ -11,6 +11,8 @@
 ### And if you view this file, you will be able to see the ID, date, grid name and the image shift information that Leginon generated when taking each image. 
 - [ ] more leginon_image_shift_data_all_2021-02-04.txt
 ### Move the file to Biowulf:
+- [ ] ssh dout2@helix.nih.gov
+- [ ] cd /data/dout2/Database/
 - [ ] rsync --progress -avzhe  ssh krios@leginon.niddk.nih.gov:/home/krios/local/bin/leginon_image_shift_data_all_2021-05-31.txt .
 
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Leginon_Image_Shift_Information.png?raw=true"
