@@ -29,12 +29,12 @@ def deleteline(file_i,file_o,pattern):
     for line in file_i_handle:
         search_result = re.search(pattern,line)
         if not search_result:
-          line2.append(line.strip())
+          line2.append(line)
     
     file_i_handle.close()
     
     file_o_handle = open(file_o, 'w')
-    file_o_handle.write(line2)
+    file_o_handle.write(str(line2))
     file_o_handle.close()
     
 pattern = r'PBD'	
