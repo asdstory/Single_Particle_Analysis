@@ -30,7 +30,7 @@ def deleteline(file_i,file_o,pattern):
     
     for line in file_i_string:
         search_result = re.search(pattern,line)
-        if (! search_result):
+        if not search_result:
           line2.append(line.strip())
     
     file_o_handle = open(file_o, 'w')
