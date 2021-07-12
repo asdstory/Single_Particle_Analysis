@@ -296,6 +296,9 @@ shift_class_dict = {
   "20210127_17430704": "5"
 }
 """
+d = open("dictionary.txt","w")
+d.write(shift_class_dict)
+d.close()
 
 f = open(options.output_star,"w")
 f.write("\n")
