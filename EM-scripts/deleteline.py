@@ -29,5 +29,5 @@ def deleteline(file_i,file_o,pattern):
             if line.strip("\n") != pattern:
                 f.write(line)
     
-pattern = r'PBD'	
+pattern = r'*PBD*'	
 deleteline(options.input_star, options.output_star, pattern)
