@@ -26,7 +26,7 @@ def deleteline(file_i,file_o,pattern):
         lines = f.readlines()
     with open(file_o,"w") as f:
         for line in lines:
-            if lines.strip("\n") != pattern:
+            if line.strip("\n") != pattern:
                 f.write(line)
     
 pattern = r'PBD'	
