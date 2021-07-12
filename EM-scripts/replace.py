@@ -34,8 +34,9 @@ def replace(file_i, file_o, pattern, subst):
     file_o_handle = open(file_o, 'w')
     file_o_handle.write(file_i_string)
     file_o_handle.close()
-
+    
 pattern = r'(\d{3})_(\d{2})\.(\d{2})\.(\d{2})\.mrc'				
 subst = r'\1_\2_\3_\4.mrc'	
 
 replace(options.input_star, options.output_star, pattern, subst)
+
