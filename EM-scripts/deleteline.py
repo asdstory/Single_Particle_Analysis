@@ -21,7 +21,7 @@ parser.add_option("--o", dest="output_star", type="string", default="", help="Ou
 (options, args) = parser.parse_args()
 
 #Remove all lines that obey with patern
-def deleteline(file_i,file_o,pattern)
+def deleteline(file_i,file_o,pattern):
     file_i_handle = open(file_i, 'r')
     file_i_string = file_i_handle.read()
     file_i_handle.close()
