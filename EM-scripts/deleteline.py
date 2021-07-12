@@ -23,19 +23,19 @@ parser.add_option("--o", dest="output_star", type="string", default="", help="Ou
 #Remove all lines that obey with patern
 def deleteline(file_i,file_o,pattern):
     file_i_handle = open(file_i, 'r')
-    file_i_string = file_i_handle.read()
-    file_i_handle.close()
-    
+
     line2 = []
     
-    for line in file_i_string:
+    for line in file_i_handle:
         search_result = re.search(pattern,line)
         if not search_result:
           line2.append(line.strip())
     
+    file_i_handle.close()
+    
     file_o_handle = open(file_o, 'w')
-    file_o_handle.write(str(line2))
+    file_o_handle.write(line2)
     file_o_handle.close()
-
+    
 pattern = r'PBD'	
 deleteline(options.input_star, options.output_star, pattern)
