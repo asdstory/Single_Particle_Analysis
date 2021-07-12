@@ -21,13 +21,16 @@ parser.add_option("--o", dest="output_star", type="string", default="", help="Ou
 (options, args) = parser.parse_args()
 
 #Remove all lines that obey with patern
-def deleteline(file_i,file_o,pattern):
+def deleteline(file_i,file_o):
     with open(file_i,"r") as f:
         lines = f.readlines()
     with open(file_o,"w") as f:
         for line in lines:
-            if line.strip("\n") != pattern:
+            if 'rOAT1-PBD' in line:
+                print("YES! We hava a match!")
+            else:
                 f.write(line)
-    
-pattern = r'*PBD*'	
-deleteline(options.input_star, options.output_star, pattern)
+
+deleteline(options.input_star, options.output_star)
+
+
