@@ -2,9 +2,11 @@
 
 #### After finished CTF find using RELION. Use following command to micrographs_ctf.star file and generate a new star file containing micrographs with desired defocus (5000<=rlnDefocusU<=3000), Astigmatism (rlnCtfAstigmatism<1000), and resolution(rlnCtfMaxResolution <=4):
 
-
+```sh
 - [ ] cd to the CTF find results job folder, where micrographs_ctf.star exists.
-- [ ] mv micrographs_ctf.star micrographs_ctf_old.star
+
+mv micrographs_ctf.star micrographs_ctf_old.star
+
 - For RELION 3.0:
 - [ ] awk 'NR <= 18 {print $0 > "micrographs_ctf.star"} NR >18 && $3 >= 5000 && $3 <=30000 && $5 <= 1000 && $13 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
 - For RELION 3.1: 
@@ -24,6 +26,8 @@
 - [ ] awk 'NR <= 30 {print $0 > "micrographs.star"} NR >30 && $4 >= 5000 && $4 <=30000 && $6 <= 1000 && $9 <=4 {print $0 >> "micrographs.star"}' micrographs_old.star
 - How to count how many graphs selected: 
 - [ ] grep MotionCor micrographs.star | wc -l
+
+```
 
 ### Note: 
 - You can also change any of the thresold to get desired micrograph, e.g. default resolution thresold is 4, but you can change it to 5 to select more micrographs.
