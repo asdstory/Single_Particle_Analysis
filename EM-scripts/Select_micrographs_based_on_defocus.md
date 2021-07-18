@@ -13,6 +13,8 @@ awk 'NR <= 18 {print $0 > "micrographs_ctf.star"} NR >18 && $3 >= 5000 && $3 <=3
 # For RELION 3.1: 
 awk 'NR <= 30 {print $0 > "micrographs_ctf.star"} NR >30 && $4 >= 5000 && $4 <=30000 && $6 <= 1000 && $9 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
 
+awk 'NR <= 31 {print $0 > "micrographs_ctf.star"} NR >31 && $5 >= 8000 && $5 <=30000 && $7 <= 1000 && $10 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
+
 awk 'NR <= 80 {print $0 > "micrographs_ctf.star"} NR >80 && $5 >= 8000 && $5 <=30000 && $7 <= 1000 && $10 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
 
 awk 'NR <= 105 {print $0 > "micrographs_ctf.star"} NR >105 && $5 >= 8000 && $5 <=30000 && $7 <= 1000 && $10 <=4 {print $0 >> "micrographs_ctf.star"}' micrographs_ctf_old.star
