@@ -56,7 +56,26 @@ relion_import  --do_coordinates  --i "MotionCorr/job044/finished-frames/*_automa
 `which relion_postprocess` --mask MaskCreate/job113/mask.mrc --i Refine3D/job110/run_half1_class001_unfil.mrc --o PostProcess/job152/postprocess  --angpix 0.85 --auto_bfac  --autob_lowres 10  --pipeline_control PostProcess/job152/
 ```
 
+## CTF refinement
+```sh
+`which relion_ctf_refine_mpi` --i Refine3D/job300/run_data_image-shift-grouped.star --f PostProcess/job520/postprocess.star --o CtfRefine/job844/ --fit_defocus --kmin_defocus 30 --fit_mode fpmff --fit_beamtilt --kmin_tilt 30 --odd_aberr_max_n 3 --j 2  --pipeline_control CtfRefine/job844/
+```
 
+## Bayesian polishing
+```sh
+`which relion_motion_refine` --i Refine3D/job511/run_ct21_data.star --f PostProcess/job524/postprocess.star --corr_mic MotionCorr/job150/corrected_micrographs.star --first_frame 1 --last_frame -1 --o Polish/job844/ --min_p 10000 --eval_frac 0.5 --align_frac 0.5 --params3  --j 32  --pipeline_control Polish/job844/
+```
+
+## Particle subtraction
+```sh
+`which relion_project` --subtract_exp --i Refine3D/job777/run_ct25_class001.mrc --mask MaskCreate/SelfBuild/maskA.mrc --ang Refine3D/job777/run_ct25_data.star --o Subtract/job844/subtracted --ctf --angpix -1 
+```
+
+
+## Join star files
+```sh
+`which relion_star_handler` --combine --i " Select/job600/particles.star Select/job601/particles.star Select/job602/particles.star Select/job603/particles.star "  --check_duplicates rlnImageName  --o JoinStar/job605/join_particles.star  --pipeline_control JoinStar/job605/
+```
 
 
 
