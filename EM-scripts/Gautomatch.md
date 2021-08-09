@@ -39,6 +39,8 @@ gautomatch --apixM 1.27 --diameter 150 *_sum_DW.mrc
 ml Gautomatch
 Gautomatch --apixM 2.5 --diameter 200 --speed 1  --lsigma_cutoff 5  --lave_min -1.0  --cc_cutoff 0.2  *.mrc --gid 0  --dont_invertT
 
+
+
 # Allocate an interactive session and run the program. Sample session:
 
 [user@biowulf]$ sinteractive --gres=gpu:k80:1 --mem=20g -c14
@@ -54,6 +56,8 @@ Gautomatch --apixM 2.5 --diameter 200 --speed 1  --lsigma_cutoff 5  --lave_min -
 [user@cn3144 ~]$ gautomatch --apixM 0.85 --diameter 80 --T /data/dout2/InitialModels/job051_run_it050_class001_lp10_proj.mrc.mrcs  -apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 --min_dist 50  *[0-9].mrc
 
 gautomatch --apixM 1.26 --diameter 150 --T /data/dout2/20210727TF20_hPtch2-Amp_NS/Select/job013/class_averages.mrcs --speed 1  --lsigma_cutoff 5  --lave_min -1.0  --cc_cutoff 0.2  *sum_DW.mrc --gid 0  --dont_invertT
+
+gautomatch --apixM 1.26 --diameter 100 --speed 1  --lsigma_cutoff 5  --lave_min -1.0  --cc_cutoff 0.2  *_sum_DW.mrc --gid 0  --dont_invertT
 
 ```
 
