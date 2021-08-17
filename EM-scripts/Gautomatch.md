@@ -24,6 +24,8 @@ gautomatch --apixM 1.27 --diameter 80 --lave_D 100 --lave_min -0.8 --lsigma_cuto
 
 [user@cn3144 ~]$ gautomatch --apixM 0.93 --diameter 80 --T /data/dout2/PnuC_Map-Model/PnuCT0-3NR-C8_P6_J36_lf_3.0A_lp10_pj.mrcs --apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 *Fractions.mrc
 
+[user@cn3144 ~]$ gautomatch --apixM 0.93 --diameter 100 --T /data/dout2/InitialModels/rOAT1-pp20210421_lp10pix1_proj30.mrc.mrcs --apixT 1.0 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 *Fractions.mrc
+
 [user@cn3144 ~]$ gautomatch --apixM 0.85 --diameter 80 --T  /data/dout2/20210430Krios_rOAT1-LMNG/ModelInitial/class001_lp_proj.mrcs -apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 *[0-9].mrc
 
 [user@cn3144 ~]$ gautomatch --apixM 0.85 --diameter 80 --T /data/dout2/InitialModels/job051_run_it050_class001_lp10_proj.mrc.mrcs  -apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 --min_dist 50  *[0-9].mrc
