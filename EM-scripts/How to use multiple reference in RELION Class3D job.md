@@ -20,4 +20,7 @@ Class3D/job105/run_it_050_class003.mrc
 Class3D/job105/run_it_050_class004.mrc
 Class3D/job094/run_it_050_class001.mrc
 InitialModel/job035/run_it300_class001.mrc
+InitialModel/mask150/run_it300_class001.mrc
+InitialModel/mask150/run_it300_class002.mrc
+InitialModel/mask150/run_it300_class003.mrc
 ```
