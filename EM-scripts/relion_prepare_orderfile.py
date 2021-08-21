@@ -24,6 +24,13 @@ parser.add_option("--o", dest="output_order", type="string", default="", help="O
 def extract_refined_tilt_angle(file):
     file = open(file, 'r')
     refined_tilt_angle = list(file)
+    return refined_titl_angle
+def extract_accumulated_dose(file):
+    
+def write_order_file(file):
+
+    file = open(file, 'r')
+    refined_tilt_angle = list(file)
 
     # Use RE package to allow for replacement (also allowing for (multiline) REGEX)
     file_i_string = (re.sub(pattern, subst, file_i_string))
@@ -32,11 +39,8 @@ def extract_refined_tilt_angle(file):
     # Using mode 'w' truncates the file.
     file_o_handle = open(file_o, 'w')
     file_o_handle.write(file_i_string)
-    file_o_handle.close()
-def extract_accumulated_dose(file):
+    file_o_handle.close()    
     
-def write_order_file(file):
-
 refined_tilt_angles = {}    
     
 extract_refined_tilt_angle(options.input_tlt)
