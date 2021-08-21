@@ -22,10 +22,8 @@ parser.add_option("--o", dest="output_order", type="string", default="", help="O
 (options, args) = parser.parse_args()
 
 def extract_refined_tilt_angle(file):
-    # Read contents from file as a single string
-    file_i_handle = open(file_i, 'r')
-    file_i_string = file_i_handle.read()
-    file_i_handle.close()
+    file = open(file, 'r')
+    refined_tilt_angle = list(file)
 
     # Use RE package to allow for replacement (also allowing for (multiline) REGEX)
     file_i_string = (re.sub(pattern, subst, file_i_string))
@@ -38,6 +36,8 @@ def extract_refined_tilt_angle(file):
 def extract_accumulated_dose(file):
     
 def write_order_file(file):
+
+refined_tilt_angles = {}    
     
 extract_refined_tilt_angle(options.input_tlt)
 extract_accumulated_dose(options.input_mdoc)
