@@ -21,7 +21,7 @@ parser.add_option("--o", dest="output_order", type="string", default="", help="O
 
 (options, args) = parser.parse_args()
 
-def replace(file_i, file_o, pattern, subst):
+def extract_refined_tilt_angle(file):
     # Read contents from file as a single string
     file_i_handle = open(file_i, 'r')
     file_i_string = file_i_handle.read()
@@ -35,9 +35,16 @@ def replace(file_i, file_o, pattern, subst):
     file_o_handle = open(file_o, 'w')
     file_o_handle.write(file_i_string)
     file_o_handle.close()
+def extract_accumulated_dose(file):
+    
+def write_order_file(file):
+    
+extract_refined_tilt_angle(options.input_tlt)
+extract_accumulated_dose(options.input_mdoc)
+write_order_file(options.output_order)
+    
     
 pattern = r'(\d{3})_(\d{2})\.(\d{2})\.(\d{2})\.mrc'				
 subst = r'\1_\2_\3_\4.mrc'	
 
-replace(options.input_star, options.output_star, pattern, subst)
 
