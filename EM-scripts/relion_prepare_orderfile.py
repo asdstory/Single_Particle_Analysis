@@ -24,7 +24,7 @@ parser.add_option("--o", dest="output_order", type="string", default="", help="O
 def extract_refined_tilt_angle(file):
     file = open(file, 'r')
     refined_tilt_angle = list(file)
-    return refined_titl_angle
+    return refined_tilt_angle
 def extract_accumulated_dose(file):
     
 def write_order_file(file):
@@ -40,9 +40,7 @@ def write_order_file(file):
     file_o_handle = open(file_o, 'w')
     file_o_handle.write(file_i_string)
     file_o_handle.close()    
-    
-refined_tilt_angles = {}    
-    
+   
 extract_refined_tilt_angle(options.input_tlt)
 extract_accumulated_dose(options.input_mdoc)
 write_order_file(options.output_order)
