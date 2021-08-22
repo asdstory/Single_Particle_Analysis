@@ -21,12 +21,14 @@ parser.add_option("--o", dest="output_order", type="string", default="", help="O
 
 (options, args) = parser.parse_args()
 
+refined_tilt_angle = []
+accumulated_dose = []
+    
 def extract_refined_tilt_angle(file_tlt):
     file_tlt = open(file_tlt, 'r')
     refined_tilt_angle = list(file_tlt)
     return refined_tilt_angle
 def extract_accumulated_dose(file_mdoc):
-    accumulated_dose = []
     index = 0
     pattern = r'ExposureDose = (\d.\d{5})'
     for line in open(file_mdoc, 'r'):
