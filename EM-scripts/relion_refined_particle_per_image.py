@@ -47,4 +47,4 @@ def write_csv_file(file_csv):
    
 dictionary = count_particle_per_image(options.input_star)
 print(dictionary)
-write_order_file(options.output_list)
+write_csv_file(options.output_list)
