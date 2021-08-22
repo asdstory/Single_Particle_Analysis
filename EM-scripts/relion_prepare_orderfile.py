@@ -32,10 +32,10 @@ def extract_accumulated_dose(file_mdoc):
     for line in open(file_mdoc, 'r'):
         line = line.rstrip()
         result = re.search(pattern, line)
-        if result and i == 0:
+        if result and index == 0:
             accumulated_dose.append(result.group(1))
             index += 1
-        elif result and i !=1:
+        elif result and index !=1:
             dose = accumulated_dose[index-1] + result.group(1)
             accumulated_dose.append(dose)
             index += 1
