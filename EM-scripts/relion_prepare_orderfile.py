@@ -29,7 +29,7 @@ def extract_accumulated_dose(file_mdoc):
     accumulated_dose = []
     index = 0
     pattern = r'ExposureDose = (\d.\d{5})'
-    for line in open(file_mdoc, 'r')
+    for line in open(file_mdoc, 'r'):
         line = line.rstrip()
         result = re.search(pattern, line)
         if result and i == 0:
