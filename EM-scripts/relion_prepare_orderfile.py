@@ -48,8 +48,10 @@ def write_order_file(file_order):
     # Write contents to file.
     # Using mode 'w' truncates the file.
     file_order_handle = open(file_order, 'w')
-    length = len(refined_tilt_angle)
-    print("There are %s refined tilt angles in this tilt series." % length)
+    length1 = len(refined_tilt_angle)
+    length2 = len(accumulated_dose)
+    print("There are %s refined tilt angles in the input .tlt file." % length1)
+    print("There are %s ExposureDose values in the input .mdoc file." % length2)
     for i in range(length):
         line = refined_tilt_angle[i] + " " + accumulated_dose[i]
         file_order_handle.write(line)
