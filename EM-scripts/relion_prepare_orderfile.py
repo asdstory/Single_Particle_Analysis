@@ -40,7 +40,6 @@ def extract_accumulated_dose(file_mdoc):
             accumulated_dose.append(dose)
             index += 1
      return accumulated_dose
-    
 def write_order_file(file_order):
     # Write contents to file.
     # Using mode 'w' truncates the file.
