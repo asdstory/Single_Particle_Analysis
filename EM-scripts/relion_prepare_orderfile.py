@@ -52,8 +52,8 @@ def write_order_file(file_order):
         file_order_handle.write(file_i_string)
         file_order_handle.close()    
    
-extract_refined_tilt_angle(options.input_tlt)
+refined_tilt_angle = extract_refined_tilt_angle(options.input_tlt)
 print(refined_tilt_angle)
-extract_accumulated_dose(options.input_mdoc)
+accumulated_dose = extract_accumulated_dose(options.input_mdoc)
 write_order_file(options.output_order)
 
