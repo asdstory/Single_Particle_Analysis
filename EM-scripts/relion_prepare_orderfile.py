@@ -53,7 +53,7 @@ def write_order_file(file_order):
     print("There are %s refined tilt angles in the input .tlt file." % length1)
     print("There are %s ExposureDose values in the input .mdoc file." % length2)
     for i in range(length1):
-        line = str(refined_tilt_angle[i]) + " " + str(accumulated_dose[i])
+        line = str(refined_tilt_angle[i]) + " " + str(accumulated_dose[i]) + "\n"
         file_order_handle.write(line)
     file_order_handle.close()    
    
