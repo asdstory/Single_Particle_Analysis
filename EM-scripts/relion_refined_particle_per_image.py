@@ -20,45 +20,33 @@ parser.add_option("--o", dest="output_list", type="string", default="", help="Ou
 
 (options, args) = parser.parse_args()
 
-refined_tilt_angle = []
-accumulated_dose = []
-    
-def extract_refined_tilt_angle(file_tlt):
-    with open(file_tlt) as file:
-        for line in file:
-            line = line.rstrip()
-            refined_tilt_angle.append(line)
-    return refined_tilt_angle
-def extract_accumulated_dose(file_mdoc):
+   
+def count_particle_per_image(file_i):
     index = 0
-    pattern = r'ExposureDose = (\d.\d*)'
+    pattern = r'(\d{8}_\d{8}.mrc\b)'
     for line in open(file_mdoc, 'r'):
         line = line.rstrip()
         result = re.search(pattern, line)
-        if result and index == 0:
-            accumulated_dose.append(result.group(1))
-            index += 1
-        elif result and index !=0:
-            dose = float(accumulated_dose[index-1]) + float(result.group(1))
-            accumulated_dose.append(dose)
-            index += 1
-    return accumulated_dose
-def write_order_file(file_order):
+        if result:
+            image_name = result.group(1)
+            if image_name in dictionary:
+                dictionary[image_name] +=1
+            else:
+                dictionary.update({image_name:1})
+    dictionary = sorted(dictionary.items(), key=lambda x:x[1], reverse=True)
+    return dictionary
+
+def write_csv_file(file_csv):
     # Write contents to file.
-    # Using mode 'w' truncates the file.
-    file_order_handle = open(file_order, 'w')
-    length1 = len(refined_tilt_angle)
-    length2 = len(accumulated_dose)
-    print("There are %s refined tilt angles in the input .tlt file." % length1)
-    print("There are %s ExposureDose values in the input .mdoc file." % length2)
-    for i in range(length1):
-        line = str(refined_tilt_angle[i]) + " " + str(accumulated_dose[i]) + "\n"
-        file_order_handle.write(line)
-    file_order_handle.close()    
+    # Using mode 'w' truncates the file.    
+    file_csv_handle = open(file_csv, 'w')
+    for key,value in dictionary.iteritems():
+        print(key, '\t', value, '\n')
+        line = str(key) + '\t' + str(value) + "\n"
+        file_csv_handle.write(line)
+    file_csv_handle.close()    
    
-refined_tilt_angle = extract_refined_tilt_angle(options.input_tlt)
-print(refined_tilt_angle)
-accumulated_dose = extract_accumulated_dose(options.input_mdoc)
-print(accumulated_dose)
-write_order_file(options.output_order)
+dictionary = count_particle_per_image(options.input_star)
+print(dictionary)
+write_order_file(options.output_list)
 
