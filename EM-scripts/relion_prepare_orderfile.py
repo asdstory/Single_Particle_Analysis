@@ -49,11 +49,12 @@ def write_order_file(file_order):
     length = len(refined_tilt_angle)
     for i in range(length):
         line = refined_tilt_angle[i] + " " + accumulated_dose[i]
-        file_order_handle.write(file_i_string)
+        file_order_handle.write(line)
         file_order_handle.close()    
    
 refined_tilt_angle = extract_refined_tilt_angle(options.input_tlt)
 print(refined_tilt_angle)
 accumulated_dose = extract_accumulated_dose(options.input_mdoc)
+print(accumulated_dose)
 write_order_file(options.output_order)
 
