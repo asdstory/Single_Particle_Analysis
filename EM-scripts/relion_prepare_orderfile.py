@@ -26,6 +26,20 @@ def extract_refined_tilt_angle(file):
     refined_tilt_angle = list(file)
     return refined_tilt_angle
 def extract_accumulated_dose(file):
+    accumulated_dose = []
+    index =0
+    pattern = r'ExposureDose = (\d.\d{5})'
+    for line in open(file, 'r')
+        line = line.rstrip()
+        result = re.search(pattern, line)
+        if result and i == 0:
+            accumulated_dose.append(result.group(1))
+            index += 1
+        elif result and i !=1:
+            dose = accumulated_dose[index-1] + result.group(1)
+            accumulated_dose.append(dose)
+            index += 1
+     return accumulated_dose
     
 def write_order_file(file):
 
