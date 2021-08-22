@@ -40,7 +40,7 @@ def extract_accumulated_dose(file_mdoc):
             accumulated_dose.append(result.group(1))
             index += 1
         elif result and index !=0:
-            dose = accumulated_dose[index-1] + result.group(1)
+            dose = float(accumulated_dose[index-1]) + float(result.group(1))
             accumulated_dose.append(dose)
             index += 1
     return accumulated_dose
