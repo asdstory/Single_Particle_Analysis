@@ -53,7 +53,7 @@ def write_order_file(file_order):
     for i in range(length):
         line = refined_tilt_angle[i] + " " + accumulated_dose[i]
         file_order_handle.write(line)
-        file_order_handle.close()    
+    file_order_handle.close()    
    
 refined_tilt_angle = extract_refined_tilt_angle(options.input_tlt)
 print(refined_tilt_angle)
