@@ -39,7 +39,7 @@ def write_csv_file(file_csv):
     # Write contents to file.
     # Using mode 'w' truncates the file.    
     file_csv_handle = open(file_csv, 'w')
-    for key,value in dictionary.iteritems():
+    for key,value in dictionary.items():
         print(key, '\t', value, '\n')
         line = str(key) + '\t' + str(value) + "\n"
         file_csv_handle.write(line)
