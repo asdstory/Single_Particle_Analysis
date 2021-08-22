@@ -20,7 +20,8 @@ parser.add_option("--o", dest="output_list", type="string", default="", help="Ou
 
 (options, args) = parser.parse_args()
 
-   
+dictionary = {}
+
 def count_particle_per_image(file_i):
     index = 0
     pattern = r'(\d{8}_\d{8}.mrc\b)'
