@@ -21,7 +21,7 @@ parser.add_option("--o", dest="output_list", type="string", default="", help="Ou
 (options, args) = parser.parse_args()
 
 def count_particle_per_image(file_i):
-    dictionary = {}
+    dictionary = dict()
     pattern = r'(\d{8}_\d{8}.mrc\b)'
     for line in open(file_i, 'r'):
         line = line.rstrip()
