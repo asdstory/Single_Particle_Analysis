@@ -1,11 +1,11 @@
 #!/usr/bin/env python     
 
-#####**************************************************************************#####
-#Despcription: This program is used to search and replace pattern in .star file.
+#####***************************************************************************************************#####
+#Despcription: This program is used to prepare the .order file for RELION subtomogram averaging.
 #Author: Tongyi Dou
-#How to use: Just "python replace.py --i run_data.star --o run_data_replace.star"
-#Last Edit: 2021-07-02
-#####**************************************************************************#####
+#How to use: Just "python relion_prepare_orderfile.py --input_tlt xx.tlt --input_mdoc xx.mdoc --o xx.order"
+#Last Edit: 2021-08-22
+#####***************************************************************************************************#####
 
 
 import re
