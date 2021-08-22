@@ -48,7 +48,7 @@ def write_order_file(file_order):
     file_order_handle = open(file_order, 'w')
     length = len(refined_tilt_angle)
     for i in range(length):
-        line = refined_tilt[i] + " " + accumulated_dose[i]
+        line = refined_tilt_angle[i] + " " + accumulated_dose[i]
         file_order_handle.write(file_i_string)
         file_order_handle.close()    
    
