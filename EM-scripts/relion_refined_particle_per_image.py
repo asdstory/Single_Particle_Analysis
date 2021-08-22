@@ -20,7 +20,7 @@ parser.add_option("--o", dest="output_list", type="string", default="", help="Ou
 
 (options, args) = parser.parse_args()
 
-def count_particle_per_image(file_i):
+def count_particle_per_image(file_i,file_csv):
     dictionary = dict()
     pattern = r'(\d{8}_\d{8}.mrc\b)'
     for line in open(file_i, 'r'):
@@ -33,18 +33,13 @@ def count_particle_per_image(file_i):
             else:
                 dictionary.update({image_name:1})
     dictionary = sorted(dictionary.items(), key=lambda x:x[1], reverse=True)
-    return dictionary
-
-def write_csv_file(file_csv):
-    # Write contents to file.
-    # Using mode 'w' truncates the file.    
+    
     file_csv_handle = open(file_csv, 'w')
     for key,value in dictionary.items():
         print(key, '\t', value, '\n')
         line = str(key) + '\t' + str(value) + "\n"
         file_csv_handle.write(line)
-    file_csv_handle.close()    
+    file_csv_handle.close()   
    
-dictionary = count_particle_per_image(options.input_star)
-print(dictionary)
-write_csv_file(options.output_list)
+count_particle_per_image(options.input_star,options.output_list)
+
