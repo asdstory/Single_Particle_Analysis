@@ -42,13 +42,6 @@ def extract_accumulated_dose(file):
      return accumulated_dose
     
 def write_order_file(file):
-
-    file = open(file, 'r')
-    refined_tilt_angle = list(file)
-
-    # Use RE package to allow for replacement (also allowing for (multiline) REGEX)
-    file_i_string = (re.sub(pattern, subst, file_i_string))
-
     # Write contents to file.
     # Using mode 'w' truncates the file.
     file_o_handle = open(file_o, 'w')
