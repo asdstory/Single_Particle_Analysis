@@ -49,7 +49,7 @@ def write_order_file(file_order):
     # Using mode 'w' truncates the file.
     file_order_handle = open(file_order, 'w')
     length = len(refined_tilt_angle)
-    print("There are" + length + " refined tilt angles in this tilt series.")
+    print("There are %s refined tilt angles in this tilt series." % length)
     for i in range(length):
         line = refined_tilt_angle[i] + " " + accumulated_dose[i]
         file_order_handle.write(line)
