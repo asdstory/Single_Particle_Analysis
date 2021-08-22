@@ -39,7 +39,7 @@ def extract_accumulated_dose(file_mdoc):
         if result and index == 0:
             accumulated_dose.append(result.group(1))
             index += 1
-        elif result and index !=1:
+        elif result and index !=0:
             dose = accumulated_dose[index-1] + result.group(1)
             accumulated_dose.append(dose)
             index += 1
@@ -49,6 +49,7 @@ def write_order_file(file_order):
     # Using mode 'w' truncates the file.
     file_order_handle = open(file_order, 'w')
     length = len(refined_tilt_angle)
+    print("There are" + length + " refined tilt angles in this tilt series.")
     for i in range(length):
         line = refined_tilt_angle[i] + " " + accumulated_dose[i]
         file_order_handle.write(line)
