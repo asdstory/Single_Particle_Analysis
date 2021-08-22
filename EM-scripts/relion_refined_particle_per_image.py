@@ -24,7 +24,7 @@ parser.add_option("--o", dest="output_list", type="string", default="", help="Ou
 def count_particle_per_image(file_i):
     index = 0
     pattern = r'(\d{8}_\d{8}.mrc\b)'
-    for line in open(file_mdoc, 'r'):
+    for line in open(file_i, 'r'):
         line = line.rstrip()
         result = re.search(pattern, line)
         if result:
@@ -49,4 +49,3 @@ def write_csv_file(file_csv):
 dictionary = count_particle_per_image(options.input_star)
 print(dictionary)
 write_order_file(options.output_list)
-
