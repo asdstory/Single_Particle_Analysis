@@ -32,7 +32,7 @@ def extract_refined_tilt_angle(file_tlt):
     return refined_tilt_angle
 def extract_accumulated_dose(file_mdoc):
     index = 0
-    pattern = r'ExposureDose = (\d.\d{*})'
+    pattern = r'ExposureDose = (\d.\d*)'
     for line in open(file_mdoc, 'r'):
         line = line.rstrip()
         result = re.search(pattern, line)
