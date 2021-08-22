@@ -25,8 +25,10 @@ refined_tilt_angle = []
 accumulated_dose = []
     
 def extract_refined_tilt_angle(file_tlt):
-    file_tlt = open(file_tlt, 'r')
-    refined_tilt_angle = list(file_tlt)
+    with open(file_tlt) as file:
+        for line in file:
+            line = line.rstrip()
+            refined_tilt_angle.append(line)
     return refined_tilt_angle
 def extract_accumulated_dose(file_mdoc):
     index = 0
