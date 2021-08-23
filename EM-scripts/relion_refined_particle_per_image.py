@@ -32,7 +32,7 @@ def count_particle_per_image(file_i,file_csv):
                 dictionary[image_name] +=1
             else:
                 dictionary.update({image_name:1})
-    dictionary = sorted(dictionary[1].items(), key=lambda x:x[1], reverse=True)
+    dictionary = sorted(dictionary.items(), key=lambda item:item[1], reverse=True)
     
     file_csv_handle = open(file_csv, 'w')
     for i in dictionary:
