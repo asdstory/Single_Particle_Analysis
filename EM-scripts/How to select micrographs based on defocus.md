@@ -49,6 +49,8 @@ awk '{ total += $13; count++ } END { print "The average resolution for all micro
 - For RELION 3.1:
 ```
 awk '{ total += $9; count++ } END { print "The average resolution for all micrograhs here is:" total/count " A" }' micrographs_ctf.star 
+
+awk '{ total += $11; count++ } END { print "The average defocus for the refined particles here is:" total/count/10000 " um" }' join_particles.star
 ```
 
 ### More detail about the awk command:
