@@ -34,10 +34,12 @@ def count_particle_per_image(file_i,file_csv):
                 dictionary.update({image_name:1})
     dictionary = sorted(dictionary.items(), key=lambda item:item[1], reverse=True)
     
+    print(dictionary)
+    
     file_csv_handle = open(file_csv, 'w')
     for i in dictionary:
-        print(dictionary.keys(i), '\t', dictionary.values(i), '\n')
-        line = str(dictionary.keys(i)) + '\t' + str(dictionary.values(i)) + "\n"
+        print(i+'\n')
+        line = str(i) + "\n"
         file_csv_handle.write(line)
     file_csv_handle.close()   
    
