@@ -1,3 +1,13 @@
+#!/usr/bin/env python     
+
+#####***************************************************************************************************#####
+#Despcription: This program is used to prepare the .order file for RELION subtomogram averaging.
+#Author: Tongyi Dou
+#How to use: "relion_prepare_orderfile.py --i run_data.star --o refined_particles_per_image.csv"
+#Last Edit: 2021-08-22
+#####***************************************************************************************************#####
+
+
 import re
 import numpy as np
 import pandas as pd
