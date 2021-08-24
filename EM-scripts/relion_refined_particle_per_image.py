@@ -10,6 +10,7 @@
 
 import re
 import numpy as np
+import pandas as pd
 from optparse import OptionParser
 
 np.set_printoptions(threshold=np.inf)
@@ -22,6 +23,8 @@ parser.add_option("--o", dest="output_list", type="string", default="", help="Ou
 
 def count_particle_per_image(file_i,file_csv):
     dictionary = dict()
+    df = pd.DataFrame(columns = ['Refined Particles', 'Resolution (A)', 'Defocus (um)'])
+    print
     pattern = r'(\d{8}_\d{8}.mrc\b)'
     for line in open(file_i, 'r'):
         line = line.rstrip()
