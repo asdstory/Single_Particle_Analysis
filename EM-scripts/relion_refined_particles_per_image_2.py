@@ -23,7 +23,6 @@ parser.add_option("--o", dest="output_list", type="string", default="", help="Ou
 (options, args) = parser.parse_args()
 
 def count_particle_per_image(file_i,file_csv):
-    dictionary = dict()
     data = []
     pattern = r'(\d{8}_\d{8}.mrc\b)'
     for line in open(file_i, 'r'):
@@ -31,15 +30,14 @@ def count_particle_per_image(file_i,file_csv):
         result = re.search(pattern, line)
         if result:
             image_name = result.group(1)
-            if image_name in dictionary:
-                dictionary[image_name] +=1
-            else:
-                dictionary.update({image_name:1})
-            list = line.split()
+            list = line.split() 
             defocus = float(list[10])/10000
-            data.append([image_name,dictionary[image_name],list[8],defocus])
-    df = pd.DataFrame(data,columns = ['Image Name','Refined Particles','Resolution(A)','Defocus(um)'])
-    df = df.sort_values(by = 'Refined Particles',ascending=False)
+            data.append([image_name,list[8],defocus])
+    df = pd.DataFrame(data,columns = ['Image Name','Resolution(A)','Defocus(um)'])
+    
+    
+#    df = pd.DataFrame(data,columns = ['Image Name','Refined Particles','Resolution(A)','Defocus(um)'])
+#    df = df.sort_values(by = 'Refined Particles',ascending=False)
     df.to_csv(file_csv,index=False)
     
 count_particle_per_image(options.input_star,options.output_list)
