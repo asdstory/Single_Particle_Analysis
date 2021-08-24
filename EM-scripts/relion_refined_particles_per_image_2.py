@@ -40,6 +40,7 @@ def count_particle_per_image(file_i,file_csv):
     df = df.groupby(df.columns.tolist()).apply(len).rename('Refined Particles').reset_index().sort_values(by = 'Refined Particles',ascending=False)
     df[['Resolution(A)','Defocus(um)']] = df[['Resolution(A)','Defocus(um)']].apply(pd.to_numeric)
     print(df['Defocus(um)'].describe())
+    df.plot(x='Defocus(um)', y='Refined Particles')
     df.to_csv(file_csv,index=False)
     
 count_particle_per_image(options.input_star,options.output_list)
