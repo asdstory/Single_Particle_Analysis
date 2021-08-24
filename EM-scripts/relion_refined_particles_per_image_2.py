@@ -4,6 +4,7 @@
 #Despcription: This program is used to prepare the .order file for RELION subtomogram averaging.
 #Author: Tongyi Dou
 #How to use: "relion_prepare_orderfile.py --i run_data.star --o refined_particles_per_image.csv"
+#Test data: data = [[20210527_05260821,200,3.53,2.09], [20210527_05070268,190,3.42,1.39],[20210525_23585333,180,3.17,1.65]]
 #Last Edit: 2021-08-22
 #####***************************************************************************************************#####
 
@@ -24,7 +25,7 @@ parser.add_option("--o", dest="output_list", type="string", default="", help="Ou
 def count_particle_per_image(file_i,file_csv):
     dictionary = dict()
     df = pd.DataFrame(columns = ['Refined Particles', 'Resolution (A)', 'Defocus (um)'])
-    print
+    print(df)
     pattern = r'(\d{8}_\d{8}.mrc\b)'
     for line in open(file_i, 'r'):
         line = line.rstrip()
@@ -35,6 +36,10 @@ def count_particle_per_image(file_i,file_csv):
                 dictionary[image_name] +=1
             else:
                 dictionary.update({image_name:1})
+            list = split(line)
+            df = df.append(pd.series({'Refined Particles':dictionary[image_name], 'Resolution (A)':list[], 'Defocus (um)':list[]}, name = image_name))
+    print(df)
+    
     dictionary = sorted(dictionary.items(), key=lambda item:item[1], reverse=True)
     
     print(dictionary)
@@ -47,3 +52,4 @@ def count_particle_per_image(file_i,file_csv):
     file_csv_handle.close()   
    
 count_particle_per_image(options.input_star,options.output_list)
+
