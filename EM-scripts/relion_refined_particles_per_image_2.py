@@ -35,19 +35,14 @@ def count_particle_per_image(file_i,file_csv):
                 dictionary[image_name] +=1
             else:
                 dictionary.update({image_name:1})
-            list = split(line)
-            data.append([image_name,dictionary[image_name],list[],list[]])
-    df = pd.DataFrame(data,columns = ['Image Name','Refined particles','Resolution(A)','Defocus(um)'])
-    
+            list = line.split()
+            defocus = float(list[11]/10000)
+            data.append([image_name,dictionary[image_name],list[9],defocus)
+    print(data)
+    df = pd.DataFrame(data,columns = ['Image Name','Refined Particles','Resolution(A)','Defocus(um)'])
+    df = df.sort_values(by = 'Refined Partciles',ascending=False)
     print(df)
     df.to_csv(file_csv,index=False)
     
-    file_csv_handle = open(file_csv, 'w')
-    for i in dictionary:
-        print(str(i)+'\n')
-        line = str(i) + "\n"
-        file_csv_handle.write(line)
-    file_csv_handle.close()   
-   
 count_particle_per_image(options.input_star,options.output_list)
 
