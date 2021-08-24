@@ -33,7 +33,7 @@ def count_particle_per_image(file_i,file_csv):
             list = line.split() 
             defocus = float(list[10])/10000
             defocus = format(defocus,'.2f')
-            resolution = float(list[8])
+            resolution = float(list[8])/1
             resolution = format(resolution,'.2f')
             data.append([image_name,list[8],defocus])
     df = pd.DataFrame(data,columns = ['Image Name','Resolution(A)','Defocus(um)'])
