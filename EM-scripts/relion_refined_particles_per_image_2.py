@@ -34,7 +34,7 @@ def count_particle_per_image(file_i,file_csv):
             defocus = float(list[10])/10000
             data.append([image_name,list[8],defocus])
     df = pd.DataFrame(data,columns = ['Image Name','Resolution(A)','Defocus(um)'])
-    
+    df = df.groupby(df.columns.tolist()).apply(len).rename('Refined Particles').reset_index().sort_values(by = 'Refined Particles',ascending=False)
     
 #    df = pd.DataFrame(data,columns = ['Image Name','Refined Particles','Resolution(A)','Defocus(um)'])
 #    df = df.sort_values(by = 'Refined Particles',ascending=False)
