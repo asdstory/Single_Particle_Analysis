@@ -39,7 +39,7 @@ Magnification = 53000
 # Pixel size of the detector (in micron)
 DPixSize = 11.57  
 # Path to CTFFIND (version 3 or 4)
-PathToCtffind = '/public/EM/ctffind/ctffind.exe'     
+PathToCtffind = '/usr/local/apps/ctffind/4.1.14/ctffind'     
 # If CTFFIND crashed in the middle, you can turn this to True to resume CTF estimations only for unfinished images
 OnlyDoUnfinishedCTFs = False                            
 # Boxsize for CTFFIND
