@@ -112,10 +112,10 @@ def read_relion_star(filename):
     fields = line.split()
     firstfield = fields[0]
     if firstfield[0] == 'd':
-      #print 'data_ line found'
+      print 'data_ line found'
       continue
     if firstfield[0] == 'l':
-      #print 'loop_ line found'
+      print 'loop_ line found'
       continue
     j=j+1 
 
