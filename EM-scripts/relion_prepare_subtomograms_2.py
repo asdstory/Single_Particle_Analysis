@@ -95,6 +95,8 @@ def ensure_dir(f):
 # RELION has a more comprehensive parser in the main code.
 def read_relion_star(filename):
   starfile=open(filename, 'r')
+  print 'Input starfile is: \n'
+  print starfile
   j=-1
 
   micnames=[]
