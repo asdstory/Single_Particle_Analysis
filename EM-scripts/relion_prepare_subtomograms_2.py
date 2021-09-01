@@ -31,23 +31,23 @@ ExtractJobAlias = 'extract_tomo'
 ## CTFFIND CTF estimation input
 #################################
 # Microscope voltage in kV
-Voltage = 300              
+Voltage = 200              
 # Spherical aberration coefficient in mm
 Cs = 2.7
 # Magnification of the image
-Magnification = 53000       
+Magnification = 45000       
 # Pixel size of the detector (in micron)
-DPixSize = 11.57  
+DPixSize = 14.1165 
 # Path to CTFFIND (version 3 or 4)
 PathToCtffind = '/usr/local/apps/ctffind/4.1.14/ctffind'     
 # If CTFFIND crashed in the middle, you can turn this to True to resume CTF estimations only for unfinished images
 OnlyDoUnfinishedCTFs = False                            
 # Boxsize for CTFFIND
-BoxSize = 256
+BoxSize = 512
 # Lower resolution limit for CTFFIND
 LowResLimit = 50
 # Higher resolution limit for CTFFIND fitting
-HighResLimit = 8
+HighResLimit = 4
 # Lowest nominal defocus tilt series in the data set
 LowDefocusLimit = 20000
 # Highest nominal defocus tilt series in the data set
@@ -101,11 +101,11 @@ def read_relion_star(filename):
   defociv=[]
   for line in starfile:
 
-    #print line
+    print line
 
     emptycheck = line.isspace()
     if(emptycheck):
-      #print 'empty line found'
+      print 'empty line found'
       continue
     
     fields = line.split()
