@@ -113,6 +113,9 @@ def read_relion_star(filename):
     
     fields = line.split()
     firstfield = fields[0]
+    if firstfield[0] == '#':
+      print 'Comment line found'
+      continue
     if firstfield[0] == 'd':
       print 'data_ line found'
       continue
@@ -462,6 +465,8 @@ for mic in micnames:
   # Reading the output of CTFFIND
   print 'outputstarname_read is: \n'
   print outputstarname_read
+  print '\n'
+  
   micnames, avgdefoci, defocusv = read_relion_star(outputstarname_read)
   final_avgdefoci=[]
   if UseTrialsForCtffind == False:
