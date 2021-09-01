@@ -458,8 +458,10 @@ for mic in micnames:
   #print tiltorder, accumulated_dose
   tiltorderfile.close()
   #
-
+  
   # Reading the output of CTFFIND
+  print 'outputstarname_read is: \n'
+  print outputstarname_read
   micnames, avgdefoci, defocusv = read_relion_star(outputstarname_read)
   final_avgdefoci=[]
   if UseTrialsForCtffind == False:
