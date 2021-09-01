@@ -368,21 +368,19 @@ for mic in micnames:
   if SkipCTFCorrection == False:
     if Relion2 == False:
       outputstarname =  OutputDir + MicRootName +  '_ctffind.star'
-      print 'OutputDir is: \n'
-      print OutputDir
-      print 'MicRootName is: \n'
-      print MicRootName
-      print 'outputstarname is: \n'
-      print outputstarname
       outputstarname_read = outputstarname
-      print 'outputstarname_read is: \n'
-      print outputstarname_read
       print ':: RELION sub-tomogram averaging :: ' + '\n' + 'Running relion_run_ctffind ' + '\n' 
       relion_ctffindline = 'relion_run_ctffind --i ' + ctffindstarname + ' --o ' + outputstarname + ' --CS ' + str(Cs) + ' --HT ' + str(Voltage) +  ' --ctfWin -1 --AmpCnst ' + str(AmpContrast) +  ' --DStep ' + str(DPixSize) +  ' --XMAG ' + str(Magnification) + ' --Box ' + str(BoxSize) +  ' --dFMin ' + str(LowDefocusLimit) + ' --dFMax ' + str(HighDefocusLimit) + ' --FStep ' + str(DefocusStep) + ' --dAst ' + str(Astigmatism) + ' --ResMin ' + str(LowResLimit) + ' --ResMax ' + str(HighResLimit) + ' --ctffind_exe \"' + PathToCtffind + '   --old-school-input\"' 
     # RELION 2.0
     if Relion2 == True:
-      outputstarname =  OutputDir + 'results'       
+      print 'OutputDir is: \n'
+      print OutputDir
+      outputstarname =  OutputDir + 'results'   
+      print 'outputstarname is: \n'
+      print outputstarname
       outputstarname_read = outputstarname + '/micrographs_ctf.star'
+      print 'outputstarname_read is: \n'
+      print outputstarname_read
       print ':: RELION sub-tomogram averaging :: ' + '\n' + 'Running relion_run_ctffind ' + '\n'
       relion_ctffindline = 'relion_run_ctffind --i ' + ctffindstarname + ' --o ' + outputstarname + ' --CS ' + str(Cs) + ' --HT ' + str(Voltage) +  ' --ctfWin -1 --AmpCnst ' + str(AmpContrast) +  ' --DStep ' + str(DPixSize) +  ' --XMAG ' + str(Magnification) + ' --Box ' + str(BoxSize) +  ' --dFMin ' + str(LowDefocusLimit) + ' --dFMax ' + str(HighDefocusLimit) + ' --FStep ' + str(DefocusStep) + ' --dAst ' + str(Astigmatism) + ' --ResMin ' + str(LowResLimit) + ' --ResMax ' + str(HighResLimit) + ' --ctffind_exe \"' + PathToCtffind + '   --old-school-input\"' 
 
