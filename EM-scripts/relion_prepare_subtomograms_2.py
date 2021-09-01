@@ -52,7 +52,7 @@ HighResLimit = 4
 # Lowest nominal defocus tilt series in the data set
 LowDefocusLimit = 20000
 # Highest nominal defocus tilt series in the data set
-HighDefocusLimit = 50000
+HighDefocusLimit = 100000
 # Step search for searching defocus values
 DefocusStep = 1000
 # Amplitude contrast in images, normally you do not need to change this
