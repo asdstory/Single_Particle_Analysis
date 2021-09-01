@@ -7,6 +7,7 @@ print 'Please read the documentation on the RELION wiki, several questions are a
 print 'This version can set defocus values above a certain tilt to the defocus value of the zero degree tilt'
 print 'This version will write out all the CTF reconstruction commands in the master file' 
 print 'Please make sure to indicate whether you will use RELION 2.0 or not'
+print 'How to use on Biowulf: ml RELION/3.0.8, ml PEET, and then run the relion_prepare_subtomograms.py'
 #Mon May 23 18:06:33 BST 2016
 
 import os, sys, commands, math, time, stat, glob, shutil
