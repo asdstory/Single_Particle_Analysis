@@ -123,12 +123,18 @@ def read_relion_star(filename):
 
     if firstfield == '_rlnMicrographName':
       imgnamecolumn = j
+      print 'imgnamecolumn is: \n'
+      print imgnamecolumn
       continue
     if firstfield == '_rlnDefocusU':
       defocusucolumn = j
+      print 'defocusucolumn is: \n'
+      print defocusucolumn
       continue
     if firstfield == '_rlnDefocusV':
       defocusvcolumn = j
+      print 'defocusucolumn is: \n'
+      print defocusucolumn
       continue
     #if firstfield == '_rlnCtfFigureOfMerit':
     #  ctffigureofmeritcolumn = j
