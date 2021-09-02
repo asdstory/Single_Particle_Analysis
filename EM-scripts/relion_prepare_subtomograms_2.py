@@ -632,6 +632,7 @@ for mic in micnames:
     # This is for parallilzation of the CTF reconstructions
     if not outfile.closed:
       reconstructline2 = 'relion_reconstruct --i ' + outstarname + ' --o ' + outctfname + ' --reconstruct_ctf ' + '$1' + ' --angpix ' + str("%.2f" % PixelSize) + '\n'
+      # ctf_dim  = textToInteger(parser.getOption("--reconstruct_ctf", "Perform a 3D reconstruction from 2D CTF-images, with the given size in pixels", "-1"))
       ctfreconstmasterfile.write(reconstructline2)
     
     # writing the .star file for refinement
