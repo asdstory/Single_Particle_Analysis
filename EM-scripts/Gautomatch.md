@@ -36,7 +36,7 @@ gautomatch --apixM 0.93 --diameter 100 --lave_D 100 --lave_min -0.8 --lsigma_cut
 #Or, for simple use, just
 
 # For TF20 data
-gautomatch --apixM 1.27 --diameter 150 *_sum_DW.mrc 
+gautomatch --apixM 1.26 --diameter 100 *_sum_DW.mrc 
 
 # For negative staining data+
 ```sh
