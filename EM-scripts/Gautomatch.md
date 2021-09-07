@@ -10,7 +10,7 @@ set -e
 
 module load gautomatch
 
-gautomatch --apixM 1.27 --diameter 80 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2  --cc_cutoff 0.25 *_sum_DW.mrc
+gautomatch --apixM 1.26 --diameter 80 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2  --cc_cutoff 0.25 *_sum_DW.mrc
 
 
 
