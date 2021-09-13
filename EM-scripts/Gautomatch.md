@@ -34,6 +34,9 @@ gautomatch --apixM 0.93 --diameter 100 --lave_D 100 --lave_min -0.8 --lsigma_cut
 
 [user@cn3144 ~]$ gautomatch --apixM 0.83 --diameter 80 --T /data/dout2/InitialModels/rOAT1-pp20210421_lp10pix1_proj30.mrc.mrcs  -apixT 0.85 --lave_D 100 --lave_min -0.8 --lsigma_cutoff 1.2 --cc_cutoff 0.25 --min_dist 50  *[0-9].mrc
 
+### Pick without template:  
+gautomatch --apixM 0.83 --diameter 100 *[0-9].mrc
+
 #Or, for simple use, just
 
 # For TF20 data
