@@ -13,7 +13,7 @@
 ### Move the file to Biowulf:
 - [ ] ssh dout2@helix.nih.gov
 - [ ] cd /data/dout2/Database/
-- [ ] rsync --progress -avzhe  ssh krios@leginon.niddk.nih.gov:/home/krios/local/bin/leginon_image_shift_data_all_2021-05-31.txt .
+- [ ] rsync -avzhe  ssh krios@leginon.niddk.nih.gov:/home/krios/local/bin/leginon_image_shift_data_all_2021-05-31.txt .
 
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Leginon_Image_Shift_Information.png?raw=true"
      alt="leginon_image_shift_data from leginon"
@@ -26,6 +26,7 @@ input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using
 - [ ] relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/biowulf-data-smb/dout2/DataLibrary/leginon_image_shift_data_all_2021-05-08.txt --input_star=movies.star --output_star=movies_group.star
 - [ ] python2 /home/dout2/programs/apps/EMscript/relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/biowulf-data-smb/dout2/Database/leginon_image_shift_data_all_2021-05-31.txt --input_star=movies.star --output_star=movies_group.star
 - [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/dout2/Database/leginon_image_shift_data_all_2021-07-11.txt --input_star=movies.star --output_star=movies_group.star
+- [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/dout2/Database/leginon_image_shift_data_all_2021-09-12.txt --input_star=movies.star --output_star=movies_group.star
 
 movies.star file before group looks like 
 
