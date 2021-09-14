@@ -16,6 +16,8 @@ gautomatch --apixM 1.26 --diameter 80 --lave_D 100 --lave_min -0.8 --lsigma_cuto
 
 # Allocate an interactive session and run the program. Sample session:
 
+```sh
+
 [user@biowulf]$ sinteractive --gres=gpu:k80:1 --mem=20g -c14
 
 [user@biowulf]$ module load gautomatch
@@ -47,7 +49,7 @@ gautomatch --apixM 1.26 --diameter 100 *_sum_DW.mrc
 ml Gautomatch
 Gautomatch --apixM 2.5 --diameter 200 --speed 1  --lsigma_cutoff 5  --lave_min -1.0  --cc_cutoff 0.2  *.mrc --gid 0  --dont_invertT
 
-
+```
 
 # Allocate an interactive session and run the program. Sample session:
 
