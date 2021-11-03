@@ -2,6 +2,9 @@ Topaz is application for particle detection in cryo-electron microscopy. Topaz u
 
 References:
 - Bepler, T., Morin, A., Rapp, M., Brasch, J., Shapiro, L., Noble, A.J., Berger, B. Positive-unlabeled convolutional neural networks for particle picking in cryo-electron micrographs. Nat Methods 16, 1153–1160 (2019).
+- https://github.com/tbepler/topaz/blob/master/tutorial/01_quick_start_guide.ipynb
+- https://github.com/tbepler/topaz/blob/master/tutorial/02_walkthrough.ipynb
+- 
 
 ### Step1 Setup
 
@@ -33,7 +36,7 @@ topaz convert -s 8 -o data/EMPIAR-10025/processed/particles.txt data/EMPIAR-1002
 ### Step3 Training
 
 ```sh
-
+mkdir -p saved_modles/EMPIAR-10025
 
 ```
 
