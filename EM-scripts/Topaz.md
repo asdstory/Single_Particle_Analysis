@@ -22,7 +22,7 @@ cp $(ls | grep '[0-9].mrc' |sort -R | head -50) /lscratch/$SLURM_JOB_ID/rawdata/
 
 ```sh
 
-topaz preprocess -d 0 -v -s 8 -o processed/micrographs/ rawdata/micrographs/*.mrc
+topaz preprocess -d 0 -v -s 4 -o processed/micrographs/ rawdata/micrographs/*.mrc
 
 ```
 
