@@ -38,5 +38,15 @@ topaz convert -s 8 -o data/EMPIAR-10025/processed/particles.txt data/EMPIAR-1002
 ```sh
 mkdir -p saved_modles/EMPIAR-10025
 
+topaz train -n 400 --num-workers=8 --train-images data/EMPIAR-10025/processed/micrographs/ --train-targets data/EMPIAR-10025/processed/particles.txt --save-prefix=saved_models/EMPIAR-10025/model -o saved_models/EMPIAR-10025/model_training.txt
+
 ```
 
+### Step4 Extraction
+
+```sh
+mkdir -p data/EMPIAR-10025/topaz
+
+topaz extract -r 14 -x 8 -m saved_models/EMPIAR-10025/model_epoch10.sav -o data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.txt data/EMPIAR-10025/processed/micrographs/*.mrc
+
+```
