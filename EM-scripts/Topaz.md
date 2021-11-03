@@ -50,3 +50,10 @@ mkdir -p data/EMPIAR-10025/topaz
 topaz extract -r 14 -x 8 -m saved_models/EMPIAR-10025/model_epoch10.sav -o data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.txt data/EMPIAR-10025/processed/micrographs/*.mrc
 
 ```
+### Step5 change format of particle coordinates file
+
+```sh
+topaz convert -o data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.star data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.txt 
+
+
+```
