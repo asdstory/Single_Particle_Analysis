@@ -29,6 +29,7 @@ cp $(ls | grep '[0-9].mrc' |sort -R | head -50) /lscratch/$SLURM_JOB_ID/rawdata/
 
 topaz preprocess -d 0 -v -s 4 -o processed/micrographs/ rawdata/micrographs/*.mrc
 
+topaz convert --from star --to coord -o particles.txt particles.star 
 
 topaz convert -s 8 -o data/EMPIAR-10025/processed/particles.txt data/EMPIAR-10025/rawdata/particles.txt
 ```
