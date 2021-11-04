@@ -25,6 +25,9 @@ cp $(ls | grep '[0-9].mrc' |sort -R | head -100) /lscratch/$SLURM_JOB_ID/rawdata
 
 ### Step2 Denoise micrographs
 
+```sh
+topaz denoise /path/to/input/images/*.mrc --model unet --device 0 --format mrc --patch-size 1536 --patch-padding 384 --normalize --output /path/to/output/folder/
+```
 
 ### Step2 preprocess
 
