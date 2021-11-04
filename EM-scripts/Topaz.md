@@ -19,9 +19,12 @@ mkdir -p rawdata/micrographs
 
 cd /data/dout2/20211004Krios_mOCT1-noGFP-LMNG/MotionCorr/job003/finished-frames
 
-cp $(ls | grep '[0-9].mrc' |sort -R | head -50) /lscratch/$SLURM_JOB_ID/rawdata/micrographs/
+cp $(ls | grep '[0-9].mrc' |sort -R | head -100) /lscratch/$SLURM_JOB_ID/rawdata/micrographs/
 
 ```
+
+### Step2 Denoise micrographs
+
 
 ### Step2 preprocess
 
