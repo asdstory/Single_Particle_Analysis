@@ -26,10 +26,10 @@ cp $(ls | grep '[0-9].mrc' |sort -R | head -100) /lscratch/$SLURM_JOB_ID/rawdata
 ### Step2 Denoise micrographs
 
 ```sh
-topaz denoise /path/to/input/images/*.mrc --model unet --device 0 --format mrc --patch-size 1536 --patch-padding 384 --normalize --output /path/to/output/folder/
+topaz denoise /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/rawdata/micrographs/*.mrc --model unet --device 0 --format mrc --patch-size 1536 --patch-padding 384 --normalize --output /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/denoise/micrographs/
 ```
 
-### Step2 preprocess
+### Step3 preprocess
 
 ```sh
 
@@ -40,7 +40,7 @@ topaz convert --from star --to coord -o particles.txt particles.star
 topaz convert -s 8 -o data/EMPIAR-10025/processed/particles.txt data/EMPIAR-10025/rawdata/particles.txt
 ```
 
-### Step3 Training
+### Step4 Training
 
 ```sh
 mkdir -p saved_modles/EMPIAR-10025
@@ -49,7 +49,7 @@ topaz train -n 400 --num-workers=8 --train-images data/EMPIAR-10025/processed/mi
 
 ```
 
-### Step4 Extraction
+### Step5 Extraction
 
 ```sh
 mkdir -p data/EMPIAR-10025/topaz
