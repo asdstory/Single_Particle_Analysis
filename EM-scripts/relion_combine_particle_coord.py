@@ -19,7 +19,7 @@ pat_coord=re.compile(r"\s(\d*)\.\d*\s(\d*)")
 data=[]
 
 for filename in os.listdir(directory):
-  result_image=pat_iamge.match(filename)
+  result_image=pat_image.match(filename)
   group_image=result_image.groups()
   with open(filename) as f:
     for line in f:
