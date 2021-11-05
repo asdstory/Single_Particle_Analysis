@@ -15,7 +15,7 @@ import pandas as pd
 
 directory=os.getcwd()
 pat_image=re.compile(r"^(\S*)_manualpick.star")
-pat_coord=re.compile(r"\s(\d*)\.\d*\s(\d*)")
+pat_coord=re.compile(r"\s(\d*)\.\d*\s*(\d*)")
 data=[]
 
 for filename in os.listdir(directory):
