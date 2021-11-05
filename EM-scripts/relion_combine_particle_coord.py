@@ -29,4 +29,4 @@ for filename in os.listdir(directory):
         data.append(group_image[1],int(group_coord[1]),int(group_coord[2]))
       
 df=pd.DataFrame(data,columns=['image_name','x_coord','y_coord'])
-df.to_csv('Particles.txt',index=False,sep='\t')
+df.to_csv('particles.txt',index=False,sep='\t')
