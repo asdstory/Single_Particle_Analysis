@@ -41,7 +41,7 @@ topaz convert -s 8 -o data/EMPIAR-10025/processed/particles.txt data/EMPIAR-1002
 
 topaz preprocess /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/denoise/micrographs/*.mrc --scale 4 --sample 1 --num-workers 16 --format mrc,png --device 0 --niters 100 --alpha 900 --beta 1 --verbose --destdir /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/processed/micrographs/
 
-topaz preprocess finished-frames/[0-9].mrc --scale 4 --sample 1 --num-workers 16 --format mrc --device 0 --niters 100 --alpha 900 --beta 1 --verbose --destdir processed/micrographs/
+topaz preprocess finished-frames/*[0-9].mrc --scale 4 --sample 1 --num-workers 16 --format mrc --device 0 --niters 100 --alpha 900 --beta 1 --verbose --destdir processed/micrographs/
 
 ```
 
