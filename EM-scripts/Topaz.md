@@ -59,6 +59,9 @@ for i in processed/micrographs/*.mrc; do rm orignal_2/`basename $i`; done
 module load EMscript
 runpar_gpu.py -p32 runpar.cmd
 
+topaz convert -s 4 -o particles.txt ../../../ManualPick/job063/rawdata/micrographs/particles.txt
+
+
 ```
 
 ### Step4 Training
