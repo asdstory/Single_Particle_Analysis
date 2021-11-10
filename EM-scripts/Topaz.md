@@ -43,6 +43,14 @@ topaz preprocess /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/denois
 
 topaz preprocess finished-frames/*[0-9].mrc --scale 4 --sample 1 --num-workers 16 --format mrc --device 0 --niters 100 --alpha 900 --beta 1 --verbose --destdir processed/micrographs/
 
+topaz preprocess original_2/*[0-9].mrc --scale 4 --sample 1 --num-workers 8 --format mrc --device 0 --niters 100 --alpha 900 --beta 1 --verbose --destdir processed/micrographs/
+
+topaz preprocess original_2/20211007_*.mrc --scale 4 --sample 1 --num-workers 8 --format mrc --device 0 --niters 100 --alpha 900 --beta 1 --verbose --destdir processed/micrographs/ &
+
+topaz preprocess original_2/20211008_*.mrc --scale 4 --sample 1 --num-workers 8 --format mrc --device 1 --niters 100 --alpha 900 --beta 1 --verbose --destdir processed/micrographs/ &
+
+topaz preprocess original_2/20211009_*.mrc --scale 4 --sample 1 --num-workers 8 --format mrc --device 2 --niters 100 --alpha 900 --beta 1 --verbose --destdir processed/micrographs/ &
+
 for i in MotionCorr/job003/finished-frames/*_????????.mrc; do echo topaz preprocess $i --scale 4 --sample 1  --format mrc --niters 100 --alpha 900 --beta 1 --verbose --destdir MotionCorr/job003/processed/micrographs/`basename $i`; done > runpar.cmd 
 
 for i in processed/micrographs/*.mrc; do rm orignal_2/`basename $i`; done
