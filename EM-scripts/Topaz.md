@@ -73,6 +73,20 @@ topaz train -n 400 --num-workers=8 --train-images data/EMPIAR-10025/processed/mi
 
 
 topaz train --train-images /path/to/preprocessed/images/ --train-targets /path/to/training_particles.csv --k-fold 5 --fold 0 --radius 3 --model resnet8 --image-ext .mrc --units 32 --dropout 0.0 --bn on --unit-scaling 2 --ngf 32 --method GE-binomial --autoencoder 0 --num-particles 300 --l2 0 --learning-rate 0.0002 --minibatch-size 256 --minibatch-balance 0.0625 --epoch-size 5000 --num-epochs 10 --num-workers -1 --test-batch-size 1 --device 0 --save-prefix /output/path/model --output /output/path/results.txt
+
+topaz train -n 400 --num-workers=50 --train-images micrographs/ --train-targets particles.txt --save-prefix=model -o model/training.txt
+
+[dout2@cn4213 processed]$ topaz train -n 400 --num-workers=50 --train-images micrographs/ --train-targets particles.txt --save-prefix=model -o model/training.txt
+WARNING: While bind mounting '/gs10:/gs10': destination is already in the mount point list
+# Loading model: resnet8
+# Model parameters: units=32, dropout=0.0, bn=on
+# Loading pretrained model: resnet8_u32
+# Receptive field: 71
+# Using device=0 with cuda=True
+c
+
+
+
 ```
 
 ### Step5 Extraction
