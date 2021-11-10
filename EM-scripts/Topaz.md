@@ -45,6 +45,9 @@ topaz preprocess finished-frames/*[0-9].mrc --scale 4 --sample 1 --num-workers 1
 
 for i in MotionCorr/job003/finished-frames/*_????????.mrc; do echo topaz preprocess $i --scale 4 --sample 1  --format mrc --niters 100 --alpha 900 --beta 1 --verbose --destdir MotionCorr/job003/processed/micrographs/`basename $i`; done > runpar.cmd 
 
+for i in processed/micrographs/*.mrc; do rm orignal_2/`basename $i`; done
+
+
 module load EMscript
 runpar_gpu.py -p32 runpar.cmd
 
