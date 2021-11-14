@@ -97,6 +97,10 @@ mkdir -p data/EMPIAR-10025/topaz
 topaz extract -r 14 -x 8 -m saved_models/EMPIAR-10025/model_epoch10.sav -o data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.txt data/EMPIAR-10025/processed/micrographs/*.mrc
 
 
+topaz extract -r 28 -x 4 -m saved_models/EMPIAR-10025/model_epoch10.sav -o data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.txt data/EMPIAR-10025/processed/micrographs/*.mrc
+
+
+
 topaz extract /path/to/preprocessed/images/*.mrc --model resnet16_u64 --radius 8 --threshold -6 --up-scale 1 --batch-size 1 --min-radius 5 --max-radius 100 --step-radius 5 --num-workers -1 --device 0 --output /path/to/extracted/particles.txt
 
 topaz convert /path/to/extracted/particles.txt --verbose 1 --output /path/to/extracted/particles.star
