@@ -76,14 +76,32 @@ topaz train --train-images /path/to/preprocessed/images/ --train-targets /path/t
 
 topaz train -n 400 --num-workers=50 --train-images micrographs/ --train-targets particles.txt --save-prefix=model -o model/training.txt
 
-[dout2@cn4213 processed]$ topaz train -n 400 --num-workers=50 --train-images micrographs/ --train-targets particles.txt --save-prefix=model -o model/training.txt
+[dout2@cn4201 processed]$ topaz train -n 400 --num-workers=50 --train-images micrographs/ --train-targets particles.txt --save-prefix=model -o model/training.txt
 WARNING: While bind mounting '/gs10:/gs10': destination is already in the mount point list
 # Loading model: resnet8
 # Model parameters: units=32, dropout=0.0, bn=on
 # Loading pretrained model: resnet8_u32
 # Receptive field: 71
 # Using device=0 with cuda=True
-c
+Traceback (most recent call last):
+  File "/usr/local/conda/bin/topaz", line 11, in <module>
+    load_entry_point('topaz-em==0.2.4', 'console_scripts', 'topaz')()
+  File "/usr/local/conda/lib/python3.7/site-packages/topaz/main.py", line 148, in main
+    args.func(args)
+  File "/usr/local/conda/lib/python3.7/site-packages/topaz/commands/train.py", line 641, in main
+    image_ext=args.image_ext
+  File "/usr/local/conda/lib/python3.7/site-packages/topaz/commands/train.py", line 231, in load_data
+    , sources=train_images.source)
+  File "/usr/local/conda/lib/python3.7/site-packages/topaz/utils/data/loader.py", line 130, in load_images_from_list
+    im = load_image(path, standardize=standardize)
+  File "/usr/local/conda/lib/python3.7/site-packages/topaz/utils/data/loader.py", line 103, in load_image
+    image = load_mrc(path, standardize=standardize)
+  File "/usr/local/conda/lib/python3.7/site-packages/topaz/utils/data/loader.py", line 51, in load_mrc
+    image, header, extended_header = mrc.parse(content)
+  File "/usr/local/conda/lib/python3.7/site-packages/topaz/mrc.py", line 111, in parse
+    header = MRCHeader._make(header_struct.unpack(content[:1024]))
+struct.error: unpack requires a buffer of 1024 bytes
+
 
 
 
