@@ -170,6 +170,9 @@ topaz extract /path/to/preprocessed/images/*.mrc --model resnet16_u64 --radius 8
 topaz convert /path/to/extracted/particles.txt --verbose 1 --output /path/to/extracted/particles.star
 
 topaz convert /path/to/extracted/particles.txt --verbose 1 --output /path/to/extracted/particles.csv
+
+topaz convert --from coord --to star predicted_particles_all_upsampled.txt  -o predicted_particles_all_upsampled.star
+
 ```
 ### Step5 change format of particle coordinates file
 
