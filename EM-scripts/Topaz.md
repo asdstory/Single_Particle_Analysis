@@ -155,6 +155,9 @@ struct.error: unpack requires a buffer of 1024 bytes
 ```sh
 mkdir -p data/EMPIAR-10025/topaz
 
+topaz extract -r 14 -x 8 -m saved_models/model_epoch10.sav -o predicted_particles_all_upsampled.txt processed/micrographs/*.mrc
+
+
 topaz extract -r 14 -x 8 -m saved_models/EMPIAR-10025/model_epoch10.sav -o data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.txt data/EMPIAR-10025/processed/micrographs/*.mrc
 
 
