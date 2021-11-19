@@ -19,6 +19,8 @@ cd /data/dout2/20211004Krios_mOCT1-noGFP-LMNG/MotionCorr/job003/finished-frames
 
 cp $(ls | grep '[0-9].mrc' |sort -R | head -100) /lscratch/$SLURM_JOB_ID/rawdata/micrographs/
 
+
+
 ```
 
 ### Step2 Denoise micrographs
@@ -30,6 +32,31 @@ topaz denoise /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/rawdata/m
 ### Step3 preprocess
 
 ```sh
+
+[dout2@cn4179 micrographs]$ ml IMOD
+[+] Loading IMOD 4.11.5 . Running with 56  CPUs 
+[dout2@cn4179 micrographs]$ header 14sep05c_c_00004gr_00032sq_00040hl_00002es_c.mrc
+
+ RO image file on unit   1 : 14sep05c_c_00004gr_00032sq_00040hl_00002es_c.mrc     Size=     222485 K
+
+                    This file has an old-style MRC header.
+
+ Number of columns, rows, sections .....    7420    7676       1
+ Map mode ..............................    2   (32-bit real)              
+ Start cols, rows, sects, grid x,y,z ...    0     0     0       1      1      1
+ Pixel spacing (Angstroms)..............   1.000      1.000      1.000    
+ Cell angles ...........................   90.000   90.000   90.000
+ Fast, medium, slow axes ...............    X    Y    Z
+ Origin on x,y,z .......................    0.000       0.000       0.000    
+ Minimum density .......................  -3.5590    
+ Maximum density .......................   91.954    
+ Mean density ..........................   16.100    
+ tilt angles (original,current) ........   0.0   0.0   0.0   0.0   0.0   0.0
+ Space group,# extra bytes,idtype,lens .        0        0        0        0
+
+     0 Titles :
+
+
 
 topaz preprocess -d 0 -v -s 8 -o processed/micrographs/ rawdata/micrographs/*.mrc
 
