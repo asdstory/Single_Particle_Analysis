@@ -145,7 +145,7 @@ Traceback (most recent call last):
     header = MRCHeader._make(header_struct.unpack(content[:1024]))
 struct.error: unpack requires a buffer of 1024 bytes
 
-
+topaz train -n 400 --num-workers=50 --train-images processed/micrographs/ --train-targets processed/particles.txt --save-prefix=saved_models/model -o saved_models/model_training.txt
 
 
 ```
@@ -157,6 +157,7 @@ mkdir -p data/EMPIAR-10025/topaz
 
 topaz extract -r 14 -x 8 --per-micrograph --format star -m saved_models/model_epoch10.sav -o processed/micrographs/ processed/micrographs/*.mrc
 
+topaz extract -r 14 -x 4 --per-micrograph --format star -m saved_models/model_epoch10.sav -o processed/micrographs/ processed/micrographs/*.mrc
 
 topaz extract -r 14 -x 8 -m saved_models/EMPIAR-10025/model_epoch10.sav -o data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.txt data/EMPIAR-10025/processed/micrographs/*.mrc
 
