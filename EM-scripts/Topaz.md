@@ -31,7 +31,7 @@ topaz denoise /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/rawdata/m
 
 ```sh
 
-topaz preprocess -d 0 -v -s 4 -o processed/micrographs/ rawdata/micrographs/*.mrc
+topaz preprocess -d 0 -v -s 8 -o processed/micrographs/ rawdata/micrographs/*.mrc
 
 topaz convert --from star --to coord -o particles.txt particles.star 
 
