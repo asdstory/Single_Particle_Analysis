@@ -181,3 +181,30 @@ topaz convert -o data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.star 
 
 
 ```
+
+### Step6 Generate MRC particle stack
+
+```sh
+
+%%bash
+source activate topaz
+
+# here, we generate the particle stack using the predicted particles after upsamapling
+# per-micrograph metadata (such as CTF parameters) can be optionally included in the 
+# .star file generated with the particle stack
+
+# --size specifies the dimensions of the particle crops
+# --threshold specifies the score threshold above which to include particles in the stack
+# --metadata is optional and in this case contains CTF parameters
+
+# if output file is named "particles.mrc" then the .star file created will be "particles.star"
+
+topaz particle_stack --image-root=data/EMPIAR-10025/rawdata/micrographs/ \
+                     --size=400 \
+                     --threshold=0 \
+                     --metadata=data/EMPIAR-10025/rawdata/ctf_params.star \
+                     -o data/EMPIAR-10025/topaz/predicted_particle_stack.mrcs \
+                     data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.txt
+
+```
+
