@@ -99,6 +99,22 @@ topaz train -n 400 --num-workers=8 --train-images data/EMPIAR-10025/processed/mi
 
 topaz train -n 400 --num-workers=8 --train-images processed/micrographs/ --train-targets processed/particles.txt --save-prefix=saved_models/model -o saved_models/model_training.txt
 
+[dout2@cn4179 EMPIAR-10025]$ topaz train -n 400 --num-workers=8 --train-images processed/micrographs/ --train-targets processed/particles.txt --save-prefix=saved_models/model -o saved_models/model_training.txt
+# Loading model: resnet8
+# Model parameters: units=32, dropout=0.0, bn=on
+# Loading pretrained model: resnet8_u32
+# Receptive field: 71
+# Using device=0 with cuda=True
+# Loaded 30 training micrographs with 1500 labeled particles
+# source	split	p_observed	num_positive_regions	total_regions
+# 0	train	0.00163	43500	26669790
+# Specified expected number of particle per micrograph = 400.0
+# With radius = 3
+# Setting pi = 0.0130484716977524
+# minibatch_size=256, epoch_size=1000, num_epochs=10
+# Done!
+
+
 topaz train --train-images /path/to/preprocessed/images/ --train-targets /path/to/training_particles.csv --k-fold 5 --fold 0 --radius 3 --model resnet8 --image-ext .mrc --units 32 --dropout 0.0 --bn on --unit-scaling 2 --ngf 32 --method GE-binomial --autoencoder 0 --num-particles 300 --l2 0 --learning-rate 0.0002 --minibatch-size 256 --minibatch-balance 0.0625 --epoch-size 5000 --num-epochs 10 --num-workers -1 --test-batch-size 1 --device 0 --save-prefix /output/path/model --output /output/path/results.txt
 
 topaz train -n 400 --num-workers=50 --train-images micrographs/ --train-targets particles.txt --save-prefix=model -o model/training.txt
