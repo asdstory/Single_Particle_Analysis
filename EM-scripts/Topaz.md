@@ -59,16 +59,18 @@ runpar_gpu.py -p32 runpar.cmd
 
 topaz convert -s 4 -o particles.txt ../../../ManualPick/job063/rawdata/micrographs/particles.txt
 
+topaz convert -s 8 -o processed/particles.txt rawdata/particles.txt 
 
 ```
 
 ### Step4 Training
 
 ```sh
-mkdir -p saved_modles/EMPIAR-10025
+mkdir -p saved_models/EMPIAR-10025
 
 topaz train -n 400 --num-workers=8 --train-images data/EMPIAR-10025/processed/micrographs/ --train-targets data/EMPIAR-10025/processed/particles.txt --save-prefix=saved_models/EMPIAR-10025/model -o saved_models/EMPIAR-10025/model_training.txt
 
+topaz train -n 400 --num-workers=8 --train-images processed/micrographs/ --train-targets processed/particles.txt --save-prefix=saved_models/model -o saved_models/model_training.txt
 
 topaz train --train-images /path/to/preprocessed/images/ --train-targets /path/to/training_particles.csv --k-fold 5 --fold 0 --radius 3 --model resnet8 --image-ext .mrc --units 32 --dropout 0.0 --bn on --unit-scaling 2 --ngf 32 --method GE-binomial --autoencoder 0 --num-particles 300 --l2 0 --learning-rate 0.0002 --minibatch-size 256 --minibatch-balance 0.0625 --epoch-size 5000 --num-epochs 10 --num-workers -1 --test-batch-size 1 --device 0 --save-prefix /output/path/model --output /output/path/results.txt
 
