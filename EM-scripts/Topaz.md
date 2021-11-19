@@ -174,6 +174,9 @@ topaz convert /path/to/extracted/particles.txt --verbose 1 --output /path/to/ext
 
 topaz convert --from coord --to star predicted_particles_all_upsampled.txt  -o predicted_particles_all_upsampled.star
 
+topaz extract -r 14 -x 4 --per-micrograph --format star -m /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/saved_models/model_epoch10.sav -o processed/micrographs/ processed/micrographs/*.mrc
+
+
 ```
 ### Step5 change format of particle coordinates file
 
