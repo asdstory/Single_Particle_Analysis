@@ -155,9 +155,9 @@ topaz train -n 400 --num-workers=50 --train-images processed/micrographs/ --trai
 ```sh
 mkdir -p data/EMPIAR-10025/topaz
 
-topaz extract -r 14 -x 8 --per-micrograph --format star -m saved_models/model_epoch10.sav -o processed/micrographs/ processed/micrographs/*.mrc
+topaz extract -r 14 -x 8 --per-micrograph --format star -m saved_models/model_epoch10.sav -o rawdata/micrographs/ processed/micrographs/*.mrc
 
-topaz extract -r 14 -x 4 --per-micrograph --format star -m saved_models/model_epoch10.sav -o processed/micrographs/ processed/micrographs/*.mrc
+topaz extract -r 14 -x 4 --per-micrograph --format star -m saved_models/model_epoch10.sav -o rawdata/micrographs/ processed/micrographs/*.mrc
 
 topaz extract -r 14 -x 8 -m saved_models/EMPIAR-10025/model_epoch10.sav -o data/EMPIAR-10025/topaz/predicted_particles_all_upsampled.txt data/EMPIAR-10025/processed/micrographs/*.mrc
 
