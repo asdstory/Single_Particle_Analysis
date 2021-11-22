@@ -181,6 +181,7 @@ topaz extract -r 14 -x 4 -d 1 --per-micrograph --format star -m /data/dout2/Tuto
 
 topaz extract -r 14 -x 4 -d 2 --per-micrograph --format star -m /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/saved_models/model_epoch10.sav -o processed/micrographs/ processed2/micrographs/20211009_*.mrc
 
+topaz extract -r 14 -x 4 -d 2 --per-micrograph --format star -m /data/dout2/TutorialData/Topaz/20211004Krios_mOCT1-noGFP/saved_models/model_epoch10.sav -o processed/micrographs/ processed2/micrographs/20211009_*.mrc
 
 ```
 ### Step5 change format of particle coordinates file
