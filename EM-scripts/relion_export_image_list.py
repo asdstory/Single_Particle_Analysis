@@ -36,14 +36,12 @@ def read_image_list(fn):
         exit(1)
     image_list = []
     for i in range(len(l)):
-        pat = re.compile(r"(\w.+|-.+|\/.+)(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})(\d{2}).([a-z].+)")
+        pat = re.compile(r"(\d{4}\d{2}\d{2}_\d{2}\d{2}\d{2}\d{2}.mrc)")
         #"20151201_15090200"
         result = pat.match(l[i])
         if result:
             tmp = result.groups()
-            timestamp = int(time.mktime((int(tmp[1]), int(tmp[2]), int(tmp[3]),  int(tmp[4]), int(tmp[5]), int(tmp[6]), 0, 0, -1)))
-            image_list.append({'unix_timestamp' : timestamp, 'filename' : os.path.basename(l[i].strip()).split('.')[0], 'grid' : "", 'image_shift_x' : 0., 'image_shift_y' : 0., 'time_error' : 0, 'class' : 0})
-    image_list.sort(key = lambda x : x['unix_timestamp'])
+            image_list.append(tmp[1])
     return image_list
 
 
