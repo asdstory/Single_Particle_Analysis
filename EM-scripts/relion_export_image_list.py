@@ -66,25 +66,4 @@ d = open("dictionary.txt","w")
 d.write(shift_class_dict)
 d.close()
 
-f = open(options.output_star,"w")
-f.write("\n")
-f.write("# version 30001"+"\n")
-f.write("\n")
-f.write("data_optics"+"\n")
-f.write("\n")
-f.write("loop_"+"\n")
-f.write("_rlnOpticsGroupName #1"+"\n")
-f.write("_rlnOpticsGroup #2"+"\n")
-f.write("_rlnMicrographOriginalPixelSize #3"+"\n")
-f.write("_rlnVoltage #4"+"\n")
-f.write("_rlnSphericalAberration #5"+"\n")
-f.write("_rlnAmplitudeContrast #6"+"\n")
 
-
-Image_name = read_image_full_name((options.input_star))
-
-for x in sorted(shift_class_dict.keys()):
-    line = str(Image_name[0])+str(x)+"."+str(Image_name[8])+"            "+str(shift_class_dict[x]+1)+"\n"
-    f.write(line)
-f.close()
-  
