@@ -57,7 +57,8 @@ if DEBUG:
         print "Timestamp: %s\tGrid: %s\tTime error: %d\tImage shift x: %f\ty: %f" % (image_list[i]['unix_timestamp'], image_list[i]['grid'], image_list[i]['time_error'], image_list[i]['image_shift_x'], image_list[i]['image_shift_y'])
 
 d = open("image_list.txt","w")
-d.write(image_list)
+for image_name in image_list:
+    d.write(image_name + "\n")
 d.close()
 
 
