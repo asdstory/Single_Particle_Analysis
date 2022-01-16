@@ -13,7 +13,9 @@ import os
 import re
 import time
 import numpy as np
+import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn import cluster
 from datetime import datetime
 from optparse import OptionParser
 
