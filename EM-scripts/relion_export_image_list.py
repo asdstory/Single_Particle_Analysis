@@ -58,10 +58,6 @@ if DEBUG:
     for i in range(len(image_list)):
         print "Timestamp: %s\tGrid: %s\tTime error: %d\tImage shift x: %f\ty: %f" % (image_list[i]['unix_timestamp'], image_list[i]['grid'], image_list[i]['time_error'], image_list[i]['image_shift_x'], image_list[i]['image_shift_y'])
 
-shift_class_dict = {}
-for i in image_list:
-    shift_class_dict[i['filename']] = i['class']
-
 d = open("dictionary.txt","w")
 d.write(shift_class_dict)
 d.close()
