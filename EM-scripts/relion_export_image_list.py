@@ -45,9 +45,9 @@ for i in range(len(image_list)):
     print image_list[i]
     
 
-d = open("image_list.txt","w")
-for key,value in image_list:
-    d.write(key + "\n")
-d.close()
+list = open("image_list.txt","w")
+for element in image_list:
+    list.write(element + "\n")
+list.close()
 
 
