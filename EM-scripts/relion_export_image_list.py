@@ -30,12 +30,12 @@ parser.add_option("--input_star", dest="input_star", type="string", default="", 
 
 def read_image_list(fn):
     image_list = []
-    pattern = r'(\d{8}_\d{8}.mrc)'
+    pattern = r'(\d{8}_\d{8}).mrc'
     for line in open(fn, 'r'):
         line = line.rstrip()
         result = re.search(pattern, line)
         if result:
-            image_list.append(result.group(1))
+            image_list.append(result.group(1) + ".tif")
     return image_list
 
 print "Read image list ... ",
@@ -44,7 +44,6 @@ print "Done. %i images were read." % (len(image_list))
 #for i in range(len(image_list)):
 #    print image_list[i]
     
-
 list = open("image_list.txt","w")
 for element in image_list:
     list.write(element + "\n")
