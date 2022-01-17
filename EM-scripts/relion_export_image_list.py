@@ -38,7 +38,7 @@ def read_image_list(fn):
             image_list.append(result.group(1) + ".tif")
     return image_list
 
-print "Read image list ... ",
+print "Read image list ... "
 image_list = read_image_list(options.input_star)
 print "Done. %i images were read." % (len(image_list))
 #for i in range(len(image_list)):
@@ -48,5 +48,6 @@ list = open("image_list.txt","w")
 for element in image_list:
     list.write(element + "\n")
 list.close()
+print "Image list is written in the image_list.txt file "
 
 
