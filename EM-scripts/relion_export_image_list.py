@@ -29,21 +29,14 @@ parser.add_option("--input_star", dest="input_star", type="string", default="", 
 
 
 def read_image_list(fn):
-    try:
-        l = file(fn).readlines()
-    except:
-        print "Can't read image list file " + fn + "."
-        exit(1)
     image_list = []
-    for i in range(len(l)):
-        pat = re.compile(r"(\d{4}\d{2}\d{2}_\d{2}\d{2}\d{2}\d{2}.mrc)")
-        #"20151201_15090200"
-        result = pat.match(l[i])
+    pattern = r'(\d{8}_\d{8}.mrc)'
+    for line in open(fn, 'r'):
+        line = line.rstrip()
+        result = re.search(pattern, line)
         if result:
-            tmp = result.groups()
-            image_list.append(tmp[1])
+            image_list.append(result.group(1))
     return image_list
-
 
 print "Read image list ... ",
 image_list = read_image_list(options.input_star)
@@ -51,11 +44,6 @@ print "Done. %i images were read." % (len(image_list))
 for i in range(len(image_list)):
     print image_list[i]
     
-
-
-if DEBUG:
-    for i in range(len(image_list)):
-        print "Timestamp: %s\tGrid: %s\tTime error: %d\tImage shift x: %f\ty: %f" % (image_list[i]['unix_timestamp'], image_list[i]['grid'], image_list[i]['time_error'], image_list[i]['image_shift_x'], image_list[i]['image_shift_y'])
 
 d = open("image_list.txt","w")
 for key,value in image_list:
