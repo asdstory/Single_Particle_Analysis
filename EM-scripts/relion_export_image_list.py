@@ -57,9 +57,13 @@ print "Done. %i images were read." % (len(image_list))
 os.mkdir(options.output_destination)
 for i in image_list:
     source = options.input_source + i
-    print source;
     destination = options.output_destination + i
-    print destination
-    os.rename(source, destination)
+    if path.exists(source):
+        os.rename(source, destination)
+        print("The %s is moved to the location, %s" %(source, destination))
+    else:
+        print("File does not exist.")
+
+    
 
 
