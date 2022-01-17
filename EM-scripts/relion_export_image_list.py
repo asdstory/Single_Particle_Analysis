@@ -7,6 +7,9 @@
 #Last Edit: 2022-01-16
 #####**************************************************************************#####
 
+### How to use: python /data/dout2/Scripts/relion_export_image_list.py --input_star Select/job007/micrographs.star --input_source /data/dout2/20210629Krios_rOAT1-LMNG/finished-frames/ --output_destination /data/dout2/20210629Krios_rOAT1-LMNG/Micrographs_selected/
+
+
 DEBUG=0
 
 import os
