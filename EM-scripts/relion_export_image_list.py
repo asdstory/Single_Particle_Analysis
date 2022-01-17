@@ -11,14 +11,11 @@ DEBUG=0
 
 import os
 import re
-import time
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 import shutil
-from sklearn import cluster
-from datetime import datetime
 from optparse import OptionParser
+from os import path
 
 np.set_printoptions(threshold=np.inf)
 
