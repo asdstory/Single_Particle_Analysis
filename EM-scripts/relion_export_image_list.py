@@ -1,10 +1,10 @@
 #!/usr/bin/env python     
 
 #####**************************************************************************#####
-#Despcription: This program is used to introduce optic group into movies.star file.
+#Despcription: This program is used to move selected micrographs based on .star file.
 #Copyright@JiangLab@NHLBI/NIH
-#Author: Jiansen Jiang & Tongyi Dou
-#Last Edit: 2021-07-02
+#Author: Tongyi Dou
+#Last Edit: 2022-01-16
 #####**************************************************************************#####
 
 DEBUG=0
