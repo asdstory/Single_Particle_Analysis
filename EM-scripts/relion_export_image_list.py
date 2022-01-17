@@ -57,7 +57,7 @@ for i in image_list:
     destination = options.output_destination + i
     if path.exists(source):
         os.rename(source, destination)
-        print("The %s is moved to the location, %s" %(source, destination))
+        print("The %s is moved to the location:  %s" %(source, destination))
     else:
         print(source + ": " + "File does not exist.")
 
