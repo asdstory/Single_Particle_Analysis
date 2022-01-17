@@ -41,8 +41,8 @@ def read_image_list(fn):
 print "Read image list ... ",
 image_list = read_image_list(options.input_star)
 print "Done. %i images were read." % (len(image_list))
-for i in range(len(image_list)):
-    print image_list[i]
+#for i in range(len(image_list)):
+#    print image_list[i]
     
 
 list = open("image_list.txt","w")
