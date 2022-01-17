@@ -59,7 +59,7 @@ for i in image_list:
         os.rename(source, destination)
         print("The %s is moved to the location, %s" %(source, destination))
     else:
-        print("File does not exist.")
+        print(source + "File does not exist.")
 
     
 
