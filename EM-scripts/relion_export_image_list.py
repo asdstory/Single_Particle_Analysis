@@ -53,6 +53,8 @@ print "Done. %i images were read." % (len(image_list))
 #list.close()
 #print "Image list is written in the image_list.txt file "
 
+
+os.mkdir(options.output_destination)
 for i in image_list:
     source = options.input_source + i
     print source;
