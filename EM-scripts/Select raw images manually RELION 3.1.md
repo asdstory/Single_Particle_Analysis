@@ -20,6 +20,8 @@ cd back to project directory:
 
 for i in MotionCorr/job044/finished-frames/tmp/*_????????.mrc; do echo relion_image_handler --i $i --o MotionCorr/job044/finished-frames/`basename $i` --angpix 1 --rescale_angpix 10; done > runpar.cmd
 
+for i in MotionCorr/job145/Micrographs_selected/tmp/*_????????.mrc; do echo relion_image_handler --i $i --o MotionCorr/job145/Micrographs_selected/`basename $i` --angpix 1 --rescale_angpix 10; done > runpar.cmd
+
 module load EMscript
 runpar_gpu.py -p32 runpar.cmd
 
