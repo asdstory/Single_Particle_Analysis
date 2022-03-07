@@ -12,7 +12,7 @@ cd MotionCorr/job044/finished-frames/
 mkdir tmp
 
 # Then, move all mrc files into above folder
-mv *.mrc tmp/
+mv *_????????.mrc tmp/
 
 # Run relion_image_handler to convert images into rescaled small images for view.
 
