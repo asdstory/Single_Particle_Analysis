@@ -1,8 +1,8 @@
 #!/bin/bash
 mkdir select_micrographs
 #awk '/MotionCorr\/job002\/Micrographs\/(\d+_\d+).mrc/ {print $1}' ./micrographs.star > select.txt
-awk -F "[/_.]" '/^MotionCorr/{print "dosef_quick_png/" $4 "_" $5 "_CorrSum.png" "\n" "dosef_quick_png/" $4 "_" $5 "_CorrFFT.png"}' Select/j
-ob010/micrographs.star > select.txt
+awk '/MotionCorr\/job011\/Micrographs\/FoilHole_[0-9]+_Data_[0-9]+_[0-9]+_[0-9]+_[0-9]+_Fractions.mrc/ {print $1}' ./micrographs.star > select.txt
+#awk -F "[/_.]" '/^MotionCorr/{print "dosef_quick_png/" $4 "_" $5 "_CorrSum.png" "\n" "dosef_quick_png/" $4 "_" $5 "_CorrFFT.png"}' Select/job010/micrographs.star > selec$
 
 cat select.txt | while read line
 do
