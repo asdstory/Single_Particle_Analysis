@@ -12,8 +12,9 @@ awk '/MotionCorr\/job011\/Micrographs\/FoilHole_[0-9]+_Data_[0-9]+_[0-9]+_[0-9]+
 cat select.txt | while read line
 do
        filename=`basename $line`;
-       echo $filename
-       cp $line select_micrographs
+       echo $filename;
+       filename+='.tif';
+       cp $line select_micrographs;
 done
 
 
