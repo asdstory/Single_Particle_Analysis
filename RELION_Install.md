@@ -74,3 +74,115 @@ This example uses stock relion so modify to use your own source dir
 
     $PREFIX/bin/relion --help
 ```
+
+
+#### ver4.0.lua file
+```sh
+[dout2@biowulf RELION]$ more ver4.0.lua 
+local description = "http://www2.mrc-lmb.cam.ac.uk/relion/index.php/Main_Page"
+local version     = myModuleVersion() 
+local app         = myModuleName()
+local base        = "/usr/local/apps/"
+local helpmessage = "Sets up "..app.." "..version.." on helix/biowulf cluster" 
+local hostname    = capture("/bin/hostname")
+hostname          = hostname:gsub("%s+", "")
+local relionbase  = "wrapped-openmpi/ver4.0"
+
+if (hostname == "biowulf.nih.gov") then
+
+-- R should not run on the biowulf head node
+   LmodError( [[
+
+------------------------------------------------------
+Running RELION is NOT allowed on the Biowulf login node.
+Please submit a batch job, or allocate an interactive
+node. See http://hpc.nih.gov/apps/relion for
+information on using RELION on Biowulf.
+
+For an interactive session, at the prompt, type
+
+   sinteractive
+------------------------------------------------------
+
+]] )
+end
+
+conflict("Chimera")
+
+help(helpmessage)
+whatis(description)
+whatis("Version " .. version)
+
+if (mode() == "load") then
+    LmodMessage("[+] Loading",app,version,"on",hostname)
+end
+if (mode() == "unload") then
+    LmodMessage("[-] Unloading",app,version,"on",hostname)
+end
+
+-- This is needed to allow interactive srun/mpirun
+unsetenv("SLURM_TASKS_PER_NODE")
+unsetenv("SLURM_MEM_PER_NODE")
+unsetenv("SLURM_MEM_PER_CPU")
+
+-- Stuff for OpenMPI
+--setenv('OMPI_MCA_btl_openib_allow_ib','1')
+--setenv('OMPI_MCA_pml','ucx')
+--setenv('OMPI_MCA_btl','^openib')
+
+-- Stuff for MVAPICH2
+--setenv("MV2_USE_RDMA_CM","1")
+--setenv("MV2_USE_RoCE","1")
+--setenv("MV2_RAIL_SHARING_POLICY","FIXED_MAPPING")
+
+load("CUDA/11.3.0")
+load("ctffind/4.1.14")
+load("ResMap/1.1.4")
+load("MotionCor2/1.3.0")
+load("Ghostscript/9.22")
+load("Gctf/1.06")
+load("xpdf")
+load("tex")
+load("topaz/0.2.5")
+
+prepend_path("PATH",                   pathJoin(base,app,relionbase,"bin"))
+prepend_path("PATH",                   pathJoin(base,app,"utils"))
+
+setenv("RELION_HOME",                  pathJoin(base,app,relionbase))
+setenv("RELION_VERSION",               "4.0-beta-1")
+
+setenv("RELION_ERROR_LOCAL_MPI",       "32")
+
+setenv("RELION_QUEUE_USE",             "No")
+setenv("RELION_QSUB_COMMAND",          "sbatch")
+setenv("RELION_QUEUE_NAME",            "norm")
+
+setenv("RELION_STD_LAUNCHER",          "srun --mpi=pmix")
+setenv("RELION_MPIRUN",                "srun --oversubscribe --mpi=pmix")
+
+setenv("RELION_QSUB_NRMPI",            "32")
+setenv("RELION_MPI_MAX",               "2000")
+
+setenv("RELION_QSUB_NRTHREADS",        "1")
+setenv("RELION_THREAD_MAX",            "16")
+setenv("RELION_SCRATCH_DIR",           "/lscratch/$SLURM_JOB_ID")
+
+setenv("RELION_QSUB_EXTRA_COUNT",      "6")
+setenv("RELION_QSUB_TEMPLATE",         pathJoin(base,app,"templates/common.sh"))
+setenv("RELION_QSUB_EXTRA1",           "Walltime")
+setenv("RELION_QSUB_EXTRA1_DEFAULT",   "1-00:00:00")
+setenv("RELION_QSUB_EXTRA2",           "Memory Per Thread")
+setenv("RELION_QSUB_EXTRA2_DEFAULT",   "8g")
+setenv("RELION_QSUB_EXTRA3",           "Gres")
+setenv("RELION_QSUB_EXTRA3_DEFAULT",   "lscratch:400")
+setenv("RELION_QSUB_EXTRA4",           "Addl (ex4) SBATCH Directives")
+setenv("RELION_QSUB_EXTRA4_DEFAULT",   "")
+setenv("RELION_QSUB_EXTRA5",           "Addl (ex5) SBATCH Directives")
+setenv("RELION_QSUB_EXTRA5_DEFAULT",   "")
+setenv("RELION_QSUB_EXTRA6",           "Addl (ex6) SBATCH Directives")
+setenv("RELION_QSUB_EXTRA6_DEFAULT",   "")
+
+setenv("RELION_MINIMUM_DEDICATED",     "1")
+setenv("RELION_PDFVIEWER_EXECUTABLE",  "xpdf")
+
+```
