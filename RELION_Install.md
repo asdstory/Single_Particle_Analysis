@@ -38,7 +38,7 @@ This example uses stock relion so modify to use your own source dir
   529  14:17  ls
   530  14:17  pwd
   531  14:18  PREFIX=/data/dout2/Programs/apps/RELION/4.0-beta-1/relion/build
-  532  14:19  WRAPDIR=/usr/local/apps/RELION/wrapped/${VER}/gcc_new_${CA}
+  532  14:19  WRAPDIR=/data/dout2/Programs/apps/RELION/wrapped/${VER}/gcc_new_${CA}
   533  14:19  pwd
   534  14:19  module purge
   535  14:20  module load $modules cmake/3.16.4
