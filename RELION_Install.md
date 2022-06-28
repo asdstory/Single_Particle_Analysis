@@ -32,18 +32,18 @@ This example uses stock relion so modify to use your own source dir
 
 #### The version I modified
 ```sh 
-526  14:17  modules="gcc/9.2.0 CUDA/11.3.0 openmpi/4.1.1/gcc-9.2.0 fftw/3.3.9/openmpi-4.1.1/gcc-9.2.0 fltk/1.3.5/gcc-9.2.0"
-  527  14:17  CA=60
-  528  14:17  cd build/
-  529  14:17  ls
-  530  14:17  pwd
-  531  14:18  PREFIX=/data/dout2/Programs/apps/RELION/4.0-beta-1/relion/build
-  532  14:19  WRAPDIR=/data/dout2/Programs/apps/RELION/wrapped/${VER}/gcc_new_${CA}
-  533  14:19  pwd
-  534  14:19  module purge
-  535  14:20  module load $modules cmake/3.16.4
-  536  14:20  export LDFLAGS="$LDFLAGS -Wl,-rpath=${LD_LIBRARY_PATH}"
-  537  14:21  cmake -DCUDA_ARCH=${CA} -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
+modules="gcc/9.2.0 CUDA/11.3.0 openmpi/4.1.1/gcc-9.2.0 fftw/3.3.9/openmpi-4.1.1/gcc-9.2.0 fltk/1.3.5/gcc-9.2.0"
+CA=60
+cd build/
+ls
+pwd
+PREFIX=/data/dout2/Programs/apps/RELION/4.0-beta-1/relion/build
+WRAPDIR=/data/dout2/Programs/apps/RELION/wrapped/${VER}/gcc_new_${CA}
+pwd
+module purge
+module load $modules cmake/3.16.4
+export LDFLAGS="$LDFLAGS -Wl,-rpath=${LD_LIBRARY_PATH}"
+cmake -DCUDA_ARCH=${CA} -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
   && make -j ${SLURM_CPUS_ON_NODE} 
     && make install
     
