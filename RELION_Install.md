@@ -44,5 +44,6 @@ This example uses stock relion so modify to use your own source dir
   535  14:20  module load $modules cmake/3.16.4
   536  14:20  export LDFLAGS="$LDFLAGS -Wl,-rpath=${LD_LIBRARY_PATH}"
   537  14:21  cmake -DCUDA_ARCH=${CA} -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
- 
+  && make -j ${SLURM_CPUS_ON_NODE} 
+    && make install
 ```
