@@ -40,7 +40,7 @@ pwd
 module purge
 module load $modules cmake/3.16.4
 export LDFLAGS="$LDFLAGS -Wl,-rpath=${LD_LIBRARY_PATH}"
-cmake -DCUDA_ARCH=${CA} -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
+cmake -DCUDA_ARCH=${CA} -DRELION_TEST=ON -DCMAKE_INSTALL_PREFIX=${PREFIX}  ..
   && make -j ${SLURM_CPUS_ON_NODE}
   && make install
 
