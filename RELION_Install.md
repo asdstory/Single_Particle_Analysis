@@ -34,7 +34,7 @@ This example uses stock relion so modify to use your own source dir
 ```sh 
 modules="gcc/9.2.0 CUDA/11.3.0 openmpi/4.1.1/gcc-9.2.0 fftw/3.3.9/openmpi-4.1.1/gcc-9.2.0 fltk/1.3.5/gcc-9.2.0"
 CA=60
-PREFIX=/data/dout2/Programs/apps/RELION/relion/4.0-beta-1
+PREFIX=/data/dout2/Programs/apps/RELION/ver4.0_ori
 WRAPDIR=/usr/local/apps/RELION/wrapped/${VER}/gcc_new_${CA}
 pwd
 module purge
@@ -46,6 +46,8 @@ cmake -DCUDA_ARCH=${CA} -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
 
   $PREFIX/bin/relion --help
 ```
+
+
 
 
 #### ver4.0.lua file
