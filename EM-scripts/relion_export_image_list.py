@@ -33,7 +33,8 @@ parser.add_option("--output_destination", dest="output_destination", type="strin
 
 def read_image_list(fn):
     image_list = []
-    pattern = r'(\d{8}_\d{8}).mrc'
+    pattern = r'([0-9]+_[0-9]+_X[\+,-][0-9]Y[\+,\-][0-9][\+,\-][0-9])_DW.mrc'
+#    pattern = r'(\d{8}_\d{8}).mrc'
     for line in open(fn, 'r'):
         line = line.rstrip()
         result = re.search(pattern, line)
