@@ -14,6 +14,7 @@
 - [ ] ssh dout2@helix.nih.gov
 - [ ] cd /data/dout2/Database/
 - [ ] rsync -avzhe  ssh krios@leginon.niddk.nih.gov:/home/krios/local/bin/leginon_image_shift_data_all_2021-05-31.txt .
+- [ ] rsync -avP leginon_image_shift_data_all_2022-09-26.txt  -e ssh dout2@helix.nih.gov:/data/dout2/
 
 <img src="https://github.com/asdstory/Single-Particle-Reconstruction/blob/master/Figures/Leginon_Image_Shift_Information.png?raw=true"
      alt="leginon_image_shift_data from leginon"
