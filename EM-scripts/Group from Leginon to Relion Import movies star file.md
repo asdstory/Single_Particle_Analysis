@@ -31,6 +31,7 @@ input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using
 - [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/dout2/Database/leginon_image_shift_data_all_2021-09-24.txt --input_star=movies.star --output_star=movies_group.star
 - [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/dout2/Database/Image_Shift_Data/krios_image_shift_data_all_20220613.txt --input_star=movies.star --output_star=movies_group.star
 - [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/dout2/Database/Image_Shift_Data/leginon_image_shift_data_all_2022-11-01.txt --input_star=movies.star --output_star=movies_group.star
+- [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=49 --image_shift_data=/data/dout2/Database/Image_Shift_Data/leginon_image_shift_data_all_2023-02-22.txt --input_star=movies.star --output_star=movies_group.star
 
 movies.star file before group looks like 
 
