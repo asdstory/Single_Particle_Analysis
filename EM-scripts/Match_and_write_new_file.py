@@ -47,7 +47,7 @@ for i in range(len(image_list)):
     
 with open(options.input_source) as f:
     for line in f:
-        if not @ in line:
+        if '@' not in line:
             print (line)
             f_out.write(line)
 '''            
