@@ -41,7 +41,6 @@ def read_image_list(fn):
             image_list.append(result.group(0))
     return image_list
 
-print "Read image list ... "
 image_list = read_image_list(options.input_star)
 #for i in range(len(image_list)):
 #   print image_list[i]
@@ -55,8 +54,8 @@ with open(options.input_source) as f:
                 new_list.append(line)
                 break
 for i in range(len(new_list)):
-    print new_list[i]
-    print len(new_list)
+    print (new_list[i])
+    print ("There are in total" + len(new_list) + "particles selected" + "\n")
   
 #list = open("image_list.txt","w")
 #for element in image_list:
