@@ -34,7 +34,6 @@ parser.add_option("--output_star", dest="output_destination", type="string", def
 
 def read_image_list(fn):
     image_list = []
-    pattern = r'([0-9]+_[0-9]+_X[\+,-][0-9]Y[\+,\-][0-9][\+,\-][0-9])_DW.mrc'
     pattern = r'[0-9]@Polish/job[0-9][0-9][0-9]/*.mrcs'
 #    pattern = r'(\d{8}_\d{8}).mrc'
     for line in open(fn, 'r'):
