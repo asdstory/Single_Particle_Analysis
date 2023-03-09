@@ -1,15 +1,5 @@
 #!/usr/bin/env python     
 
-#####**************************************************************************#####
-#Despcription: This program is used to move selected micrographs based on .star file.
-#Copyright@JiangLab@NHLBI/NIH
-#Author: Tongyi Dou
-#Last Edit: 2022-01-16
-#####**************************************************************************#####
-
-### How to use: python /data/dout2/Scripts/relion_export_image_list.py --input_star Select/job007/micrographs.star --input_source /data/dout2/20210629Krios_rOAT1-LMNG/finished-frames/ --output_destination /data/dout2/20210629Krios_rOAT1-LMNG/Micrographs_selected/
-
-
 DEBUG=0
 
 import os
@@ -45,19 +35,23 @@ image_list = read_image_list(options.input_star)
 #for i in range(len(image_list)):
 #   print image_list[i]
 
-new_list = []
+
+f_out = open(options.output_star, "w")
     
 with open(options.input_source) as f:
     for line in f:
         for i in range(len(image_list)):
             if image_list[i] in line:
-                new_list.append(line)
+                print (line)
+                f_out.write(line)
                 break
+f_out.close() 
 
+'''
 for i in range(len(new_list)):
     print (new_list[i])
     print ("There are in total" + len(new_list) + "particles selected" + "\n")
-  
+'''  
 #list = open("image_list.txt","w")
 #for element in image_list:
 #    list.write(element + "\n")
