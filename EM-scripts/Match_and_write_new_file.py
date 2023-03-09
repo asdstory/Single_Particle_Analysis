@@ -62,5 +62,5 @@ for i in range(len(image_list)):
 #print "Image list is written in the image_list.txt file "
 
 
-
+https://stackoverflow.com/questions/37902523/search-multiple-strings-from-file-in-a-file-and-print-the-line
 
