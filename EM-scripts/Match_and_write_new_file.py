@@ -37,6 +37,7 @@ for i in range(len(image_list)):
 '''
 
 f_out = open(options.output_star, "w")
+
 '''
 for i in range(len(image_list)):
    f_out.write(image_list[i])
@@ -50,8 +51,7 @@ with open(options.input_source) as f:
                 print (line)
                 f_out.write(line)
                 break
-            else:
-                continue
+
 
 f_out.close() 
 
