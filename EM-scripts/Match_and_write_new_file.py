@@ -40,6 +40,7 @@ f_out = open(options.output_star, "w")
 
 for i in range(len(image_list)):
    f_out.write(image_list[i])
+   f_out.write("\n")
 
 '''    
 with open(options.input_source) as f:
