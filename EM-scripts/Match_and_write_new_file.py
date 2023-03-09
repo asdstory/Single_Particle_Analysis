@@ -43,10 +43,20 @@ def read_image_list(fn):
 
 print "Read image list ... "
 image_list = read_image_list(options.input_star)
-for i in range(len(image_list)):
-    print image_list[i]
+#for i in range(len(image_list)):
+#   print image_list[i]
 
-  
+new_list = []
+    
+with open(options.input_source) as f:
+    for line in f:
+        for i in range(len(image_list)):
+            if image_list[i] in line:
+                new_list.append(line)
+                break
+for i in range(len(new_list)):
+    print new_list[i]
+    print len(new_list)
   
 #list = open("image_list.txt","w")
 #for element in image_list:
@@ -54,6 +64,4 @@ for i in range(len(image_list)):
 #list.close()
 #print "Image list is written in the image_list.txt file "
 
-
-https://stackoverflow.com/questions/37902523/search-multiple-strings-from-file-in-a-file-and-print-the-line
 
