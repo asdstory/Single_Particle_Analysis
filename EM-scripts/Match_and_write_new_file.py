@@ -30,7 +30,7 @@ parser.add_option("--output_star", dest="output_destination", type="string", def
 
 (options, args) = parser.parse_args()
 
-
+# 4@Polish/job280/Micrographs/KV2_1_L403A_00001_shiny.mrcs
 
 def read_image_list(fn):
     image_list = []
