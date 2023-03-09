@@ -48,26 +48,12 @@ for i in range(len(image_list)):
 with open(options.input_source) as f:
     for line in f:
         if '@' not in line:
-            print (line)
-            f_out.write(line)
-'''            
+            f_out.write(line)            
         for i in range(len(image_list)):
             if image_list[i] in line:
 #                print (line)
                 f_out.write(line)
                 break
-'''                
+               
 f_out.close() 
-
-'''
-for i in range(len(new_list)):
-    print (new_list[i])
-    print ("There are in total" + len(new_list) + "particles selected" + "\n")
-'''  
-#list = open("image_list.txt","w")
-#for element in image_list:
-#    list.write(element + "\n")
-#list.close()
-#print "Image list is written in the image_list.txt file "
-
 
