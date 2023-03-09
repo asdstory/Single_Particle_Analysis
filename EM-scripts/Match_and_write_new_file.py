@@ -47,7 +47,7 @@ for i in range(len(image_list)):
     
 with open(options.input_source) as f:
     for line in f:
-        if not line.startswith((' 0',' 1',' 2',' 3',' 4',' 5',' 6',' 7',' 8',' 9')):
+        if not @ in line:
             print (line)
             f_out.write(line)
 '''            
