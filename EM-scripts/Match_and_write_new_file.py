@@ -22,8 +22,7 @@ parser.add_option("--output_star", dest="output_star", type="string", default=""
 
 def read_image_list(fn):
     image_list = []
-    pattern = r'\d+@\w+\/\w+\/\w+\/\w+\.mrcs'
-#    pattern = r'(\d{8}_\d{8}).mrc'
+    pattern = r'\S*\w*\.mrcs'
     for line in open(fn, 'r'):
         line = line.rstrip()
         result = re.search(pattern, line)
