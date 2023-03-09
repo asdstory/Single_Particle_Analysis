@@ -53,6 +53,7 @@ with open(options.input_source) as f:
             if image_list[i] in line:
                 new_list.append(line)
                 break
+
 for i in range(len(new_list)):
     print (new_list[i])
     print ("There are in total" + len(new_list) + "particles selected" + "\n")
