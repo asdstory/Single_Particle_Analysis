@@ -30,13 +30,6 @@ parser.add_option("--output_star", dest="output_destination", type="string", def
 
 (options, args) = parser.parse_args()
 
-'''
- 3686.000000   222.000000   141.939434            1     0.625978 1@Polish/job280/Micrographs/KV2_1_L403A_00001_shiny.mrcs MotionCorr/job02
-6/Micrographs/KV2_1_L403A_00001.mrc            1     3.515294     0.180559 19153.125126 18681.616798   155.003106     0.000000     1.00000
-0     0.000000    10.475355    57.505580    14.990377     -4.09962     0.563445 3.623906e+05     0.167477            8            1       
-     1 
-'''
-
 def read_image_list(fn):
     image_list = []
     pattern = r'\d+@\w+\/\w+\/\w+\/\w+\.mrcs'
