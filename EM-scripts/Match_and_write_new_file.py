@@ -33,7 +33,7 @@ def read_image_list(fn):
 
 image_list = read_image_list(options.input_star)
 for i in range(len(image_list)):
-   print image_list[i]
+   print (image_list[i])
 
 
 f_out = open(options.output_star, "w")
