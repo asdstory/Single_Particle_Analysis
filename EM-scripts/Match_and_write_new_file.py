@@ -31,17 +31,18 @@ def read_image_list(fn):
     return image_list
 
 image_list = read_image_list(options.input_star)
+'''
 for i in range(len(image_list)):
    print (image_list[i])
-
+'''
 
 f_out = open(options.output_star, "w")
-
+'''
 for i in range(len(image_list)):
    f_out.write(image_list[i])
    f_out.write("\n")
-
-'''    
+'''
+    
 with open(options.input_source) as f:
     for line in f:
         for i in range(len(image_list)):
@@ -51,7 +52,7 @@ with open(options.input_source) as f:
                 break
             else:
                 continue
-'''
+
 f_out.close() 
 
 '''
