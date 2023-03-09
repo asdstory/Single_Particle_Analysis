@@ -50,10 +50,11 @@ def read_image_list(fn):
 
 print "Read image list ... "
 image_list = read_image_list(options.input_star)
-print "Done. %i images were read." % (len(image_list))
 for i in range(len(image_list)):
     print image_list[i]
-    
+
+  
+  
 #list = open("image_list.txt","w")
 #for element in image_list:
 #    list.write(element + "\n")
@@ -61,16 +62,5 @@ for i in range(len(image_list)):
 #print "Image list is written in the image_list.txt file "
 
 
-os.mkdir(options.output_destination)
-for i in image_list:
-    source = options.input_source + i
-    destination = options.output_destination + i
-    if path.exists(source):
-        os.rename(source, destination)
-        print("The %s is moved to the location:  %s" %(source, destination))
-    else:
-        print(source + ": " + "File does not exist.")
-
-    
 
 
