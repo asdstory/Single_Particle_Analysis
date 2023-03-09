@@ -31,6 +31,7 @@ def read_image_list(fn):
     return image_list
 
 image_list = read_image_list(options.input_star)
+
 '''
 for i in range(len(image_list)):
    print (image_list[i])
