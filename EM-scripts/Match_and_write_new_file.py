@@ -39,11 +39,6 @@ for i in range(len(image_list)):
 
 f_out = open(options.output_star, "w")
 
-'''
-for i in range(len(image_list)):
-   f_out.write(image_list[i])
-   f_out.write("\n")
-'''
     
 with open(options.input_source) as f:
     for line in f:
@@ -56,4 +51,18 @@ with open(options.input_source) as f:
                 break
                
 f_out.close() 
+
+'''    
+with open(options.input_source) as f:
+    for i,line in enumerate(f):
+        if i <= 58:
+            f_out.write(line) 
+        else: 
+            for j in range(len(image_list)):
+                if image_list[j] in line:
+                    f_out.write(line)
+                    break
+               
+f_out.close() 
+'''
 
