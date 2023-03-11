@@ -32,14 +32,35 @@ def read_image_list(fn):
 
 image_list = read_image_list(options.input_star)
 
-'''
-for i in range(len(image_list)):
-   print (image_list[i])
-'''
-
+dict = {}
+with open(options.input_source) as f:
+    for i,line in enumerate(f):
+        if i > 58:
+            for j in range(len(image_list)):
+                if image_list[j] in line:
+                    dict[image_list[j]] = line
+                    break
+                    
 f_out = open(options.output_star, "w")
 
-    
+with open(options.input_source) as f:
+    for i,line in enumerate(f):
+        if i <= 58:
+            f_out.write(line) 
+        else: 
+            break
+
+for i in range(len(image_list)):
+    f_out.write(dict[image_list[i]])
+    break
+               
+f_out.close()                
+
+                    
+                    
+'''
+f_out = open(options.output_star, "w")
+
 with open(options.input_source) as f:
     for line in f:
         if '@' not in line:
@@ -51,6 +72,7 @@ with open(options.input_source) as f:
                 break
                
 f_out.close() 
+'''
 
 '''    
 with open(options.input_source) as f:
