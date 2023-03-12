@@ -32,6 +32,8 @@ def read_image_list(fn):
 
 image_list = read_image_list(options.input_star)
 
+f_out = open(options.output_star, "w")
+
 dict = {}
 with open(options.input_source) as f:
     for i,line in enumerate(f):
@@ -41,7 +43,6 @@ with open(options.input_source) as f:
                     dict[image_list[j]] = line
                     break
                     
-f_out = open(options.output_star, "w")
 
 with open(options.input_source) as f:
     for i,line in enumerate(f):
@@ -67,14 +68,15 @@ with open(options.input_source) as f:
             f_out.write(line)            
         for i in range(len(image_list)):
             if image_list[i] in line:
-#                print (line)
                 f_out.write(line)
                 break
                
 f_out.close() 
 '''
 
-'''    
+'''
+f_out = open(options.output_star, "w")
+
 with open(options.input_source) as f:
     for i,line in enumerate(f):
         if i <= 58:
