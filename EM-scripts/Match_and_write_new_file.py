@@ -32,6 +32,7 @@ def read_image_list(fn):
 
 image_list = read_image_list(options.input_star)
 
+'''
 f_out = open(options.output_star, "w")
 
 dict = {}
@@ -56,7 +57,7 @@ for i in range(len(image_list)):
     break
                
 f_out.close()                
-
+'''
                     
                     
 '''
