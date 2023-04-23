@@ -36,6 +36,10 @@ ml RELION/3.0.8
 relion_image_handler --i job051_run_it050_class001.mrc --rescale_angpix 0.83 --force_header_angpix 0.83 --o  class001_pix0.83.mrc 
 relion_image_handler --i cryosparc_Pix0.83A.mrc --new_box 200 --o cryosparc_200Pix0.83A.mrc
 
+relion_image_handler --i Class3D/first_exhaustive/run_it025_class001.mrc \
+ --angpix 3.54 --rescale_angpix 1.244 --new_box 256 \
+ --o Class3D/first_exhaustive/run_it025_class001_box256.mrc
+
 #Check details
 relion_image_handler --i cryosparc_200Pix1.26A.mrc --stats
 ```
