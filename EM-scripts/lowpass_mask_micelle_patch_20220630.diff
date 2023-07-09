@@ -1,0 +1,156 @@
+diff --git a/src/ml_optimiser.cpp b/src/ml_optimiser.cpp
+index f05b01c1..8e5b7666 100644
+--- a/src/ml_optimiser.cpp
++++ b/src/ml_optimiser.cpp
+@@ -203,8 +203,12 @@ void MlOptimiser::parseContinue(int argc, char **argv)
+ 	if (fnt != "OLD")
+ 		fn_mask2 = fnt;
+ 
++	// write_every_iter
++	write_every_iter = textToInteger(parser.getOption("--write_iter", "Write out model every so many iterations (default is writing out all iters)", "1"));
++
+ 	// These are still experimental; so not in the optimiser.star yet.
+ 	fn_lowpass_mask = parser.getOption("--lowpass_mask", "User-provided mask for low-pass filtering", "None");
++	fn_lowpass_mask_micelle = parser.getOption("--lowpass_mask_micelle", "User-provided micelle mask for low-pass filtering", "None");
+ 	lowpass = textToFloat(parser.getOption("--lowpass", "User-provided cutoff for region specified above", "0"));
+ 
+ 	// Check whether tau2-spectrum has changed
+@@ -447,6 +451,8 @@ void MlOptimiser::parseContinue(int argc, char **argv)
+ 
+ 	do_trust_ref_size = parser.checkOption("--trust_ref_size", "Trust the pixel and box size of the input reference; by default the program will die if these are different from the first optics group of the data");
+ 
++	fast_subsets_min_parts_per_class = textToInteger(parser.getOption("--fast_subsets_min_parts_per_class", "Minimal particles per class when using faster optimisation", "0"));
++
+ 	// Debugging/analysis/hidden stuff
+ 	do_map = !checkParameter(argc, argv, "--no_map");
+ 	minres_map = textToInteger(getParameter(argc, argv, "--minres_map", "5"));
+@@ -512,11 +518,13 @@ void MlOptimiser::parseInitial(int argc, char **argv)
+ 	fn_mask = parser.getOption("--solvent_mask", "User-provided mask for the references (default is to use spherical mask with particle_diameter)", "None");
+ 	fn_mask2 = parser.getOption("--solvent_mask2", "User-provided secondary mask (with its own average density)", "None");
+ 	fn_lowpass_mask = parser.getOption("--lowpass_mask", "User-provided mask for low-pass filtering", "None");
++	fn_lowpass_mask_micelle = parser.getOption("--lowpass_mask_micelle", "User-provided micelle mask for low-pass filtering", "None");
+ 	lowpass = textToFloat(parser.getOption("--lowpass", "User-provided cutoff for region specified above", "0"));
+ 	fn_tau = parser.getOption("--tau", "STAR file with input tau2-spectrum (to be kept constant)", "None");
+ 	fn_local_symmetry = parser.getOption("--local_symmetry", "Local symmetry description file containing list of masks and their operators", "None");
+ 	do_split_random_halves = parser.checkOption("--split_random_halves", "Refine two random halves of the data completely separately");
+ 	low_resol_join_halves = textToFloat(parser.getOption("--low_resol_join_halves", "Resolution (in Angstrom) up to which the two random half-reconstructions will not be independent to prevent diverging orientations","-1"));
++	write_every_iter = textToInteger(parser.getOption("--write_iter", "Write out model every so many iterations (default is writing out all iters)", "1"));
+ 
+ 	// Initialisation
+ 	int init_section = parser.addSection("Initialisation");
+@@ -692,6 +700,8 @@ void MlOptimiser::parseInitial(int argc, char **argv)
+ 	do_reuse_scratch = parser.checkOption("--reuse_scratch", "Re-use data on scratchdir, instead of wiping it and re-copying all data.");
+ 	keep_scratch = parser.checkOption("--keep_scratch", "Don't remove scratch after convergence. Following jobs that use EXACTLY the same particles should use --reuse_scratch.");
+ 	do_fast_subsets = parser.checkOption("--fast_subsets", "Use faster optimisation by using subsets of the data in the first 15 iterations");
++	fast_subsets_min_parts_per_class = textToInteger(parser.getOption("--fast_subsets_min_parts_per_class", "Minimal particles per class when using faster optimisation", "0"));
++
+ #ifdef ALTCPU
+ 	do_cpu = parser.checkOption("--cpu", "Use intel vectorisation implementation for CPU");
+ #else
+@@ -1036,7 +1046,8 @@ void MlOptimiser::read(FileName fn_in, int rank, bool do_prevent_preread)
+ 
+ void MlOptimiser::write(bool do_write_sampling, bool do_write_data, bool do_write_optimiser, bool do_write_model, int random_subset)
+ {
+-	if (subset_size > 0 && (iter % write_every_sgd_iter) != 0 && iter != nr_iter)
++//	if (subset_size > 0 && (iter % write_every_sgd_iter) != 0 && iter != nr_iter)
++	if (((subset_size > 0 && (iter % write_every_sgd_iter) != 0) || (iter > -1 && (iter % write_every_iter) != 0)) && iter != nr_iter)
+ 		return;
+ 
+ 	FileName fn_root, fn_tmp, fn_model, fn_model2, fn_data, fn_sampling, fn_root2;
+@@ -2030,6 +2041,7 @@ void MlOptimiser::initialiseGeneral(int rank)
+ 	// Check mask angpix, boxsize and [0,1] compliance right away.
+ 	if (fn_mask != "None") checkMask(fn_mask, 1, rank);
+ 	if (fn_mask2 != "None") checkMask(fn_mask2, 2, rank);
++	if (fn_lowpass_mask_micelle != "None") checkMask(fn_lowpass_mask_micelle, 3, rank);
+ 
+ 	// Write out unmasked 2D class averages
+ 	do_write_unmasked_refs = (mymodel.ref_dim == 2);
+@@ -4471,7 +4483,7 @@ void MlOptimiser::solventFlatten()
+ 	}
+ 
+ 	// First read solvent mask from disc, or pre-calculate it
+-	Image<RFLOAT> Isolvent, Isolvent2, Ilowpass;
++	Image<RFLOAT> Isolvent, Isolvent2, Ilowpass, Ilowpass_micelle;
+ 	Isolvent().resize(mymodel.Iref[0]);
+ 	Isolvent().setXmippOrigin();
+ 	Isolvent().initZeros();
+@@ -4541,9 +4553,18 @@ void MlOptimiser::solventFlatten()
+ 			REPORT_ERROR("MlOptimiser::solventFlatten ERROR: second solvent mask is of incorrect size.");
+ 	}
+ 
++	// Also read a lowpass micelle mask if necessary
++	if (fn_lowpass_mask_micelle != "None")
++	{
++		Ilowpass_micelle.read(fn_lowpass_mask_micelle);
++		Ilowpass_micelle().setXmippOrigin();
++		if (!Ilowpass_micelle().sameShape(Isolvent()))
++			REPORT_ERROR("MlOptimiser::solventFlatten ERROR: lowpass micelle mask is of incorrect size.");
++	}
++
+ 	for (int iclass = 0; iclass < mymodel.nr_classes; iclass++)
+ 	{
+-		MultidimArray<RFLOAT> Itmp;
++		MultidimArray<RFLOAT> Itmp, Itmp_micelle;
+ 		if (fn_lowpass_mask != "None")
+ 		{
+ 			Itmp = mymodel.Iref[iclass];
+@@ -4551,8 +4572,24 @@ void MlOptimiser::solventFlatten()
+ 			lowPassFilterMap(Itmp, lowpass, mymodel.pixel_size);
+ 		}
+ 
+-		// Then apply the expanded solvent mask to the map
+-		mymodel.Iref[iclass] *= Isolvent(); // this is the tight mask
++		if (fn_lowpass_mask_micelle != "None")
++		{
++			Itmp_micelle = mymodel.Iref[iclass];
++			lowPassFilterMap(Itmp_micelle, lowpass, mymodel.pixel_size);
++			Itmp_micelle *= Ilowpass_micelle();
++			RFLOAT solv;
++			FOR_ALL_DIRECT_ELEMENTS_IN_ARRAY3D(Isolvent())
++			{
++				solv = DIRECT_A3D_ELEM(Isolvent(), k, i, j);
++				DIRECT_A3D_ELEM(mymodel.Iref[iclass], k, i, j) = solv * DIRECT_A3D_ELEM(mymodel.Iref[iclass], k, i, j) + (1. - solv) * DIRECT_A3D_ELEM(Itmp_micelle, k, i, j);
++			}
++		}
++		else
++		{
++
++			// Then apply the expanded solvent mask to the map
++			mymodel.Iref[iclass] *= Isolvent(); // this is the tight mask
++		}
+ 
+ 		if (fn_lowpass_mask != "None")
+ 			mymodel.Iref[iclass] += Itmp;
+@@ -8923,6 +8960,7 @@ void MlOptimiser::updateSubsetSize(bool myverb)
+ 	if (do_fast_subsets)
+ 	{
+ 		long int min_parts_per_class = (mymodel.ref_dim == 2) ? 100 : 1500;
++		if (fast_subsets_min_parts_per_class > 0) min_parts_per_class = fast_subsets_min_parts_per_class;
+ 		if (iter <= 5)
+ 		{
+ 			subset_size = min_parts_per_class*mymodel.nr_classes;
+diff --git a/src/ml_optimiser.h b/src/ml_optimiser.h
+index 9a6e0290..e71cec54 100644
+--- a/src/ml_optimiser.h
++++ b/src/ml_optimiser.h
+@@ -319,8 +319,12 @@ public:
+ 
+ 	// Mask for regions to be low-pass filtered
+ 	FileName fn_lowpass_mask;
++	FileName fn_lowpass_mask_micelle;
+ 	RFLOAT lowpass;
+ 
++	// write out model very X iterations.
++	int write_every_iter;
++
+ 	// Width of the soft-edges of the circular masks
+ 	int width_mask_edge;
+ 
+@@ -383,6 +387,7 @@ public:
+ 
+ 	// Use subsets like in cisTEM to speed up 2D/3D classification
+ 	bool do_fast_subsets;
++	long int fast_subsets_min_parts_per_class;
+ 
+ 	// Available memory (in Gigabyte)
+ 	size_t available_gpu_memory;
