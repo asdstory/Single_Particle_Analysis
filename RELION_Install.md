@@ -1,4 +1,63 @@
+#### RELION patch with composite mask:
 
+```sh
+Hi Tongyi,
+
+This is a simple instruction that I gave to people who requested the method I talked about in the 3DEM GRC. I hope it may also be useful for you.
+
+I recompiled Relion 3.1 with the latest patch in Biowulf. You can use it (RELION/3.1_jiang) or compile by yourself using the attached patch. The patch should work for both Relion 3 and 4.
+
+Best,
+Jiansen
+
+
+
+From: Jiang, Jiansen (NIH/NHLBI) [E] <jiansen.jiang@nih.gov>
+Sent: Thursday, June 30, 2022 6:45 PM
+To: Pinton Tomaleri, Giovani <gptomaleri@caltech.edu>
+Subject: Re: [3DEM Spain] - Help with a small membrane protein
+ 
+Hi Gio,
+
+I'm happy to share with you the simple steps to improve the cryoEM data processing of small membrane proteins. I'm not sure if it works in all situations but let me know if it helps you or not.
+
+I have included in this email the patch file to Relion. Go to the folder of the Relion source code (where you see src, scripts, and other subfolders) and run this command:
+
+patch -p1 < lowpass_mask_micelle_patch_20220630.diff
+
+And then re-compile Relion. After that, you will be able to use two new parameters in Relion: --lowpass_mask_micelle and --lowpass
+
+Now you need to generate two masks (stepped masks): a tight soft mask that is just slightly larger than your protein (the magenta mask in the following figure) and a generous soft mask that includes both protein and detergent/lipid micelle (the grey mask in the following figure). Normally the grey mask includes the volume within the magenta mask but some regions of the magenta mask can be outside the grey mask anyway. Usually I use Chimera to segment the density of the protein and generate the magenta mask using the segmented map.
+
+
+Image
+
+
+Once you have done the above steps, you are ready to run Relion 3D classification or 3D auto-refine using the stepped masks.
+
+In the "I/O" tab, use the tight (magenta) mask for the "Reference mask".
+
+
+Image
+
+In the "Running" tab, put two extra parameters in "Additional arguments":
+
+--lowpass_mask_micelle path-to-the-grey-mask --lowpass 20
+
+This is where the large grey mask is used. The volume within the grey mask and excluded by the magenta mask (where the detergent micelle is supposed to be) will be low-pass filtered to 20 Angstroms. You can change the low-pass filter resolution to any number. We found 20 A works well in most situations.
+
+
+Image
+
+Then click "Run" and wait for exciting results.
+
+This works for both 3D classification and 3D refinement.
+
+Let me know if you need further explanation or help. And I truly hope that helps.
+
+Best,
+Jiansen
+```
 
 #### Instructions from Wolfgang/HPC/NIH:
 ```sh
