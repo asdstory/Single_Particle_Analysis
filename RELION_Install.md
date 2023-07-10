@@ -1,3 +1,236 @@
+#### RELION compile on Biowulf/NIH:
+
+```sh
+Hi Tongyi,
+
+Because of the heterogeneity of the HPC system, we compile RELION on a per-host basis.  All these executables are then modified to hard-code the paths to their required shared libraries, and then wrapped so that only the executables compiled to run on a particular node is actually run on that node.
+
+The whole process is obscenely complicated.
+
+Here is the most recent procedure I used to compile and install version 4.0.1:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Setup
+=========================================================================
+sinteractive --cpus-per-task=8 --mem-per-cpu=4g --constraint=x6140 --gres=lscratch:50
+...
+=========================================================================
+
+Got new zip files
+=========================================================================
+cd /usr/local/src/relion
+wget https://gcc02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2F3dem%2Frelion%2Farchive%2Frefs%2Ftags%2F4.0.1.zip&data=05%7C01%7Ctongyi.dou%40nih.gov%7C1d9e6a774a6448099a3308db815dacf1%7C14b77578977342d58507251ca2dc2b06%7C0%7C0%7C638246011561015840%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=BA0gnYHrS3QS8b%2ByVcOaZ8yEPpmWENBEsi5%2F4GkiZ44%3D&reserved=0
+=========================================================================
+
+Set variables:
+=========================================================================
+cat << VAR > /usr/local/src/relion/settings.sh
+umask 002
+module use /usr/local/apps/RELION/modules
+export RELIONBASE=221113
+export VER=4.0.1
+export APP=relion
+export SRCBASE=/usr/local/src/relion
+export PREFIX=/lscratch/${SLURM_JOB_ID}/relion
+export WRAPDIR=/usr/local/apps/RELION/221113
+export BUILDDIR=/lscratch/${SLURM_JOB_ID}/relion-${VER}
+export gv=9.2.0
+export iv=2020.2.254
+export cuv=11.3.0
+export ov=4.1.3
+export ffv=3.3.10
+export flv=1.3.5
+export cmv=3.16.4
+export pv=0.14
+VAR
+=========================================================================
+
+Built gcc and intel versions
+=========================================================================
+source /usr/local/src/relion/settings.sh
+gcc_array=(gcc/${gv} CUDA/${cuv} openmpi/${ov}/gcc-${gv} fftw/${ffv}/gcc-${gv} fltk/${flv}/gcc-${gv})
+intel_array=(intel/${iv} openmpi/${ov}/intel-${iv} fftw/${ffv}/intel-${iv} fltk/${flv}/intel-${iv})
+tag_array=(35 37 60 70 80)
+flag_array=(ivybridge haswell broadwell broadwell broadwell)
+for i in 0 1 2 3 4 ; do
+       STAGEDIR=${WRAPDIR}/${VER}/gcc_${tag_array[$i]}
+       rm -rf ${PREFIX} ${BUILDDIR} ${STAGEDIR}
+       cd /lscratch/${SLURM_JOB_ID}
+       unzip ${SRCBASE}/${VER}.zip -d .
+       cd ${BUILDDIR} && patch --unified --backup --verbose --suffix=.ORIG src/exp_model.cpp ${SRCBASE}/patches/${APP}-${VER}/src/exp_model.cpp.patch
+       mkdir build && cd build && module purge && module load ${gcc_array[@]} cmake/${cmv}
+       module list 2>&1 | tee -a gcc_${tag_array[$i]}.out
+       ( cmake -DCUDA_ARCH=${tag_array[$i]} \
+           -DCMAKE_C_FLAGS="-O3 -march=${flag_array[$i]}" \
+           -DCMAKE_CXX_FLAGS="-O3 -march=${flag_array[$i]}" \
+           -DCMAKE_INSTALL_PREFIX=${PREFIX} .. 2>&1 \
+           && { for i in {1..5} ; do make -j ${SLURM_CPUS_ON_NODE} 2>&1 ; done } \
+           && make install 2>&1 ) | tee -a gcc_${tag_array[$i]}.out
+       rm -rf ${STAGEDIR} && mkdir -p ${STAGEDIR} && cd ${STAGEDIR}
+       mv ${BUILDDIR}/build/gcc_${tag_array[$i]}.out $(dirname ${STAGEDIR})
+       module purge >& /dev/null &&  module load ${gcc_array[@]} patchelf/${pv}
+       for e in $(find ${PREFIX}/bin/ | sort); do
+           if [[ -f ${e} ]]; then
+               cp ${e} .
+               f=$(basename $e)
+               if file -b ${f} | grep -q ^ELF ; then
+                   patchelf --force-rpath --set-rpath ${LD_LIBRARY_PATH} ${f}
+               fi
+           fi
+       done
+done
+tag_array=("avx" "avx2" "avx512")
+flag_array=("" "-xCORE-AVX2" "-xCORE-AVX512")
+for i in 0 1 2 ; do
+      STAGEDIR=${WRAPDIR}/${VER}/intel_${tag_array[$i]}
+       rm -rf ${PREFIX} ${BUILDDIR} ${STAGEDIR}
+       cd /lscratch/${SLURM_JOB_ID}
+       unzip ${SRCBASE}/${VER}.zip -d .
+       cd relion-${VER} && patch --unified --backup --verbose --suffix=.ORIG \
+           src/exp_model.cpp ${SRCBASE}/patches/relion-${VER}/src/exp_model.cpp.patch
+       mkdir build && cd build && module purge && module load ${intel_array[@]} cmake/${cmv}
+       module list 2>&1 | tee intel_${tag_array[$i]}.out
+       IFS=':' read -r -a array <<< "$LD_LIBRARY_PATH"
+       tbblib=$(dirname $(for i in ${array[@]} ; do find $i -name libtbb.so ; done 2>/dev/null | tail -n 1 ) )
+       (TBB_INSTALL_DIR=$tbblib OMPI_CC=icc OMPI_CXX=icpc LIBRARY_PATH= cmake -DALTCPU=ON -DMKLFFT=ON \
+           -DCMAKE_C_COMPILER=icc -DCMAKE_CXX_COMPILER=icpc -DMPI_C_COMPILER=mpicc -DMPI_CXX_COMPILER=mpicxx \
+           -DCMAKE_C_FLAGS="-O3 -ip -g -restrict ${flag_array[$i]}" \
+           -DCMAKE_CXX_FLAGS="-O3 -ip -g -restrict ${flag_array[$i]}" \
+           -DCMAKE_INSTALL_PREFIX=${PREFIX} .. 2>&1 \
+           && { for i in {1..5} ; do make -j ${SLURM_CPUS_ON_NODE} 2>&1 ; done } \
+           && make install 2>&1 ) | tee intel_${tag_array[$i]}.out
+       rm -rf ${STAGEDIR} && mkdir -p ${STAGEDIR} && cd ${STAGEDIR}
+       mv ${BUILDDIR}/build/intel_${tag_array[$i]}.out $(dirname ${STAGEDIR})
+       module purge >& /dev/null &&  module load ${intel_array[@]} patchelf/${pv}
+       for e in $(find ${PREFIX}/bin/ | sort); do
+           if [[ -f ${e} ]]; then
+               cp ${e} .
+               f=$(basename $e)
+               if file -b ${f} | grep -q ^ELF ; then
+                   patchelf --force-rpath --set-rpath ${LD_LIBRARY_PATH} ${f}
+               fi
+           fi
+       done
+done
+=========================================================================
+
+And this was launched on a e7543 node
+=========================================================================
+sinteractive --cpus-per-task=8 --mem-per-cpu=4g --constraint=e7543 --gres=lscratch:50
+...
+source /usr/local/src/relion/settings.sh
+gcc_array=(gcc/${gv} CUDA/${cuv} openmpi/${ov}/gcc-${gv} fftw/${ffv}/gcc-${gv} fltk/${flv}/gcc-${gv})
+intel_array=(intel/${iv} openmpi/${ov}/intel-${iv} fftw/${ffv}/intel-${iv} fltk/${flv}/intel-${iv})
+TAG="intel_sse4a"
+STAGEDIR=${WRAPDIR}/${VER}/${TAG}
+rm -rf ${PREFIX} ${BUILDDIR} ${STAGEDIR}
+cd /lscratch/${SLURM_JOB_ID}
+unzip -q ${SRCBASE}/${VER}.zip -d .
+cd relion-${VER} && patch --unified --backup --verbose --suffix=.ORIG src/exp_model.cpp ${SRCBASE}/patches/relion-${VER}/src/exp_model.cpp.patch
+mkdir build && cd build && module purge && module load ${intel_array[@]} cmake/${cmv}
+module list 2>&1 | tee ${TAG}.out
+IFS=':' read -r -a array <<< "$LD_LIBRARY_PATH"
+tbblib=$(dirname $(for i in ${array[@]} ; do find $i -name libtbb.so ; done 2>/dev/null | tail -n 1 ) )
+(TBB_INSTALL_DIR=${tbblib} OMPI_CC=icc OMPI_CXX=icpc LIBRARY_PATH= cmake -DALTCPU=ON -DMKLFFT=ON \
+      -DCMAKE_C_COMPILER=icc -DCMAKE_CXX_COMPILER=icpc -DMPI_C_COMPILER=mpicc -DMPI_CXX_COMPILER=mpicxx \
+      -DCMAKE_C_FLAGS="-O3 -ip -g -restrict" \
+      -DCMAKE_CXX_FLAGS="-O3 -ip -g -restrict" \
+      -DCMAKE_INSTALL_PREFIX=${PREFIX} .. 2>&1 \
+      && { for i in {1..5} ; do make -j ${SLURM_CPUS_ON_NODE} 2>&1 ; done } \
+      && make install 2>&1 ) | tee ${TAG}.out
+rm -rf ${STAGEDIR} && mkdir -p ${STAGEDIR} && cd ${STAGEDIR}
+mv ${BUILDDIR}/build/${TAG}.out $(dirname ${STAGEDIR})
+module purge >& /dev/null &&  module load ${intel_array[@]} patchelf/${pv}
+for e in $(find ${PREFIX}/bin/ | sort); do
+      if [[ -f ${e} ]]; then
+          cp ${e} .
+          f=$(basename $e)
+          if file -b ${f} | grep -q ^ELF ; then
+              patchelf --force-rpath --set-rpath ${LD_LIBRARY_PATH} ${f}
+          fi
+      fi
+done
+=========================================================================
+
+Create libexec and wrapper stuff stuff
+=========================================================================
+source /usr/local/src/relion/settings.sh
+cd ${WRAPDIR}/${VER}
+mkdir libexec && cd libexec
+cat << EOF > wrapper.sh
+#!/bin/bash
+selfdir="\$(dirname \$(readlink -f \${BASH_SOURCE[0]}))"
+up="\$(dirname \${selfdir})"
+cmd="\$(basename \$0)"
+if cat /proc/devices | grep -m 1 -o nvidia -q ; then
+         if grep -h ^Model /proc/driver/nvidia/gpus/*/information | grep -m 1 -o K20X -q ; then
+           exec "\${up}/gcc_35/\${cmd}" "\$@"
+         elif grep -h ^Model /proc/driver/nvidia/gpus/*/information | grep -m 1 -o K80 -q ; then
+           exec "\${up}/gcc_37/\${cmd}" "\$@"
+         elif grep -h ^Model /proc/driver/nvidia/gpus/*/information | grep -m 1 -o P100 -q ; then
+           exec "\${up}/gcc_60/\${cmd}" "\$@"
+         elif grep -h ^Model /proc/driver/nvidia/gpus/*/information | grep -m 1 -o V100 -q ; then
+           exec "\${up}/gcc_70/\${cmd}" "\$@"
+         elif grep -h ^Model /proc/driver/nvidia/gpus/*/information | grep -m 1 -o A100 -q ; then
+           exec "\${up}/gcc_80/\${cmd}" "\$@"
+         fi
+elif cat /proc/cpuinfo | grep -m 1 -o ' sse4a' -q ; then
+         exec "\${up}/intel_sse4a/\${cmd}" "\$@"
+elif cat /proc/cpuinfo | grep -m 1 -o ' avx512' -q ; then
+         exec "\${up}/intel_avx512/\${cmd}" "\$@"
+elif cat /proc/cpuinfo | grep -m 1 -o ' avx2 ' -q ; then
+         exec "\${up}/intel_avx2/\${cmd}" "\$@"
+else
+         exec "\${up}/intel_avx/\${cmd}" "\$@"
+fi
+EOF
+chmod a+x wrapper.sh
+cd .. && mkdir bin && cd bin
+d=$(dirname $(ls ${WRAPDIR}/${VER}/*/relion | head -n 1))
+bd=$(basename $d)
+for e in $(find ${d}/ -mindepth 1 | sort); do
+      f=$(basename $e)
+      if [[ -x $e ]]; then
+          ln -s ../libexec/wrapper.sh $f
+      else
+          ln -s ../${bd}/$f $f
+      fi
+done
+=========================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Obviously, you will need to modify the base directories, as you don't have write permissions, and you would likely want to have it under your own control.
+
+Let me know if you have any questions.
+
+David
+
+On 7/9/2023 5:34 PM, tongyi.dou@nih.gov wrote:
+> 
+> Hi HPC staff,
+> 
+> May I ask what kind of procedure we do to compile RELION on our Biowulf?  I saw we have wrapper somehow can allow compiled RELION run on different GPU/CPU nodes. Can anyone teach me how to compile my own version (I did some modifications on src).
+> 
+> Thanks in advance,
+> 
+> Tongyi Dou, Ph.D.
+> 
+> Biochemistry and Biophysics Center, NHLBI/NIH
+> 
+> 571-315-1159I Bldg. 50, Room 2150, Bethesda, MD 20892
+
+-- 
+David Hoover, Ph.D.
+Computational Biologist
+High Performance Computing Services,
+Center for Information Technology,
+National Institutes of Health
+12 South Dr., Rm 2N207
+Bethesda, MD 20892, USA
+TEL: (+1) 301-435-2986
+Email: hooverdm@hpc.nih.gov
+```
+
 #### RELION patch with composite mask:
 
 ```sh
