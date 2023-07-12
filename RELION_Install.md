@@ -251,7 +251,74 @@ export cmv=3.23.0
 export pv=0.14
 
 ```
-
+##### build_gcc_intel_version.sh:
+```sh
+source /usr/local/src/relion/settings.sh
+gcc_array=(gcc/${gv} CUDA/${cuv} openmpi/${ov}/gcc-${gv} fftw/${ffv}/gcc-${gv} fltk/${flv}/gcc-${gv})
+intel_array=(intel/${iv} openmpi/${ov}/intel-${iv} fftw/${ffv}/intel-${iv} fltk/${flv}/intel-${iv})
+tag_array=(35 37 60 70 80)
+flag_array=(ivybridge haswell broadwell broadwell broadwell)
+for i in 0 1 2 3 4 ; do
+       STAGEDIR=${WRAPDIR}/${VER}/gcc_${tag_array[$i]}
+       rm -rf ${PREFIX} ${BUILDDIR} ${STAGEDIR}
+       cd /lscratch/${SLURM_JOB_ID}
+       unzip ${SRCBASE}/${VER}.zip -d .
+       cd ${BUILDDIR} && patch --unified --backup --verbose --suffix=.ORIG src/exp_model.cpp ${SRCBASE}/patches/${APP}-${VER}/src/exp_model.cpp.patch
+       mkdir build && cd build && module purge && module load ${gcc_array[@]} cmake/${cmv}
+       module list 2>&1 | tee -a gcc_${tag_array[$i]}.out
+       ( cmake -DCUDA_ARCH=${tag_array[$i]} \
+           -DCMAKE_C_FLAGS="-O3 -march=${flag_array[$i]}" \
+           -DCMAKE_CXX_FLAGS="-O3 -march=${flag_array[$i]}" \
+           -DCMAKE_INSTALL_PREFIX=${PREFIX} .. 2>&1 \
+           && { for i in {1..5} ; do make -j ${SLURM_CPUS_ON_NODE} 2>&1 ; done } \
+           && make install 2>&1 ) | tee -a gcc_${tag_array[$i]}.out
+       rm -rf ${STAGEDIR} && mkdir -p ${STAGEDIR} && cd ${STAGEDIR}
+       mv ${BUILDDIR}/build/gcc_${tag_array[$i]}.out $(dirname ${STAGEDIR})
+       module purge >& /dev/null &&  module load ${gcc_array[@]} patchelf/${pv}
+       for e in $(find ${PREFIX}/bin/ | sort); do
+           if [[ -f ${e} ]]; then
+               cp ${e} .
+               f=$(basename $e)
+               if file -b ${f} | grep -q ^ELF ; then
+                   patchelf --force-rpath --set-rpath ${LD_LIBRARY_PATH} ${f}
+               fi
+           fi
+       done
+done
+tag_array=("avx" "avx2" "avx512")
+flag_array=("" "-xCORE-AVX2" "-xCORE-AVX512")
+for i in 0 1 2 ; do
+      STAGEDIR=${WRAPDIR}/${VER}/intel_${tag_array[$i]}
+       rm -rf ${PREFIX} ${BUILDDIR} ${STAGEDIR}
+       cd /lscratch/${SLURM_JOB_ID}
+       unzip ${SRCBASE}/${VER}.zip -d .
+       cd relion-${VER} && patch --unified --backup --verbose --suffix=.ORIG \
+           src/exp_model.cpp ${SRCBASE}/patches/relion-${VER}/src/exp_model.cpp.patch
+       mkdir build && cd build && module purge && module load ${intel_array[@]} cmake/${cmv}
+       module list 2>&1 | tee intel_${tag_array[$i]}.out
+       IFS=':' read -r -a array <<< "$LD_LIBRARY_PATH"
+       tbblib=$(dirname $(for i in ${array[@]} ; do find $i -name libtbb.so ; done 2>/dev/null | tail -n 1 ) )
+       (TBB_INSTALL_DIR=$tbblib OMPI_CC=icc OMPI_CXX=icpc LIBRARY_PATH= cmake -DALTCPU=ON -DMKLFFT=ON \
+           -DCMAKE_C_COMPILER=icc -DCMAKE_CXX_COMPILER=icpc -DMPI_C_COMPILER=mpicc -DMPI_CXX_COMPILER=mpicxx \
+           -DCMAKE_C_FLAGS="-O3 -ip -g -restrict ${flag_array[$i]}" \
+           -DCMAKE_CXX_FLAGS="-O3 -ip -g -restrict ${flag_array[$i]}" \
+           -DCMAKE_INSTALL_PREFIX=${PREFIX} .. 2>&1 \
+           && { for i in {1..5} ; do make -j ${SLURM_CPUS_ON_NODE} 2>&1 ; done } \
+           && make install 2>&1 ) | tee intel_${tag_array[$i]}.out
+       rm -rf ${STAGEDIR} && mkdir -p ${STAGEDIR} && cd ${STAGEDIR}
+       mv ${BUILDDIR}/build/intel_${tag_array[$i]}.out $(dirname ${STAGEDIR})
+       module purge >& /dev/null &&  module load ${intel_array[@]} patchelf/${pv}
+       for e in $(find ${PREFIX}/bin/ | sort); do
+           if [[ -f ${e} ]]; then
+               cp ${e} .
+               f=$(basename $e)
+               if file -b ${f} | grep -q ^ELF ; then
+                   patchelf --force-rpath --set-rpath ${LD_LIBRARY_PATH} ${f}
+               fi
+           fi
+       done
+done
+```
 
 #### RELION patch with composite mask:
 
