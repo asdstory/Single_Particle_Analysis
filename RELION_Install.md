@@ -230,6 +230,28 @@ Bethesda, MD 20892, USA
 TEL: (+1) 301-435-2986
 Email: hooverdm@hpc.nih.gov
 ```
+### My own modified verion:
+##### setting.sh:
+```sh
+umask 002
+module use /home/dout2/Apps/modulefiles
+export RELIONBASE=221113
+export VER=composite_masks
+export APP=relion
+export SRCBASE=/home/dout2/Apps/RELION/4.0_jiang
+export WRAPDIR=/home/dout2/Apps/RELION/${RELIONBASE}
+export BUILDDIR=/lscratch/${SLURM_JOB_ID}/${VER}
+export gv=9.2.0
+export iv=2020.2.254
+export cuv=11.3.0
+export ov=4.1.3
+export ffv=3.3.10
+export flv=1.3.5
+export cmv=3.23.0
+export pv=0.14
+
+```
+
 
 #### RELION patch with composite mask:
 
