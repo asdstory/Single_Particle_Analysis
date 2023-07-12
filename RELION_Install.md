@@ -253,7 +253,7 @@ export pv=0.14
 ```
 ##### build_gcc_intel_version.sh:
 ```sh
-source /usr/local/src/relion/settings.sh
+source /home/dout2/Apps/RELION/settings.sh
 gcc_array=(gcc/${gv} CUDA/${cuv} openmpi/${ov}/gcc-${gv} fftw/${ffv}/gcc-${gv} fltk/${flv}/gcc-${gv})
 intel_array=(intel/${iv} openmpi/${ov}/intel-${iv} fftw/${ffv}/intel-${iv} fltk/${flv}/intel-${iv})
 tag_array=(35 37 60 70 80)
