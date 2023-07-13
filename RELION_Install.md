@@ -428,6 +428,27 @@ cmake -DCUDA_ARCH=${CA} -DRELION_TEST=ON -DCMAKE_INSTALL_PREFIX=${PREFIX}  ..
   $PREFIX/bin/relion --help
 ```
 
+#### Intall RELION from Jiansen: 
+```sh
+Load these modules before compiling RELION:
+
+  221  17:02  module load RELION/4.0.1
+  231  17:05  module load CUDA
+  233  17:05  module load cmake
+  277  17:30  module load fltk/1.3.5/gcc-8.5.0
+  279  17:31  module load fftw/3.3.9/openmpi-4.1.4/gcc-8.5.0
+  284  17:34  module load openmpi/4.1.4/CUDA-11.4/gcc-8.5.0
+
+Then follow the instruction from RELION: https://relion.readthedocs.io/en/release-4.0/Installation.html
+
+cmake -DCMAKE_INSTALL_PREFIX=/home/jiangji2/JiangLab/Apps/RELION/4.0.1/sm80 -DCUDA_ARCH=80 ..
+make
+make install
+
+You need to change CUDA_ARCH to compile for different GPUs. Follow the examples of RELION compiled by biowulf:
+/usr/local/apps/RELION/230216/4.0.1
+
+```
 
 
 
