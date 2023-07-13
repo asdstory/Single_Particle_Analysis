@@ -435,7 +435,7 @@ Load these modules before compiling RELION:
   221  17:02  module load RELION/4.0.1
   231  17:05  module load CUDA
   233  17:05  module load cmake
-              module load gcc-8.5.0
+              module load gcc/8.5.0
   277  17:30  module load fltk/1.3.5/gcc-8.5.0
   279  17:31  module load fftw/3.3.9/openmpi-4.1.4/gcc-8.5.0
   284  17:34  module load openmpi/4.1.4/CUDA-11.4/gcc-8.5.0
