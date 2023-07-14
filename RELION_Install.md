@@ -450,7 +450,36 @@ You need to change CUDA_ARCH to compile for different GPUs. Follow the examples 
 /usr/local/apps/RELION/230216/4.0.1
 
 ```
+#### install.sh:
+```sh
+module load RELION/4.0.1
+module load CUDA
+module load cmake
+module load gcc/8.5.0
+module load fltk/1.3.5/gcc-8.5.0
+module load fftw/3.3.9/openmpi-4.1.4/gcc-8.5.0
+module load openmpi/4.1.4/CUDA-11.4/gcc-8.5.0
 
+cmake -DCMAKE_INSTALL_PREFIX=/home/dout2/Apps/RELION/4.0.1 -DCUDA_ARCH=35
+make -j 16
+make install
+
+cmake -DCMAKE_INSTALL_PREFIX=/home/dout2/Apps/RELION/4.0.1/sm37 -DCUDA_ARCH=37
+make -j 16
+make install
+
+cmake -DCMAKE_INSTALL_PREFIX=/home/dout2/Apps/RELION/4.0.1/sm60 -DCUDA_ARCH=60
+make -j 16
+make install
+
+cmake -DCMAKE_INSTALL_PREFIX=/home/dout2/Apps/RELION/4.0.1/sm70 -DCUDA_ARCH=70
+make -j 16
+make install
+
+cmake -DCMAKE_INSTALL_PREFIX=/home/dout2/Apps/RELION/4.0.1/sm80 -DCUDA_ARCH=80
+make -j 16
+make install
+```
 
 
 #### ver4.0.lua file
