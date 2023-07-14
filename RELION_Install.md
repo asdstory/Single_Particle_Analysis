@@ -442,7 +442,7 @@ Load these modules before compiling RELION:
 
 Then follow the instruction from RELION: https://relion.readthedocs.io/en/release-4.0/Installation.html
 
-cmake -DCMAKE_INSTALL_PREFIX=/home/dout2/Apps/RELION/4.0.1_jiang/sm80 -DCUDA_ARCH=80 ..
+cmake -DCMAKE_INSTALL_PREFIX=/home/dout2/Apps/RELION/4.0.1/sm80 -DCUDA_ARCH=80 ..
 make -j 8
 make install
 
