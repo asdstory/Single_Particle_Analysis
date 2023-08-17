@@ -680,14 +680,11 @@ setenv("RELION_PDFVIEWER_EXECUTABLE",  "xpdf")
 #### The 4.0.1_jiang.lua file I modified:
 
 ```sh
-
- GNU nano 2.9.8                                                 4.0.1_dou.lua                                                            
-
 local description = "http://www2.mrc-lmb.cam.ac.uk/relion/index.php/Main_Page"
-local version     = myModuleVersion()
+local version     = myModuleVersion() 
 local app         = myModuleName()
 local base        = "/home/dout2/Apps/"
-local helpmessage = "Sets up "..app.." "..version.." on helix/biowulf cluster"
+local helpmessage = "Sets up "..app.." "..version.." on helix/biowulf cluster" 
 local hostname    = capture("/bin/hostname")
 hostname          = hostname:gsub("%s+", "")
 local relionbase  = '4.0.1'
@@ -763,8 +760,6 @@ setenv("RELION_QSUB_EXTRA6",           "Addl (ex6) SBATCH Directives")
 setenv("RELION_QSUB_EXTRA6_DEFAULT",   "")
 setenv("RELION_MINIMUM_DEDICATED",     "1")
 setenv("RELION_PDFVIEWER_EXECUTABLE",  "xpdf")
-
-====
 
 
 ```
