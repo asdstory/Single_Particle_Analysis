@@ -104,8 +104,9 @@ def read_optical_parameter(fn):
         exit(1)
     tmp = []
     for i in range(len(l)):
-        pat = re.compile(r"(\w+)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)")
+        pat = re.compile(r"(\w+)\s+(\d*\.?\d*)\s+((?:[A-Z]:|\\|(?:\.{1,2}[\/\\])+)[\w+\\\s_\(\)\/]+(?:\.\w+)*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)")
         #"opticsGroup1            1     0.850000   300.000000     2.700000     0.100000"
+        #"opticsGroup1            1 ../Database/MTF_curves/mtf_k3_CDS_300kv_from_gatan.star     0.415000   300.000000     2.700000     0.100000"
         result = pat.match(l[i])
         if result:
             tmp = result.groups()
