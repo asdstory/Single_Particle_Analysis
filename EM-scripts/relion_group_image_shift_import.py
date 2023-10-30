@@ -310,15 +310,16 @@ f.write("\n")
 f.write("loop_"+"\n")
 f.write("_rlnOpticsGroupName #1"+"\n")
 f.write("_rlnOpticsGroup #2"+"\n")
-f.write("_rlnMicrographOriginalPixelSize #3"+"\n")
-f.write("_rlnVoltage #4"+"\n")
-f.write("_rlnSphericalAberration #5"+"\n")
-f.write("_rlnAmplitudeContrast #6"+"\n")
+f.write("_rlnMtfFileName #3"+"\n")
+f.write("_rlnMicrographOriginalPixelSize #4"+"\n")
+f.write("_rlnVoltage #5"+"\n")
+f.write("_rlnSphericalAberration #6"+"\n")
+f.write("_rlnAmplitudeContrast #7"+"\n")
 
 Optical_parameter = read_optical_parameter((options.input_star))
 
 for i in range(cn):
-    line = "opticsGroup" + str(i+1) + "            " + str(i+1) +"     "+str(Optical_parameter[2])+"   "+str(Optical_parameter[3])+"     "+str(Optical_parameter[4])+"     "+str(Optical_parameter[5])+"\n"
+    line = "opticsGroup" + str(i+1) + "            " + str(i+1) +"     "+str(Optical_parameter[2])+"   "+str(Optical_parameter[3])+"     "+str(Optical_parameter[4])+"     "+str(Optical_parameter[5])+"     "+str(Optical_parameter[6])+"\n"
     f.write(line)
 f.write("\n")
 f.write("\n")
