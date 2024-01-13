@@ -34,6 +34,11 @@ input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using
 - [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=49 --image_shift_data=/data/dout2/Database/Image_Shift_Data/leginon_image_shift_data_all_2023-02-22.txt --input_star=movies.star --output_star=movies_group.star
 - [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=49 --image_shift_data=/data/dout2/Database/Image_Shift/leginon_image_shift_data_all_2023-05-17.txt --input_star=movies.star --output_star=movies_group.star
 - [ ] python2 /home/dout2/data1/dout2/Database/Scripts/relion_group_image_shift_import.py --clusters=25 --image_shift_data=/home/dout2/data1/dout2/Database/Image_Shift/leginon_image_shift_data_all_2023-05-17.txt --input_star=movies.star --output_star=movies_group.star
+## On Biowulf, we do: 
+- [ ] source myconda
+- [ ] mamba info --env
+- [ ] mamba activate python2.7
+- [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=18 --image_shift_data=/data/dout2/Database/Image_Shift/leginon_image_shift_data_all_2023-05-17.txt --input_star=movies.star --output_star=movies_group.star
 
 
 movies.star file before group looks like 
