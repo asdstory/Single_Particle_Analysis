@@ -4,7 +4,7 @@
 #Despcription: This program is used to introduce optic group into movies.star file.
 #Copyright@JiangLab@NHLBI/NIH
 #Author: Jiansen Jiang & Tongyi Dou
-#Last Edit: 2021-07-02
+#Last Edit: 202104-09
 #####**************************************************************************#####
 
 DEBUG=0
@@ -104,10 +104,8 @@ def read_optical_parameter(fn):
         exit(1)
     tmp = []
     for i in range(len(l)):
-        #pat = re.compile(r"(\w+)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)")
-        pat = re.compile(r"(\w+)\s+(\d*\.?\d*)\s+((?:[A-Z]:|\\|(?:\.{1,2}[\/\\])+)[\w+\\\s_\(\)\/]+(?:\.\w+)*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)")
+        pat = re.compile(r"(\w+)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)\s+(\d*\.?\d*)")
         #"opticsGroup1            1     0.850000   300.000000     2.700000     0.100000"
-        #"opticsGroup1            1 ../Database/MTF_curves/mtf_k3_CDS_300kv_from_gatan.star     0.415000   300.000000     2.700000     0.100000"
         result = pat.match(l[i])
         if result:
             tmp = result.groups()
@@ -298,9 +296,6 @@ shift_class_dict = {
   "20210127_17430704": "5"
 }
 """
-#d = open("dictionary.txt","w")
-#d.write(shift_class_dict)
-#d.close()
 
 f = open(options.output_star,"w")
 f.write("\n")
@@ -311,16 +306,15 @@ f.write("\n")
 f.write("loop_"+"\n")
 f.write("_rlnOpticsGroupName #1"+"\n")
 f.write("_rlnOpticsGroup #2"+"\n")
-f.write("_rlnMtfFileName #3"+"\n")
-f.write("_rlnMicrographOriginalPixelSize #4"+"\n")
-f.write("_rlnVoltage #5"+"\n")
-f.write("_rlnSphericalAberration #6"+"\n")
-f.write("_rlnAmplitudeContrast #7"+"\n")
+f.write("_rlnMicrographOriginalPixelSize #3"+"\n")
+f.write("_rlnVoltage #4"+"\n")
+f.write("_rlnSphericalAberration #5"+"\n")
+f.write("_rlnAmplitudeContrast #6"+"\n")
 
 Optical_parameter = read_optical_parameter((options.input_star))
 
 for i in range(cn):
-    line = "opticsGroup" + str(i+1) + "            " + str(i+1) +"     "+str(Optical_parameter[2])+"   "+str(Optical_parameter[3])+"     "+str(Optical_parameter[4])+"     "+str(Optical_parameter[5])+"     "+str(Optical_parameter[6])+"\n"
+    line = "opticsGroup" + str(i+1) + "            " + str(i+1) +"     "+str(Optical_parameter[2])+"   "+str(Optical_parameter[3])+"     "+str(Optical_parameter[4])+"     "+str(Optical_parameter[5])+"\n"
     f.write(line)
 f.write("\n")
 f.write("\n")
