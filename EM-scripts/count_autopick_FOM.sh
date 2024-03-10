@@ -5,9 +5,7 @@
 
 #!/bin/bash
 
-for i in *_autopick.star
-  do echo $i
-done
+for i in *_autopick.star; do echo $i; done
 
 #input="particles.star"
 #i=0
