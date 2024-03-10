@@ -2,7 +2,7 @@
 
 # This script is used to determine the best FOM threshold for particle extraction jobs.
 
-****************************************************************************
+
 #!/bin/bash
 
 for i in *_autopick.star
@@ -21,4 +21,4 @@ done
 #echo Total particles selected: $i
 
 # count=0; for i in *_autopick.star; do awk '$3 >= 2' $i;  
-****************************************************************************
+
