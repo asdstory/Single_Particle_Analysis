@@ -8,7 +8,7 @@
 declare -i c;
 c=0;
 FOM=$1;
-echo $FOM
+echo Using cutting threshold FOM: $FOM
 
 for i in *_autopick.star;
 #  do echo $i;
@@ -18,7 +18,7 @@ for i in *_autopick.star;
   c+=$(count $i);
 done
 
-echo Total particles selected: $c
+echo Total particles will be extracted is: $c
 
 # awk '$3+0 >= 10 { count++ } END {print count}  ' FoilHole_266910_Data_255258_255260_20240301_193301_Fractions_autopick.star
 
