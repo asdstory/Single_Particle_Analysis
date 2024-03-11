@@ -7,10 +7,11 @@
 
 declare -i c;
 c=0;
+FOM=$1;
 
 for i in *_autopick.star;
 #  do echo $i;
-  function count() {     awk '$3+0 >= 10 { count++ } END {print count}'  "$1"; };
+  function count() {     awk -v FOM=$FOM '$3+0 >= $FOM { count++ } END {print count}'  "$1" };
   c+=$(count $i);
 done
 
