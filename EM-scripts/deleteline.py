@@ -26,7 +26,7 @@ def deleteline(file_i,file_o):
         lines = fi.readlines()
     with open(file_o,"w") as fo:
         for line in lines:
-            if 'rOAT1-PBD' in line:
+            if 'h2B1-E1S_g1' in line:
                 print("YES! We hava a match!")
             else:
                 fo.write(line)
