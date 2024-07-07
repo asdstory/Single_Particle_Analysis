@@ -26,6 +26,10 @@ for i in MotionCorr/job936/Micrographs/tmp/*_????????.mrc; do echo relion_image_
 
 for i in MotionCorr/job002/finished-frames/tmp/*_????????.mrc; do echo relion_image_handler --i $i --o MotionCorr/job002/finished-frames/`basename $i` --angpix 0.83 --rescale_angpix 8.3; done > runpar.cmd
 
+On our Biowulf:
+
+source myconda
+mamba activate python2.7
 module load EMscript
 runpar_gpu.py -p32 runpar.cmd
 
