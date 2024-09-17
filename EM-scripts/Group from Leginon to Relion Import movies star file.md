@@ -40,7 +40,7 @@ input the (1)clusters, e.g. 16, or 25 (depends on how you collect the data using
 - [ ] mamba activate python2.7
 - [ ] python2 /data/dout2/Scripts/relion_group_image_shift_import.py --clusters=18 --image_shift_data=/data/dout2/Database/Image_Shift/leginon_image_shift_data_all_2023-05-17.txt --input_star=movies.star --output_star=movies_group.star
 - [ ] python2 /data/dout2/Scripts/relion_group_image_shift_mtf.py --clusters=25 --image_shift_data=/data/dout2/Database/Image_Shift/leginon_image_shift_data_all_2024-02-19.txt --input_star=movies.star --output_star=movies_group.star
-- [ ] python2 /data/dout2/scripts/relion_group_image_shift_import.py --clusters=25 --image_shift_data=/data/dout2/Database/ImageShift/leginon_image_shift_20240917.txt --input_star=movies.star --output_star=movies_group.star
+- [ ] python2 /data/dout2/scripts/relion_group_image_shift_mtf.py --clusters=25 --image_shift_data=/data/dout2/Database/ImageShift/leginon_image_shift_20240917.txt --input_star=movies.star --output_star=movies_group.star
 
 
 movies.star file before group looks like 
