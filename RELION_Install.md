@@ -786,7 +786,7 @@ ml fftw2
 conda env create -f environment.yml
 sudo apt install cmake git build-essential mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev libpng-dev ghostscript libxft-dev
 
-cmake .. -DCMAKE_INSTALL_PREFIX=/home/dout2/programs/apps/relion-5.0 -DCUDA_ARCH=75
+cmake .. -DCMAKE_INSTALL_PREFIX=/home/dout2/programs/apps/relion-5.0 -DCUDA_ARCH=61
 make -j 48
 make install
 ```
