@@ -788,5 +788,5 @@ sudo apt install cmake git build-essential mpi-default-bin mpi-default-dev libff
 
 cmake .. -DCMAKE_INSTALL_PREFIX=/home/dout2/programs/apps/relion-5.0 -DCUDA_ARCH=75
 make -j 48
-
+make install
 ```
