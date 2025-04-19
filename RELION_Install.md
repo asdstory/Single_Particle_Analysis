@@ -775,3 +775,10 @@ setenv("RELION_PDFVIEWER_EXECUTABLE",  "xpdf")
 /usr/local/apps/RELION/utils:/usr/local/apps/RELION/wrapped-openmpi/ver4.0/bin:/usr/local/apps/topaz/0.2.5/bin:/usr/local/current/singularity/3.8.5-1/bin:/usr/local/apps/texlive/latex2rtf-2.3.17:/usr/local/apps/texlive/2022/bin/x86_64-linux:/usr/local/apps/xpdf/4.04/bin:/usr/local/apps/Gctf/1.06/bin:/usr/local/Ghostscript/9.22/bin:/usr/local/apps/MotionCor2/1.3.0:/usr/local/apps/ResMap/1.1.4:/usr/local/apps/ctffind/4.1.14:/usr/local/CUDA/11.3.0/bin:/usr/local/slurm/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/X11R6/bin:/usr/local/jdk/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/mysql/bin:/home/dout2/.local/bin:/home/dout2/bin:/opt/ibutils/bin
 
 ```
+#### Install RELION on my own Linux machine:
+
+```sh
+
+sudo apt install cmake git build-essential mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev libpng-dev ghostscript libxft-dev
+
+```
