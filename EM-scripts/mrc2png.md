@@ -7,5 +7,7 @@ for i in ../*_[0-9][0-9].mrc; do e2proc2d.py $i `basename $i`.png --process=filt
 
 for i in ../*_[0-9][0-9].mrc; do e2proc2d.py $i `basename $i .mrc`.png --process=filter.lowpass.gauss:cutoff_freq=0.1 --process normalize;done
 
+```
+```sh
 for i in ./*.mrc; do echo relion_image_handler --i  $i --o `basename $i .mrc`.png --lowpass 10; done > runpar.cmd
 ```
