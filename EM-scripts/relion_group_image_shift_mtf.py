@@ -322,7 +322,7 @@ f.write("_rlnAmplitudeContrast #7"+"\n")
 Optical_parameter = read_optical_parameter((options.input_star))
 
 for i in range(cn):
-    line = "opticsGroup" + str(i+1) + "            " + str(i+1) +"     "+str(Optical_parameter[2])+"   "+str(Optical_parameter[3])+"     "+str(Optical_parameter[4])+"     "+str(Optical_parameter[5])+"     "+str(Optical_parameter[6])+"\n"
+    line = str(Optical_parameter[1]) + str(i+1) + "            " + str(i+1) +"     "+str(Optical_parameter[2])+"   "+str(Optical_parameter[3])+"     "+str(Optical_parameter[4])+"     "+str(Optical_parameter[5])+"     "+str(Optical_parameter[6])+"\n"
     f.write(line)
 f.write("\n")
 f.write("\n")
