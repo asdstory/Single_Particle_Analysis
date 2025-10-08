@@ -793,7 +793,7 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /u
 #Switch between different versions, here GCC9 is used for RELION compiling:
 sudo update-alternatives --config gcc
 
-cmake .. -DCMAKE_INSTALL_PREFIX=/home/dout2/programs/apps/relion-5.0 -DCUDA_ARCH=61
+cmake .. -DCMAKE_INSTALL_PREFIX=/home/dout2/programs/apps/relion-5.0_test -DCUDA_ARCH=61
 make -j 48
 make install
 ```
