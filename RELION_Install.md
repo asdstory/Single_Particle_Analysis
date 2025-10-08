@@ -787,6 +787,12 @@ conda env create -f environment.yml
 conda env update -f environment.yml
 sudo apt install cmake git build-essential mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev libpng-dev ghostscript libxft-dev
 
+# Register GCC 9 with priority 90
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+
+#Switch between different versions, here GCC9 is used for RELION compiling:
+sudo update-alternatives --config gcc
+
 cmake .. -DCMAKE_INSTALL_PREFIX=/home/dout2/programs/apps/relion-5.0 -DCUDA_ARCH=61
 make -j 48
 make install
