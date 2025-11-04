@@ -787,11 +787,19 @@ conda env create -f environment.yml
 conda env update -f environment.yml
 sudo apt install cmake git build-essential mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev libpng-dev ghostscript libxft-dev
 
-# Register GCC 9 with priority 90
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+# Install gcc-11 and soft link to the cuda toolkit folder
 
-#Switch between different versions, here GCC9 is used for RELION compiling:
-sudo update-alternatives --config gcc
+(base) dout2@bbc-u02058660:~/programs/apps/relion-5.0_test/relion$ ls ~/programs/lib/cuda-11.8/bin/ -lsrht
+total 130M
+   0 lrwxrwxrwx 1 root root    15 Nov  3 13:55 gcc -> /usr/bin/gcc-11
+   0 lrwxrwxrwx 1 root root    15 Nov  3 13:55 g++ -> /usr/bin/g++-11
+
+#(base) dout2@bbc-u02058660:~/programs/apps/relion-5.0_test/relion$ module list
+
+Currently Loaded Modules:
+  1) fftw2/2.1.5   3) ctffind/4.1.14   5) MotionCor2/1.5.0            7) RELION/5.0_test
+  2) CUDA/11.8     4) ResMap/1.1.4     6) openmpi/4.1.1_CUDA-11.2.2
+
 
 cmake -DCMAKE_INSTALL_PREFIX=/home/dout2/programs/apps/relion-5.0_test -DCUDA_ARCH=61
 make -j 48
