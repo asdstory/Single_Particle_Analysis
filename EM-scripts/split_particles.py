@@ -1,7 +1,4 @@
-###
-This is to convert selected particles star file into coordination star file, for tracking where the particles are from and how it look like in raw image.
-
-###
+### This is to convert selected particles star file into coordination star file, for tracking where the particles are from and how it look like in raw image. ###
 
 import os
 from collections import defaultdict
